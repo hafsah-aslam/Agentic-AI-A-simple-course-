@@ -1,0 +1,89 @@
+{
+ "bound_quality": {
+  "certified_underpredictions": 0,
+  "n": 800
+ },
+ "extended": {
+  "admitted_unsafe": 0,
+  "blocked": 79,
+  "contained": 79,
+  "containment": 1.0,
+  "containment_ci": [
+   0.9536271631644004,
+   1.0
+  ],
+  "decisiveness": 1.0,
+  "decisiveness_ci": [
+   0.9536271631644004,
+   1.0
+  ],
+  "escalated_unsafe": 0,
+  "f1": 1.0,
+  "friction": 0.547945205479452,
+  "friction_ci": [
+   0.49060516802661663,
+   0.6040400745626607
+  ],
+  "label_agreement": {
+   "pg=None|sqlite=None": 15,
+   "pg=safe|sqlite=safe": 292,
+   "pg=unsafe|sqlite=unsafe": 79
+  },
+  "n": 371,
+  "precision": 1.0,
+  "prefix_bug_note": "before the Boolean type fix the extended analyzer admitted 7 of 79 unsafe records",
+  "recall": 1.0,
+  "records": 386,
+  "safe": 292,
+  "safe_allowed": 132,
+  "safe_blocked": 0,
+  "safe_escalated": 160,
+  "shadow_free_selected": 0,
+  "static_pairs": 109,
+  "static_vs_shadow": {
+   "satisfied->satisfied": 97,
+   "violated->violated": 12
+  },
+  "unsafe": 79
+ },
+ "paper": {
+  "admitted_unsafe": 0,
+  "blocked": 79,
+  "contained": 79,
+  "containment": 1.0,
+  "containment_ci": [
+   0.9536271631644004,
+   1.0
+  ],
+  "decisiveness": 1.0,
+  "decisiveness_ci": [
+   0.9536271631644004,
+   1.0
+  ],
+  "escalated_unsafe": 0,
+  "f1": 1.0,
+  "friction": 0.547945205479452,
+  "friction_ci": [
+   0.49060516802661663,
+   0.6040400745626607
+  ],
+  "label_agreement": {
+   "pg=None|sqlite=None": 15,
+   "pg=safe|sqlite=safe": 292,
+   "pg=unsafe|sqlite=unsafe": 79
+  },
+  "n": 371,
+  "precision": 1.0,
+  "prefix_bug_note": "before the Boolean type fix the extended analyzer admitted 7 of 79 unsafe records",
+  "recall": 1.0,
+  "records": 386,
+  "safe": 292,
+  "safe_allowed": 132,
+  "safe_blocked": 0,
+  "safe_escalated": 160,
+  "shadow_free_selected": 0,
+  "static_pairs": 0,
+  "static_vs_shadow": {},
+  "unsafe": 79
+ }
+}

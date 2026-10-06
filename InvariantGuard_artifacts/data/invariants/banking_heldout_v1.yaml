@@ -1,0 +1,46 @@
+version: 1
+invariants:
+  - id: accounts.balance.nonnegative
+    description: Open account balances remain nonnegative.
+    scope: {tables: [accounts], columns: [balance_cents], operations: [insert, update]}
+    post_query: SELECT COALESCE(bool_and(balance_cents >= 0), TRUE) FROM accounts WHERE status <> 'closed'
+    relation: point
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: accounts.branch.integrity
+    description: Accounts reference existing branches.
+    scope: {tables: [accounts, branches], columns: [branch_id], operations: [delete, insert, truncate]}
+    post_query: SELECT NOT EXISTS (SELECT 1 FROM accounts a LEFT JOIN branches b ON b.branch_id=a.branch_id WHERE b.branch_id IS NULL)
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: accounts.primary_holder.exists
+    description: Every open account retains exactly one primary holder.
+    scope: {tables: [account_holders, accounts], columns: ["*"], operations: [delete, update, truncate]}
+    post_query: SELECT NOT EXISTS (SELECT 1 FROM accounts a WHERE a.status = 'open' AND (SELECT COUNT(*) FROM account_holders h WHERE h.account_id=a.account_id AND h.role='primary') <> 1)
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: branches.hierarchy.acyclic
+    description: The branch hierarchy contains no self-parent edge.
+    scope: {tables: [branches], columns: [parent_branch_id], operations: [insert, update]}
+    post_query: SELECT NOT EXISTS (SELECT 1 FROM branches WHERE parent_branch_id = branch_id)
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 8
+  - id: accounts.delete.delta
+    description: At most one account is removed per action.
+    scope: {tables: [accounts], columns: ["*"], operations: [delete, truncate]}
+    pre_query: SELECT COUNT(*) FROM accounts
+    post_query: SELECT COUNT(*) FROM accounts
+    relation: bounded-delta
+    params: {max_decrease: 1, max_increase: 0, static_metric: table_row_count}
+    severity: 8
+  - id: transactions.cascade.delta
+    description: Cascaded transaction deletions stay bounded.
+    scope: {tables: [transactions, accounts, branches], columns: ["*"], operations: [delete, truncate]}
+    pre_query: SELECT COUNT(*) FROM transactions
+    post_query: SELECT COUNT(*) FROM transactions
+    relation: bounded-delta
+    params: {max_decrease: 2, max_increase: 0, static_metric: table_row_count}
+    severity: 9

@@ -1,0 +1,10 @@
+INSERT INTO departments VALUES (1, 'Engineering'), (2, 'HR');
+INSERT INTO employees VALUES (1, 1, NULL, 'Director', 150000), (2, 1, 1, 'Developer', 90000), (3, 2, NULL, 'Partner', 80000);
+INSERT INTO projects VALUES (1, 'Migration', 1000000), (2, 'Safety', 500000);
+INSERT INTO employee_projects VALUES (1, 1, 100), (2, 1, 80), (2, 2, 20);
+INSERT INTO payroll VALUES (1, 1, 120000), (2, 2, 70000), (3, 3, 65000);
+INSERT INTO audit_events VALUES (1, 'seed');
+INSERT INTO benefit_plans VALUES (1, 'HEALTH', 35000), (2, 'RETIREMENT', 0), (3, 'TRANSIT', 7500);
+INSERT INTO employee_benefits VALUES (1, 1, '2024-01-01'), (1, 2, '2024-01-01'), (2, 1, '2024-02-01'), (3, 3, '2024-02-01');
+INSERT INTO leave_requests VALUES (1, 2, '2024-03-04', '2024-03-08', 'approved'), (2, 3, '2024-04-15', '2024-04-16', 'pending');
+INSERT INTO payroll_tax_lines VALUES (1, 'FED', 24000), (1, 'STATE', 8000), (2, 'FED', 14000), (3, 'FED', 13000);

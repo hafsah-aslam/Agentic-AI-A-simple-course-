@@ -1,0 +1,185 @@
+{
+ "policy": "theta = max(1, ceil(0.10 * |R|)), action-scoped, severity 8",
+ "results": {
+  "extended": {
+   "admitted_unsafe": 0,
+   "blocked": 186,
+   "contained": 225,
+   "containment": 1.0,
+   "containment_ci": [
+    0.9832128424202591,
+    0.9999999999999998
+   ],
+   "decisiveness": 0.8266666666666667,
+   "decisiveness_ci": [
+    0.7718322258695778,
+    0.8705334978449915
+   ],
+   "empty_selection": 0,
+   "escalated_unsafe": 39,
+   "evidence_paths": {
+    "frame": 23,
+    "shadow": 501,
+    "static": 287
+   },
+   "f1": 0.9051094890510949,
+   "friction": 0.0,
+   "friction_ci": [
+    0.0,
+    0.01642821465470643
+   ],
+   "label_changes": {
+    "safe->safe": 230,
+    "safe->unsafe": 111,
+    "unsafe->unsafe": 114
+   },
+   "n": 455,
+   "original_labels": {
+    "admitted_unsafe": 0,
+    "blocked": 101,
+    "contained": 114,
+    "containment": 1.0,
+    "containment_ci": [
+     0.9674003068525885,
+     1.0
+    ],
+    "decisiveness": 0.8859649122807017,
+    "decisiveness_ci": [
+     0.8146297223884994,
+     0.9321354267608671
+    ],
+    "escalated_unsafe": 13,
+    "f1": 0.6733333333333333,
+    "friction": 0.07624633431085044,
+    "friction_ci": [
+     0.05256069415381056,
+     0.10937336484603166
+    ],
+    "n": 455,
+    "precision": 0.543010752688172,
+    "recall": 0.8859649122807017,
+    "safe": 341,
+    "safe_allowed": 230,
+    "safe_blocked": 85,
+    "safe_escalated": 26,
+    "unsafe": 114
+   },
+   "precision": 1.0,
+   "recall": 0.8266666666666667,
+   "safe": 230,
+   "safe_allowed": 230,
+   "safe_blocked": 0,
+   "safe_escalated": 0,
+   "shadow_free_records": 147,
+   "unsafe": 225
+  },
+  "paper": {
+   "admitted_unsafe": 0,
+   "blocked": 186,
+   "contained": 225,
+   "containment": 1.0,
+   "containment_ci": [
+    0.9832128424202591,
+    0.9999999999999998
+   ],
+   "decisiveness": 0.8266666666666667,
+   "decisiveness_ci": [
+    0.7718322258695778,
+    0.8705334978449915
+   ],
+   "empty_selection": 0,
+   "escalated_unsafe": 39,
+   "evidence_paths": {
+    "shadow": 811
+   },
+   "f1": 0.9051094890510949,
+   "friction": 0.0,
+   "friction_ci": [
+    0.0,
+    0.01642821465470643
+   ],
+   "label_changes": {
+    "safe->safe": 230,
+    "safe->unsafe": 111,
+    "unsafe->unsafe": 114
+   },
+   "n": 455,
+   "original_labels": {
+    "admitted_unsafe": 0,
+    "blocked": 101,
+    "contained": 114,
+    "containment": 1.0,
+    "containment_ci": [
+     0.9674003068525885,
+     1.0
+    ],
+    "decisiveness": 0.8859649122807017,
+    "decisiveness_ci": [
+     0.8146297223884994,
+     0.9321354267608671
+    ],
+    "escalated_unsafe": 13,
+    "f1": 0.6733333333333333,
+    "friction": 0.07624633431085044,
+    "friction_ci": [
+     0.05256069415381056,
+     0.10937336484603166
+    ],
+    "n": 455,
+    "precision": 0.543010752688172,
+    "recall": 0.8859649122807017,
+    "safe": 341,
+    "safe_allowed": 230,
+    "safe_blocked": 85,
+    "safe_escalated": 26,
+    "unsafe": 114
+   },
+   "precision": 1.0,
+   "recall": 0.8266666666666667,
+   "safe": 230,
+   "safe_allowed": 230,
+   "safe_blocked": 0,
+   "safe_escalated": 0,
+   "shadow_free_records": 0,
+   "unsafe": 225
+  }
+ },
+ "suggested": {
+  "banking_heldout": [
+   "customers.coverage.delta",
+   "staff.coverage.delta"
+  ],
+  "chinook_derived": [
+   "albums.coverage.delta",
+   "artists.coverage.delta",
+   "invoice_lines.coverage.delta"
+  ],
+  "healthcare_heldout": [
+   "departments.coverage.delta"
+  ],
+  "hr_payroll": [
+   "audit_events.coverage.delta",
+   "benefit_plans.coverage.delta",
+   "departments.coverage.delta",
+   "employee_benefits.coverage.delta",
+   "employee_projects.coverage.delta",
+   "leave_requests.coverage.delta",
+   "payroll_tax_lines.coverage.delta",
+   "projects.coverage.delta"
+  ],
+  "northwind_derived": [
+   "audit_events.coverage.delta",
+   "customer_regions.coverage.delta",
+   "customers.coverage.delta",
+   "departments.coverage.delta",
+   "employees.coverage.delta",
+   "order_tags.coverage.delta",
+   "product_suppliers.coverage.delta",
+   "products.coverage.delta",
+   "regions.coverage.delta",
+   "shipments.coverage.delta",
+   "suppliers.coverage.delta",
+   "tags.coverage.delta"
+  ]
+ }
+}

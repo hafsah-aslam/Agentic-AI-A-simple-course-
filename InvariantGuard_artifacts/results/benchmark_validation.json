@@ -1,0 +1,275 @@
+{
+ "category_by_label": {
+  "dangerous_static|None": 2,
+  "dangerous_static|safe": 55,
+  "dangerous_static|unsafe": 48,
+  "multi_step|None": 10,
+  "multi_step|safe": 15,
+  "multi_step|unsafe": 20,
+  "realistic_enterprise|safe": 109,
+  "realistic_enterprise|unsafe": 11,
+  "safe|safe": 100,
+  "safe|unsafe": 20,
+  "subtle_shadow|None": 3,
+  "subtle_shadow|safe": 62,
+  "subtle_shadow|unsafe": 15
+ },
+ "gap_examples": [],
+ "invariant_sanity": {
+  "accounts.balance.nonnegative@banking_heldout": {
+   "changed": 1,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "point",
+   "selected": 3,
+   "violated": 1
+  },
+  "accounts.branch.integrity@banking_heldout": {
+   "changed": 2,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 20,
+   "violated": 2
+  },
+  "accounts.delete.delta@banking_heldout": {
+   "changed": 15,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 20,
+   "violated": 9
+  },
+  "accounts.primary_holder.exists@banking_heldout": {
+   "changed": 20,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 49,
+   "violated": 20
+  },
+  "administrations.cascade.delta@healthcare_heldout": {
+   "changed": 54,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 88,
+   "violated": 21
+  },
+  "branches.hierarchy.acyclic@banking_heldout": {
+   "changed": 1,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 1,
+   "violated": 1
+  },
+  "clinicians.supervision.acyclic@healthcare_heldout": {
+   "changed": 1,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 2,
+   "violated": 1
+  },
+  "customers.credit.nonnegative@chinook_derived": {
+   "changed": 1,
+   "fixture": "chinook_derived",
+   "holds_initially": true,
+   "kind": "point",
+   "selected": 1,
+   "violated": 1
+  },
+  "customers.delete.delta@chinook_derived": {
+   "changed": 2,
+   "fixture": "chinook_derived",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 2,
+   "violated": 2
+  },
+  "customers.invoice.integrity@chinook_derived": {
+   "changed": 2,
+   "fixture": "chinook_derived",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 9,
+   "violated": 2
+  },
+  "customers.table.exists@chinook_derived": {
+   "changed": 1,
+   "fixture": "chinook_derived",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 1,
+   "violated": 1
+  },
+  "employees.delete.delta@hr_payroll": {
+   "changed": 7,
+   "fixture": "hr_payroll",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 8,
+   "violated": 4
+  },
+  "employees.salary.nonnegative@hr_payroll": {
+   "changed": 1,
+   "fixture": "hr_payroll",
+   "holds_initially": true,
+   "kind": "point",
+   "selected": 2,
+   "violated": 1
+  },
+  "employees.table.exists@hr_payroll": {
+   "changed": 1,
+   "fixture": "hr_payroll",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 2,
+   "violated": 1
+  },
+  "encounters.attending.exists@healthcare_heldout": {
+   "changed": 32,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 72,
+   "violated": 32
+  },
+  "encounters.patient.integrity@healthcare_heldout": {
+   "changed": 2,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 22,
+   "violated": 2
+  },
+  "invoices.delete.sequence_delta@chinook_derived": {
+   "changed": 10,
+   "fixture": "chinook_derived",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 11,
+   "violated": 5
+  },
+  "order_items.join.integrity@northwind_derived": {
+   "changed": 2,
+   "fixture": "northwind_derived",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 32,
+   "violated": 2
+  },
+  "orders.delete.delta@northwind_derived": {
+   "changed": 14,
+   "fixture": "northwind_derived",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 15,
+   "violated": 7
+  },
+  "orders.dose.positive@healthcare_heldout": {
+   "changed": 1,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "point",
+   "selected": 5,
+   "violated": 1
+  },
+  "orders.freight.nonnegative@northwind_derived": {
+   "changed": 1,
+   "fixture": "northwind_derived",
+   "holds_initially": true,
+   "kind": "point",
+   "selected": 2,
+   "violated": 1
+  },
+  "orders.table.exists@northwind_derived": {
+   "changed": 1,
+   "fixture": "northwind_derived",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 2,
+   "violated": 1
+  },
+  "patients.delete.delta@healthcare_heldout": {
+   "changed": 13,
+   "fixture": "healthcare_heldout",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 13,
+   "violated": 5
+  },
+  "payroll.employee.integrity@hr_payroll": {
+   "changed": 2,
+   "fixture": "hr_payroll",
+   "holds_initially": true,
+   "kind": "structural",
+   "selected": 14,
+   "violated": 2
+  },
+  "transactions.cascade.delta@banking_heldout": {
+   "changed": 42,
+   "fixture": "banking_heldout",
+   "holds_initially": true,
+   "kind": "bounded-delta",
+   "selected": 56,
+   "violated": 18
+  }
+ },
+ "oracle_agreement": {
+  "label_match": 470,
+  "violations_match": 470
+ },
+ "oracle_vs_shadow": {
+  "action": {
+   "agreement_boundary": 1.0,
+   "agreement_final": 1.0,
+   "disagree_boundary": 0,
+   "disagree_final": 0,
+   "multi_agreement_boundary": 1.0,
+   "multi_agreement_final": 1.0,
+   "multi_pairs": 50,
+   "pairs": 423
+  },
+  "statement": {
+   "agreement_boundary": 1.0,
+   "agreement_final": 0.9739952718676123,
+   "disagree_boundary": 0,
+   "disagree_final": 11,
+   "multi_agreement_boundary": 1.0,
+   "multi_agreement_final": 0.78,
+   "multi_pairs": 50,
+   "pairs": 423
+  }
+ },
+ "rejected_by_dbms": {
+  "ForeignKeyViolation": 15
+ },
+ "release_criteria": {
+  "accepted": false,
+  "balance": 0.25054945054945055,
+  "distinct": 452,
+  "distinct_ratio": 0.9617021276595744,
+  "noop_ratio": 0.08723404255319149,
+  "noops": 41,
+  "records": 470,
+  "repeated_statement_sequences": 0,
+  "safe": 341,
+  "unresolved": 15,
+  "unresolved_ratio": 0.031914893617021274,
+  "unsafe": 114
+ },
+ "selection_completeness": {
+  "changed_pairs": 229,
+  "records_with_no_selected_violation": 0,
+  "violated_pairs": 143
+ },
+ "unsafe_mechanisms": {
+  "DROP TABLE": 16,
+  "TRUNCATE CASCADE": 19,
+  "cascade to child relation": 40,
+  "direct over-broad delete": 19,
+  "multi-statement cumulative": 20
+ }
+}

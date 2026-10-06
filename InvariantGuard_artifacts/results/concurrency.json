@@ -1,0 +1,304 @@
+{
+ "accounts": 20000,
+ "containment": {
+  "separate|0": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "separate",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 0
+  },
+  "separate|1": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "separate",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 60,
+   "writers": 1
+  },
+  "separate|16": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "separate",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 60,
+   "writers": 16
+  },
+  "separate|4": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "separate",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 60,
+   "writers": 4
+  },
+  "serializable|0": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "serializable",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 0
+  },
+  "serializable|1": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "serializable",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 1
+  },
+  "serializable|16": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "serializable",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 16
+  },
+  "serializable|4": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "serializable",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 4
+  },
+  "witness|0": {
+   "allowed": 60,
+   "blocked": 0,
+   "committed": 60,
+   "discipline": "witness",
+   "escalated": 0,
+   "retries": 0,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 0
+  },
+  "witness|1": {
+   "allowed": 0,
+   "blocked": 60,
+   "committed": 0,
+   "discipline": "witness",
+   "escalated": 0,
+   "retries": 60,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 1
+  },
+  "witness|16": {
+   "allowed": 0,
+   "blocked": 5,
+   "committed": 0,
+   "discipline": "witness",
+   "escalated": 55,
+   "retries": 60,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 16
+  },
+  "witness|4": {
+   "allowed": 0,
+   "blocked": 60,
+   "committed": 0,
+   "discipline": "witness",
+   "escalated": 0,
+   "retries": 60,
+   "trials": 60,
+   "unsafe_commits": 0,
+   "writers": 4
+  }
+ },
+ "latency": {
+  "separate|1": {
+   "allow": 40,
+   "clients": 1,
+   "discipline": "separate",
+   "mean_ms": 18.615081924997412,
+   "n": 40,
+   "p50_ms": 18.057682000062414,
+   "p90_ms": 33.514906000164046,
+   "retries": 0,
+   "throughput": 44.40645477373168
+  },
+  "separate|16": {
+   "allow": 213,
+   "clients": 16,
+   "discipline": "separate",
+   "mean_ms": 120.15629723438295,
+   "n": 640,
+   "p50_ms": 68.99530850000701,
+   "p90_ms": 270.06149899989396,
+   "retries": 0,
+   "throughput": 117.92613773148514
+  },
+  "separate|2": {
+   "allow": 80,
+   "clients": 2,
+   "discipline": "separate",
+   "mean_ms": 30.75821483752179,
+   "n": 80,
+   "p50_ms": 28.259780500093257,
+   "p90_ms": 58.31745300019975,
+   "retries": 0,
+   "throughput": 57.76245911973721
+  },
+  "separate|4": {
+   "allow": 132,
+   "clients": 4,
+   "discipline": "separate",
+   "mean_ms": 50.754964093735566,
+   "n": 160,
+   "p50_ms": 36.368479499742534,
+   "p90_ms": 107.60486800018043,
+   "retries": 0,
+   "throughput": 73.04241331603912
+  },
+  "separate|8": {
+   "allow": 183,
+   "clients": 8,
+   "discipline": "separate",
+   "mean_ms": 78.71756581563005,
+   "n": 320,
+   "p50_ms": 51.133946500158345,
+   "p90_ms": 169.26324299993212,
+   "retries": 0,
+   "throughput": 90.95375524338097
+  },
+  "serializable|1": {
+   "allow": 40,
+   "clients": 1,
+   "discipline": "serializable",
+   "mean_ms": 16.59127085001728,
+   "n": 40,
+   "p50_ms": 15.651340499971411,
+   "p90_ms": 37.001258000145754,
+   "retries": 0,
+   "throughput": 49.59498883336364
+  },
+  "serializable|16": {
+   "allow": 350,
+   "clients": 16,
+   "discipline": "serializable",
+   "mean_ms": 95.41017469999744,
+   "n": 640,
+   "p50_ms": 67.23831099998279,
+   "p90_ms": 186.6216519997579,
+   "retries": 1657,
+   "throughput": 140.49237748958313
+  },
+  "serializable|2": {
+   "allow": 80,
+   "clients": 2,
+   "discipline": "serializable",
+   "mean_ms": 28.664849112482216,
+   "n": 80,
+   "p50_ms": 18.0047179999292,
+   "p90_ms": 56.35663899965948,
+   "retries": 39,
+   "throughput": 61.10471473057382
+  },
+  "serializable|4": {
+   "allow": 143,
+   "clients": 4,
+   "discipline": "serializable",
+   "mean_ms": 44.81709947498018,
+   "n": 160,
+   "p50_ms": 26.58086950032157,
+   "p90_ms": 111.25234500013903,
+   "retries": 201,
+   "throughput": 79.26937230493155
+  },
+  "serializable|8": {
+   "allow": 236,
+   "clients": 8,
+   "discipline": "serializable",
+   "mean_ms": 62.72451584062679,
+   "n": 320,
+   "p50_ms": 37.344424500133755,
+   "p90_ms": 135.2115960003175,
+   "retries": 608,
+   "throughput": 107.99778754475241
+  },
+  "witness|1": {
+   "allow": 40,
+   "clients": 1,
+   "discipline": "witness",
+   "mean_ms": 17.417853125016336,
+   "n": 40,
+   "p50_ms": 17.11502250009289,
+   "p90_ms": 30.461169999853155,
+   "retries": 0,
+   "throughput": 45.2619762478178
+  },
+  "witness|16": {
+   "allow": 284,
+   "clients": 16,
+   "discipline": "witness",
+   "mean_ms": 619.7427663640589,
+   "n": 640,
+   "p50_ms": 331.36558000023797,
+   "p90_ms": 1664.7564760000932,
+   "retries": 1290,
+   "throughput": 24.477486185633673
+  },
+  "witness|2": {
+   "allow": 75,
+   "clients": 2,
+   "discipline": "witness",
+   "mean_ms": 43.298814100006666,
+   "n": 80,
+   "p50_ms": 31.431297500148503,
+   "p90_ms": 90.33720199977324,
+   "retries": 23,
+   "throughput": 42.046969597101636
+  },
+  "witness|4": {
+   "allow": 99,
+   "clients": 4,
+   "discipline": "witness",
+   "mean_ms": 73.72453639999037,
+   "n": 160,
+   "p50_ms": 56.99519399968267,
+   "p90_ms": 154.42906099997344,
+   "retries": 133,
+   "throughput": 48.54889378123792
+  },
+  "witness|8": {
+   "allow": 135,
+   "clients": 8,
+   "discipline": "witness",
+   "mean_ms": 149.58206404687218,
+   "n": 320,
+   "p50_ms": 120.098384999892,
+   "p90_ms": 306.7272100001901,
+   "retries": 425,
+   "throughput": 47.39466629010187
+  }
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "points": [
+  {
+   "accounts": 1500,
+   "extended|delta-only (DELETE transaction by key)|p50_ms": 0.43182000013075594,
+   "extended|delta-only (DELETE transaction by key)|shadow_frac": 0.0,
+   "extended|mixed (DELETE account, cascades)|p50_ms": 5.543811000052301,
+   "extended|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "extended|multi-statement (2 transaction deletes)|p50_ms": 0.41239100005441287,
+   "extended|multi-statement (2 transaction deletes)|shadow_frac": 0.0,
+   "off|delta-only (DELETE transaction by key)|p50_ms": 1.3742859998728818,
+   "off|delta-only (DELETE transaction by key)|shadow_frac": 1.0,
+   "off|mixed (DELETE account, cascades)|p50_ms": 4.366021500118222,
+   "off|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "off|multi-statement (2 transaction deletes)|p50_ms": 1.6205869999339484,
+   "off|multi-statement (2 transaction deletes)|shadow_frac": 1.0,
+   "rows": 9008,
+   "snapshot_s": 0.023179337999863492
+  },
+  {
+   "accounts": 16000,
+   "extended|delta-only (DELETE transaction by key)|p50_ms": 0.4884600000423234,
+   "extended|delta-only (DELETE transaction by key)|shadow_frac": 0.0,
+   "extended|mixed (DELETE account, cascades)|p50_ms": 25.232162000065728,
+   "extended|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "extended|multi-statement (2 transaction deletes)|p50_ms": 0.49090350012193085,
+   "extended|multi-statement (2 transaction deletes)|shadow_frac": 0.0,
+   "off|delta-only (DELETE transaction by key)|p50_ms": 5.62600149987702,
+   "off|delta-only (DELETE transaction by key)|shadow_frac": 1.0,
+   "off|mixed (DELETE account, cascades)|p50_ms": 25.62996850019772,
+   "off|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "off|multi-statement (2 transaction deletes)|p50_ms": 5.4112565001105395,
+   "off|multi-statement (2 transaction deletes)|shadow_frac": 1.0,
+   "rows": 96008,
+   "snapshot_s": 0.12140275699994163
+  },
+  {
+   "accounts": 170000,
+   "extended|delta-only (DELETE transaction by key)|p50_ms": 0.41352349990120274,
+   "extended|delta-only (DELETE transaction by key)|shadow_frac": 0.0,
+   "extended|mixed (DELETE account, cascades)|p50_ms": 245.14987950010436,
+   "extended|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "extended|multi-statement (2 transaction deletes)|p50_ms": 0.44288399999459216,
+   "extended|multi-statement (2 transaction deletes)|shadow_frac": 0.0,
+   "off|delta-only (DELETE transaction by key)|p50_ms": 30.27766300010626,
+   "off|delta-only (DELETE transaction by key)|shadow_frac": 1.0,
+   "off|mixed (DELETE account, cascades)|p50_ms": 248.13033800000994,
+   "off|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "off|multi-statement (2 transaction deletes)|p50_ms": 30.261923999887586,
+   "off|multi-statement (2 transaction deletes)|shadow_frac": 1.0,
+   "rows": 1020008,
+   "snapshot_s": 1.3768779880001603
+  },
+  {
+   "accounts": 680000,
+   "extended|delta-only (DELETE transaction by key)|p50_ms": 0.3928064998035552,
+   "extended|delta-only (DELETE transaction by key)|shadow_frac": 0.0,
+   "extended|mixed (DELETE account, cascades)|p50_ms": 877.6167700000315,
+   "extended|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "extended|multi-statement (2 transaction deletes)|p50_ms": 0.4452384998785419,
+   "extended|multi-statement (2 transaction deletes)|shadow_frac": 0.0,
+   "off|delta-only (DELETE transaction by key)|p50_ms": 100.3074600000673,
+   "off|delta-only (DELETE transaction by key)|shadow_frac": 1.0,
+   "off|mixed (DELETE account, cascades)|p50_ms": 935.7191444998989,
+   "off|mixed (DELETE account, cascades)|shadow_frac": 1.0,
+   "off|multi-statement (2 transaction deletes)|p50_ms": 100.85786299987376,
+   "off|multi-statement (2 transaction deletes)|shadow_frac": 1.0,
+   "rows": 4080008,
+   "snapshot_s": 5.820208750999882
+  }
+ ],
+ "workloads": [
+  "delta-only (DELETE transaction by key)",
+  "multi-statement (2 transaction deletes)",
+  "mixed (DELETE account, cascades)"
+ ]
+}

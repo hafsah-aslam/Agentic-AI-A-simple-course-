@@ -1,0 +1,14 @@
+INSERT INTO departments VALUES (1, 'Operations'), (2, 'Sales');
+INSERT INTO employees VALUES (1, 1, NULL, 'Manager', 100000), (2, 1, 1, 'Analyst', 60000);
+INSERT INTO customers VALUES (1, 'Northwind One', 'EU'), (2, 'Northwind Two', NULL), (3, 'Northwind Three', 'US');
+INSERT INTO orders VALUES (1, 1, 1299), (2, 1, 500), (3, 2, 2500), (4, 3, 999), (5, 1, 100);
+INSERT INTO products VALUES (1, 'Widget', 100), (2, 'Gadget', 200), (3, 'Service', 300);
+INSERT INTO order_items VALUES (1, 1, 1), (1, 2, 2), (2, 1, 1), (3, 3, 1), (4, 2, 1);
+INSERT INTO tags VALUES (1, 'priority'), (2, 'review');
+INSERT INTO order_tags VALUES (1, 1), (1, 2), (2, 1);
+INSERT INTO audit_events VALUES (1, 'seed');
+INSERT INTO regions VALUES (1, 'EU', 'European Union'), (2, 'NA', 'North America'), (3, 'APAC', 'Asia Pacific');
+INSERT INTO customer_regions VALUES (1, 1, '2024-01-01'), (2, 1, '2024-01-02'), (3, 2, '2024-01-03');
+INSERT INTO suppliers VALUES (1, 'Acme Components', 'DE'), (2, 'Global Goods', 'US'), (3, 'Pacific Supply', 'JP');
+INSERT INTO product_suppliers VALUES (1, 1, 4), (1, 2, 7), (2, 2, 5), (3, 3, 9);
+INSERT INTO shipments VALUES (1, 1, '2024-02-01', 'ParcelPost', 'NW-0001'), (2, 3, NULL, 'FreightCo', NULL);

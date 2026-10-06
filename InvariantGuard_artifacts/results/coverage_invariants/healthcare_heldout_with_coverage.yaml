@@ -1,0 +1,129 @@
+version: 1
+invariants:
+- id: orders.dose.positive
+  description: Medication order doses remain positive.
+  scope:
+    tables:
+    - orders
+    columns:
+    - dose_mg
+    operations:
+    - insert
+    - update
+  post_query: SELECT COALESCE(bool_and(dose_mg > 0), TRUE) FROM orders
+  relation: point
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: encounters.patient.integrity
+  description: Encounters reference existing patients.
+  scope:
+    tables:
+    - encounters
+    - patients
+    columns:
+    - patient_id
+    operations:
+    - delete
+    - insert
+    - truncate
+  post_query: SELECT NOT EXISTS (SELECT 1 FROM encounters e LEFT JOIN patients p ON
+    p.patient_id=e.patient_id WHERE p.patient_id IS NULL)
+  relation: structural
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: encounters.attending.exists
+  description: Every open encounter retains exactly one attending clinician.
+  scope:
+    tables:
+    - encounter_clinicians
+    - encounters
+    columns:
+    - '*'
+    operations:
+    - delete
+    - update
+    - truncate
+  post_query: SELECT NOT EXISTS (SELECT 1 FROM encounters e WHERE e.status = 'open'
+    AND (SELECT COUNT(*) FROM encounter_clinicians c WHERE c.encounter_id=e.encounter_id
+    AND c.role='attending') <> 1)
+  relation: structural
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: clinicians.supervision.acyclic
+  description: No clinician supervises themselves.
+  scope:
+    tables:
+    - clinicians
+    columns:
+    - supervisor_id
+    operations:
+    - insert
+    - update
+  post_query: SELECT NOT EXISTS (SELECT 1 FROM clinicians WHERE supervisor_id = clinician_id)
+  relation: structural
+  params:
+    operator: eq
+    expected: true
+  severity: 8
+- id: administrations.cascade.delta
+  description: Cascaded administration deletions stay bounded across the three-level
+    chain.
+  scope:
+    tables:
+    - administrations
+    - orders
+    - encounters
+    - patients
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM administrations
+  post_query: SELECT COUNT(*) FROM administrations
+  relation: bounded-delta
+  params:
+    max_decrease: 2
+    max_increase: 0
+    static_metric: table_row_count
+  severity: 9
+- id: patients.delete.delta
+  description: At most one patient record is removed per action.
+  scope:
+    tables:
+    - patients
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM patients
+  post_query: SELECT COUNT(*) FROM patients
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+    max_increase: 0
+    static_metric: table_row_count
+  severity: 9
+- id: departments.coverage.delta
+  description: 'Suggested: at most 1 departments rows removed per action'
+  scope:
+    tables:
+    - departments
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM departments
+  post_query: SELECT COUNT(*) FROM departments
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+  severity: 8.0

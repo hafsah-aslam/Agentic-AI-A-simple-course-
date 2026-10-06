@@ -1,0 +1,800 @@
+{"predicate": "region = 0 AND city = 1", "family": "correlated conjunction", "form": "conjunction", "true": 683, "estimate": 69, "bound_mf": 706, "bound_pv": 683, "certified": true, "rule": "R6"}
+{"predicate": "region = 0 AND city = 1 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 163, "estimate": 17, "bound_mf": 706, "bound_pv": 683, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 29", "family": "uniform equality", "form": "equality", "true": 409, "estimate": 409, "bound_mf": 443, "bound_pv": 409, "certified": true, "rule": "R3"}
+{"predicate": "region = 0 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2170, "estimate": 2167, "bound_mf": 13342, "bound_pv": 2183, "certified": true, "rule": "R7"}
+{"predicate": "region = 0 OR city = 1 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2021, "estimate": 2174, "bound_mf": 2732, "bound_pv": 2704, "certified": true, "rule": "R7"}
+{"predicate": "(region = 0 OR bucket = 29) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 597, "estimate": 594, "bound_mf": 2469, "bound_pv": 2430, "certified": true, "rule": "R6"}
+{"predicate": "id = 1907", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 21", "family": "correlated conjunction", "form": "conjunction", "true": 672, "estimate": 67, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 21 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 190, "estimate": 17, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 23", "family": "uniform equality", "form": "equality", "true": 387, "estimate": 387, "bound_mf": 443, "bound_pv": 387, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2140, "estimate": 2136, "bound_mf": 13342, "bound_pv": 2152, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 21 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2142, "bound_mf": 2732, "bound_pv": 2662, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 23) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 605, "estimate": 588, "bound_mf": 2469, "bound_pv": 2377, "certified": true, "rule": "R6"}
+{"predicate": "id = 6805", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 17, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 31", "family": "uniform equality", "form": "equality", "true": 407, "estimate": 407, "bound_mf": 443, "bound_pv": 407, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2140, "estimate": 2136, "bound_mf": 13342, "bound_pv": 2152, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 31) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 632, "estimate": 593, "bound_mf": 2469, "bound_pv": 2397, "certified": true, "rule": "R6"}
+{"predicate": "id = 14976", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 51", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 51 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 16, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 47", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2352, "estimate": 2350, "bound_mf": 13342, "bound_pv": 2391, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 51 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2124, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 47) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 555, "estimate": 576, "bound_mf": 2469, "bound_pv": 2360, "certified": true, "rule": "R6"}
+{"predicate": "id = 11541", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 8 AND city = 80", "family": "correlated conjunction", "form": "conjunction", "true": 705, "estimate": 70, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "region = 8 AND city = 80 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 18, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 3", "family": "uniform equality", "form": "equality", "true": 368, "estimate": 368, "bound_mf": 443, "bound_pv": 368, "certified": true, "rule": "R3"}
+{"predicate": "region = 8 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2260, "estimate": 2258, "bound_mf": 13342, "bound_pv": 2288, "certified": true, "rule": "R7"}
+{"predicate": "region = 8 OR city = 80 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1986, "estimate": 2146, "bound_mf": 2732, "bound_pv": 2691, "certified": true, "rule": "R7"}
+{"predicate": "(region = 8 OR bucket = 3) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 561, "estimate": 584, "bound_mf": 2469, "bound_pv": 2354, "certified": true, "rule": "R6"}
+{"predicate": "id = 19843", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 12", "family": "correlated conjunction", "form": "conjunction", "true": 647, "estimate": 65, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 12 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 16, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 46", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2267, "estimate": 2268, "bound_mf": 13342, "bound_pv": 2298, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 12 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2142, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 46) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 620, "estimate": 589, "bound_mf": 2469, "bound_pv": 2380, "certified": true, "rule": "R6"}
+{"predicate": "id = 11505", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 0 AND city = 2", "family": "correlated conjunction", "form": "conjunction", "true": 672, "estimate": 68, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "region = 0 AND city = 2 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 177, "estimate": 17, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 36", "family": "uniform equality", "form": "equality", "true": 362, "estimate": 362, "bound_mf": 443, "bound_pv": 362, "certified": true, "rule": "R3"}
+{"predicate": "region = 0 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2525, "estimate": 2526, "bound_mf": 13342, "bound_pv": 2583, "certified": true, "rule": "R7"}
+{"predicate": "region = 0 OR city = 2 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2021, "estimate": 2171, "bound_mf": 2732, "bound_pv": 2693, "certified": true, "rule": "R7"}
+{"predicate": "(region = 0 OR bucket = 36) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 615, "estimate": 582, "bound_mf": 2469, "bound_pv": 2383, "certified": true, "rule": "R6"}
+{"predicate": "id = 19248", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 71", "family": "correlated conjunction", "form": "conjunction", "true": 685, "estimate": 69, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 71 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 17, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 27", "family": "uniform equality", "form": "equality", "true": 367, "estimate": 367, "bound_mf": 443, "bound_pv": 367, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2202, "estimate": 2207, "bound_mf": 13342, "bound_pv": 2230, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 71 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2157, "bound_mf": 2732, "bound_pv": 2689, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 27) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 597, "estimate": 581, "bound_mf": 2469, "bound_pv": 2371, "certified": true, "rule": "R6"}
+{"predicate": "id = 205", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 169, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 13", "family": "uniform equality", "form": "equality", "true": 420, "estimate": 420, "bound_mf": 443, "bound_pv": 420, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 5025, "estimate": 4994, "bound_mf": 13342, "bound_pv": 5326, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 13) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 585, "estimate": 590, "bound_mf": 2469, "bound_pv": 2415, "certified": true, "rule": "R6"}
+{"predicate": "id = 14992", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 42", "family": "correlated conjunction", "form": "conjunction", "true": 654, "estimate": 65, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 42 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 156, "estimate": 16, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 6", "family": "uniform equality", "form": "equality", "true": 398, "estimate": 398, "bound_mf": 443, "bound_pv": 398, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2196, "estimate": 2198, "bound_mf": 13342, "bound_pv": 2221, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 42 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2141, "bound_mf": 2732, "bound_pv": 2649, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 6) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 558, "estimate": 584, "bound_mf": 2469, "bound_pv": 2393, "certified": true, "rule": "R6"}
+{"predicate": "id = 4690", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 51", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 51 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 16, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 28", "family": "uniform equality", "form": "equality", "true": 414, "estimate": 414, "bound_mf": 443, "bound_pv": 414, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2124, "estimate": 2122, "bound_mf": 13342, "bound_pv": 2138, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 51 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2124, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 28) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 568, "estimate": 583, "bound_mf": 2469, "bound_pv": 2390, "certified": true, "rule": "R6"}
+{"predicate": "id = 7137", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 50", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 50 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 144, "estimate": 16, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 46", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12171, "estimate": 12174, "bound_mf": 13342, "bound_pv": 13292, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 50 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2124, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 46) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 567, "estimate": 576, "bound_mf": 2469, "bound_pv": 2360, "certified": true, "rule": "R6"}
+{"predicate": "id = 1570", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 169, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 11", "family": "uniform equality", "form": "equality", "true": 410, "estimate": 410, "bound_mf": 443, "bound_pv": 410, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2272, "estimate": 2267, "bound_mf": 13342, "bound_pv": 2297, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 11) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 601, "estimate": 588, "bound_mf": 2469, "bound_pv": 2405, "certified": true, "rule": "R6"}
+{"predicate": "id = 18320", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 71", "family": "correlated conjunction", "form": "conjunction", "true": 685, "estimate": 69, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 71 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 171, "estimate": 17, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 28", "family": "uniform equality", "form": "equality", "true": 414, "estimate": 414, "bound_mf": 443, "bound_pv": 414, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3412, "estimate": 3411, "bound_mf": 13342, "bound_pv": 3568, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 71 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2159, "bound_mf": 2732, "bound_pv": 2689, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 28) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 600, "estimate": 597, "bound_mf": 2469, "bound_pv": 2418, "certified": true, "rule": "R6"}
+{"predicate": "id = 16643", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 72", "family": "correlated conjunction", "form": "conjunction", "true": 670, "estimate": 67, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 72 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 17, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 38", "family": "uniform equality", "form": "equality", "true": 397, "estimate": 397, "bound_mf": 443, "bound_pv": 397, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2153, "estimate": 2150, "bound_mf": 13342, "bound_pv": 2166, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 72 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2156, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 38) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 569, "estimate": 595, "bound_mf": 2469, "bound_pv": 2401, "certified": true, "rule": "R6"}
+{"predicate": "id = 8615", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 62", "family": "correlated conjunction", "form": "conjunction", "true": 652, "estimate": 66, "bound_mf": 706, "bound_pv": 652, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 62 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 154, "estimate": 16, "bound_mf": 706, "bound_pv": 652, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 4", "family": "uniform equality", "form": "equality", "true": 442, "estimate": 442, "bound_mf": 443, "bound_pv": 442, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 5014, "estimate": 5013, "bound_mf": 13342, "bound_pv": 5349, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 62 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2163, "bound_mf": 2732, "bound_pv": 2670, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 4) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 598, "estimate": 599, "bound_mf": 2469, "bound_pv": 2460, "certified": true, "rule": "R6"}
+{"predicate": "id = 9197", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 90", "family": "correlated conjunction", "form": "conjunction", "true": 662, "estimate": 67, "bound_mf": 706, "bound_pv": 662, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 90 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 172, "estimate": 17, "bound_mf": 706, "bound_pv": 662, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 17", "family": "uniform equality", "form": "equality", "true": 413, "estimate": 413, "bound_mf": 443, "bound_pv": 413, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2127, "estimate": 2128, "bound_mf": 13342, "bound_pv": 2139, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 90 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2176, "bound_mf": 2732, "bound_pv": 2688, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 17) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 605, "estimate": 603, "bound_mf": 2469, "bound_pv": 2439, "certified": true, "rule": "R6"}
+{"predicate": "id = 1029", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 156, "estimate": 17, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 30", "family": "uniform equality", "form": "equality", "true": 365, "estimate": 365, "bound_mf": 443, "bound_pv": 365, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2094, "estimate": 2092, "bound_mf": 13342, "bound_pv": 2103, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 30) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 588, "estimate": 583, "bound_mf": 2469, "bound_pv": 2355, "certified": true, "rule": "R6"}
+{"predicate": "id = 7477", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 30", "family": "correlated conjunction", "form": "conjunction", "true": 655, "estimate": 65, "bound_mf": 706, "bound_pv": 655, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 30 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 157, "estimate": 16, "bound_mf": 706, "bound_pv": 655, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 30", "family": "uniform equality", "form": "equality", "true": 365, "estimate": 365, "bound_mf": 443, "bound_pv": 365, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2480, "estimate": 2494, "bound_mf": 13342, "bound_pv": 2550, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 30 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2136, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 30) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 557, "estimate": 582, "bound_mf": 2469, "bound_pv": 2353, "certified": true, "rule": "R6"}
+{"predicate": "id = 16579", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 164, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 31", "family": "uniform equality", "form": "equality", "true": 407, "estimate": 407, "bound_mf": 443, "bound_pv": 407, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2499, "estimate": 2501, "bound_mf": 13342, "bound_pv": 2557, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2147, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 31) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 557, "estimate": 586, "bound_mf": 2469, "bound_pv": 2402, "certified": true, "rule": "R6"}
+{"predicate": "id = 32", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 8 AND city = 80", "family": "correlated conjunction", "form": "conjunction", "true": 705, "estimate": 70, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "region = 8 AND city = 80 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 179, "estimate": 17, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 19", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 8 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 5012, "estimate": 4986, "bound_mf": 13342, "bound_pv": 5317, "certified": true, "rule": "R7"}
+{"predicate": "region = 8 OR city = 80 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1986, "estimate": 2144, "bound_mf": 2732, "bound_pv": 2691, "certified": true, "rule": "R7"}
+{"predicate": "(region = 8 OR bucket = 19) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 585, "estimate": 580, "bound_mf": 2469, "bound_pv": 2368, "certified": true, "rule": "R6"}
+{"predicate": "id = 6139", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 188, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 10", "family": "skewed equality", "form": "equality", "true": 128, "estimate": 128, "bound_mf": 11316, "bound_pv": 128, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 11", "family": "uniform equality", "form": "equality", "true": 410, "estimate": 410, "bound_mf": 443, "bound_pv": 410, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 10", "family": "disjunction", "form": "disjunction", "true": 2108, "estimate": 2110, "bound_mf": 13342, "bound_pv": 2123, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2150, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 11) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 620, "estimate": 595, "bound_mf": 2469, "bound_pv": 2405, "certified": true, "rule": "R6"}
+{"predicate": "id = 7816", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (10, 11, 12)", "family": "IN list", "form": "in-list", "true": 335, "estimate": 335, "bound_mf": 20000, "bound_pv": 335, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 70", "family": "correlated conjunction", "form": "conjunction", "true": 649, "estimate": 65, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 70 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 16, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 24", "family": "uniform equality", "form": "equality", "true": 404, "estimate": 404, "bound_mf": 443, "bound_pv": 404, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2379, "estimate": 2377, "bound_mf": 13342, "bound_pv": 2419, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 70 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2151, "bound_mf": 2732, "bound_pv": 2653, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 24) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 579, "estimate": 595, "bound_mf": 2469, "bound_pv": 2408, "certified": true, "rule": "R6"}
+{"predicate": "id = 15806", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 0 AND city = 1", "family": "correlated conjunction", "form": "conjunction", "true": 683, "estimate": 69, "bound_mf": 706, "bound_pv": 683, "certified": true, "rule": "R6"}
+{"predicate": "region = 0 AND city = 1 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 17, "bound_mf": 706, "bound_pv": 683, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 45", "family": "uniform equality", "form": "equality", "true": 417, "estimate": 417, "bound_mf": 443, "bound_pv": 417, "certified": true, "rule": "R3"}
+{"predicate": "region = 0 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3415, "estimate": 3427, "bound_mf": 13342, "bound_pv": 3585, "certified": true, "rule": "R7"}
+{"predicate": "region = 0 OR city = 1 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2021, "estimate": 2173, "bound_mf": 2732, "bound_pv": 2704, "certified": true, "rule": "R7"}
+{"predicate": "(region = 0 OR bucket = 45) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 602, "estimate": 594, "bound_mf": 2469, "bound_pv": 2438, "certified": true, "rule": "R6"}
+{"predicate": "id = 1809", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 10", "family": "correlated conjunction", "form": "conjunction", "true": 678, "estimate": 68, "bound_mf": 706, "bound_pv": 678, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 10 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 158, "estimate": 17, "bound_mf": 706, "bound_pv": 678, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 9", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2371, "estimate": 2370, "bound_mf": 13342, "bound_pv": 2411, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 10 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 9) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 538, "estimate": 582, "bound_mf": 2469, "bound_pv": 2378, "certified": true, "rule": "R6"}
+{"predicate": "id = 17661", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 17, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 34", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2094, "estimate": 2092, "bound_mf": 13342, "bound_pv": 2103, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 34) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 609, "estimate": 588, "bound_mf": 2469, "bound_pv": 2372, "certified": true, "rule": "R6"}
+{"predicate": "id = 16343", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 12", "family": "correlated conjunction", "form": "conjunction", "true": 647, "estimate": 65, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 12 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 16, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 30", "family": "uniform equality", "form": "equality", "true": 365, "estimate": 365, "bound_mf": 443, "bound_pv": 365, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12220, "estimate": 12183, "bound_mf": 13342, "bound_pv": 13312, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 12 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2142, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 30) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 618, "estimate": 584, "bound_mf": 2469, "bound_pv": 2361, "certified": true, "rule": "R6"}
+{"predicate": "id = 12975", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 12", "family": "correlated conjunction", "form": "conjunction", "true": 647, "estimate": 65, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 12 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 159, "estimate": 16, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 43", "family": "uniform equality", "form": "equality", "true": 413, "estimate": 413, "bound_mf": 443, "bound_pv": 413, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2098, "estimate": 2098, "bound_mf": 13342, "bound_pv": 2109, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 12 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2143, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 43) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 589, "estimate": 596, "bound_mf": 2469, "bound_pv": 2409, "certified": true, "rule": "R6"}
+{"predicate": "id = 19171", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 16, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 10", "family": "skewed equality", "form": "equality", "true": 128, "estimate": 128, "bound_mf": 11316, "bound_pv": 128, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 19", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 10", "family": "disjunction", "form": "disjunction", "true": 2101, "estimate": 2105, "bound_mf": 13342, "bound_pv": 2118, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2138, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 19) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 580, "estimate": 581, "bound_mf": 2469, "bound_pv": 2372, "certified": true, "rule": "R6"}
+{"predicate": "id = 16725", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (10, 11, 12)", "family": "IN list", "form": "in-list", "true": 335, "estimate": 335, "bound_mf": 20000, "bound_pv": 335, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 11", "family": "correlated conjunction", "form": "conjunction", "true": 671, "estimate": 67, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 11 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 181, "estimate": 17, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 9", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2138, "estimate": 2142, "bound_mf": 13342, "bound_pv": 2158, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 11 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2667, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 9) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 571, "estimate": 589, "bound_mf": 2469, "bound_pv": 2378, "certified": true, "rule": "R6"}
+{"predicate": "id = 11446", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 40", "family": "uniform equality", "form": "equality", "true": 426, "estimate": 426, "bound_mf": 443, "bound_pv": 426, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2272, "estimate": 2267, "bound_mf": 13342, "bound_pv": 2297, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2149, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 40) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 588, "estimate": 598, "bound_mf": 2469, "bound_pv": 2421, "certified": true, "rule": "R6"}
+{"predicate": "id = 15101", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 8 AND city = 82", "family": "correlated conjunction", "form": "conjunction", "true": 640, "estimate": 64, "bound_mf": 706, "bound_pv": 640, "certified": true, "rule": "R6"}
+{"predicate": "region = 8 AND city = 82 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 16, "bound_mf": 706, "bound_pv": 640, "certified": true, "rule": "R6"}
+{"predicate": "tier = 4", "family": "skewed equality", "form": "equality", "true": 853, "estimate": 853, "bound_mf": 11316, "bound_pv": 853, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 32", "family": "uniform equality", "form": "equality", "true": 408, "estimate": 408, "bound_mf": 443, "bound_pv": 408, "certified": true, "rule": "R3"}
+{"predicate": "region = 8 OR tier = 4", "family": "disjunction", "form": "disjunction", "true": 2741, "estimate": 2754, "bound_mf": 13342, "bound_pv": 2839, "certified": true, "rule": "R7"}
+{"predicate": "region = 8 OR city = 82 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1986, "estimate": 2129, "bound_mf": 2732, "bound_pv": 2626, "certified": true, "rule": "R7"}
+{"predicate": "(region = 8 OR bucket = 32) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 627, "estimate": 584, "bound_mf": 2469, "bound_pv": 2394, "certified": true, "rule": "R6"}
+{"predicate": "id = 18413", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (4, 5, 6)", "family": "IN list", "form": "in-list", "true": 1830, "estimate": 1830, "bound_mf": 20000, "bound_pv": 1830, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 52", "family": "correlated conjunction", "form": "conjunction", "true": 648, "estimate": 64, "bound_mf": 706, "bound_pv": 648, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 52 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 16, "bound_mf": 706, "bound_pv": 648, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 29", "family": "uniform equality", "form": "equality", "true": 409, "estimate": 409, "bound_mf": 443, "bound_pv": 409, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2124, "estimate": 2122, "bound_mf": 13342, "bound_pv": 2138, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 52 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2123, "bound_mf": 2732, "bound_pv": 2624, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 29) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 601, "estimate": 589, "bound_mf": 2469, "bound_pv": 2385, "certified": true, "rule": "R6"}
+{"predicate": "id = 18674", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 60", "family": "correlated conjunction", "form": "conjunction", "true": 660, "estimate": 67, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 60 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 173, "estimate": 17, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "tier = 4", "family": "skewed equality", "form": "equality", "true": 853, "estimate": 853, "bound_mf": 11316, "bound_pv": 853, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 0", "family": "uniform equality", "form": "equality", "true": 380, "estimate": 380, "bound_mf": 443, "bound_pv": 380, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 4", "family": "disjunction", "form": "disjunction", "true": 2786, "estimate": 2785, "bound_mf": 13342, "bound_pv": 2871, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 60 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2167, "bound_mf": 2732, "bound_pv": 2678, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 0) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 600, "estimate": 593, "bound_mf": 2469, "bound_pv": 2398, "certified": true, "rule": "R6"}
+{"predicate": "id = 7737", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (4, 5, 6)", "family": "IN list", "form": "in-list", "true": 1830, "estimate": 1830, "bound_mf": 20000, "bound_pv": 1830, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 91", "family": "correlated conjunction", "form": "conjunction", "true": 695, "estimate": 70, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 91 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 164, "estimate": 17, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 47", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12212, "estimate": 12196, "bound_mf": 13342, "bound_pv": 13342, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 91 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2181, "bound_mf": 2732, "bound_pv": 2721, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 47) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 554, "estimate": 588, "bound_mf": 2469, "bound_pv": 2410, "certified": true, "rule": "R6"}
+{"predicate": "id = 12782", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 50", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 50 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 179, "estimate": 16, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 43", "family": "uniform equality", "form": "equality", "true": 413, "estimate": 413, "bound_mf": 443, "bound_pv": 413, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2124, "estimate": 2122, "bound_mf": 13342, "bound_pv": 2138, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 50 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2126, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 43) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 597, "estimate": 590, "bound_mf": 2469, "bound_pv": 2389, "certified": true, "rule": "R6"}
+{"predicate": "id = 14858", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 60", "family": "correlated conjunction", "form": "conjunction", "true": 660, "estimate": 67, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 60 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 155, "estimate": 17, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 49", "family": "uniform equality", "form": "equality", "true": 395, "estimate": 395, "bound_mf": 443, "bound_pv": 395, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 5014, "estimate": 5013, "bound_mf": 13342, "bound_pv": 5349, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 60 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2167, "bound_mf": 2732, "bound_pv": 2678, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 49) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 574, "estimate": 598, "bound_mf": 2469, "bound_pv": 2413, "certified": true, "rule": "R6"}
+{"predicate": "id = 17462", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 71", "family": "correlated conjunction", "form": "conjunction", "true": 685, "estimate": 69, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 71 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 17, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 24", "family": "uniform equality", "form": "equality", "true": 404, "estimate": 404, "bound_mf": 443, "bound_pv": 404, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12186, "estimate": 12186, "bound_mf": 13342, "bound_pv": 13320, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 71 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2157, "bound_mf": 2732, "bound_pv": 2689, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 24) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 583, "estimate": 587, "bound_mf": 2469, "bound_pv": 2408, "certified": true, "rule": "R6"}
+{"predicate": "id = 13903", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 60", "family": "correlated conjunction", "form": "conjunction", "true": 660, "estimate": 67, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 60 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 155, "estimate": 17, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 22", "family": "uniform equality", "form": "equality", "true": 418, "estimate": 418, "bound_mf": 443, "bound_pv": 418, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12152, "estimate": 12192, "bound_mf": 13342, "bound_pv": 13334, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 60 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2167, "bound_mf": 2732, "bound_pv": 2678, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 22) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 583, "estimate": 603, "bound_mf": 2469, "bound_pv": 2436, "certified": true, "rule": "R6"}
+{"predicate": "id = 12072", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 169, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 5", "family": "uniform equality", "form": "equality", "true": 408, "estimate": 408, "bound_mf": 443, "bound_pv": 408, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3408, "estimate": 3403, "bound_mf": 13342, "bound_pv": 3559, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 5) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 604, "estimate": 588, "bound_mf": 2469, "bound_pv": 2403, "certified": true, "rule": "R6"}
+{"predicate": "id = 4922", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 8 AND city = 80", "family": "correlated conjunction", "form": "conjunction", "true": 705, "estimate": 70, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "region = 8 AND city = 80 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 18, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 9", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 8 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2132, "estimate": 2132, "bound_mf": 13342, "bound_pv": 2148, "certified": true, "rule": "R7"}
+{"predicate": "region = 8 OR city = 80 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1986, "estimate": 2146, "bound_mf": 2732, "bound_pv": 2691, "certified": true, "rule": "R7"}
+{"predicate": "(region = 8 OR bucket = 9) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 558, "estimate": 587, "bound_mf": 2469, "bound_pv": 2368, "certified": true, "rule": "R6"}
+{"predicate": "id = 15521", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 169, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 47", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2196, "estimate": 2198, "bound_mf": 13342, "bound_pv": 2221, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 47) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 591, "estimate": 582, "bound_mf": 2469, "bound_pv": 2379, "certified": true, "rule": "R6"}
+{"predicate": "id = 11950", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 32", "family": "correlated conjunction", "form": "conjunction", "true": 675, "estimate": 67, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 32 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 155, "estimate": 17, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 18", "family": "uniform equality", "form": "equality", "true": 391, "estimate": 391, "bound_mf": 443, "bound_pv": 391, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3379, "estimate": 3397, "bound_mf": 13342, "bound_pv": 3552, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 32 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2139, "bound_mf": 2732, "bound_pv": 2663, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 18) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 568, "estimate": 582, "bound_mf": 2469, "bound_pv": 2379, "certified": true, "rule": "R6"}
+{"predicate": "id = 10632", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 42", "family": "correlated conjunction", "form": "conjunction", "true": 654, "estimate": 65, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 42 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 156, "estimate": 16, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 30", "family": "uniform equality", "form": "equality", "true": 365, "estimate": 365, "bound_mf": 443, "bound_pv": 365, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3408, "estimate": 3403, "bound_mf": 13342, "bound_pv": 3559, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 42 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2141, "bound_mf": 2732, "bound_pv": 2649, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 30) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 574, "estimate": 576, "bound_mf": 2469, "bound_pv": 2360, "certified": true, "rule": "R6"}
+{"predicate": "id = 9718", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 91", "family": "correlated conjunction", "form": "conjunction", "true": 695, "estimate": 70, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 91 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 168, "estimate": 18, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 13", "family": "uniform equality", "form": "equality", "true": 420, "estimate": 420, "bound_mf": 443, "bound_pv": 420, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3426, "estimate": 3432, "bound_mf": 13342, "bound_pv": 3590, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 91 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2181, "bound_mf": 2732, "bound_pv": 2721, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 13) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 601, "estimate": 598, "bound_mf": 2469, "bound_pv": 2446, "certified": true, "rule": "R6"}
+{"predicate": "id = 9214", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 70", "family": "correlated conjunction", "form": "conjunction", "true": 649, "estimate": 65, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 70 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 16, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 0", "family": "uniform equality", "form": "equality", "true": 380, "estimate": 380, "bound_mf": 443, "bound_pv": 380, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2153, "estimate": 2150, "bound_mf": 13342, "bound_pv": 2166, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 70 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2151, "bound_mf": 2732, "bound_pv": 2653, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 0) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 583, "estimate": 590, "bound_mf": 2469, "bound_pv": 2384, "certified": true, "rule": "R6"}
+{"predicate": "id = 13186", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 92", "family": "correlated conjunction", "form": "conjunction", "true": 669, "estimate": 68, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 92 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 165, "estimate": 17, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 27", "family": "uniform equality", "form": "equality", "true": 367, "estimate": 367, "bound_mf": 443, "bound_pv": 367, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2127, "estimate": 2128, "bound_mf": 13342, "bound_pv": 2139, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 92 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2177, "bound_mf": 2732, "bound_pv": 2695, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 27) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 594, "estimate": 593, "bound_mf": 2469, "bound_pv": 2393, "certified": true, "rule": "R6"}
+{"predicate": "id = 19799", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 71", "family": "correlated conjunction", "form": "conjunction", "true": 685, "estimate": 69, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 71 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 17, "bound_mf": 706, "bound_pv": 685, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 4", "family": "uniform equality", "form": "equality", "true": 442, "estimate": 442, "bound_mf": 443, "bound_pv": 442, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2379, "estimate": 2377, "bound_mf": 13342, "bound_pv": 2419, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 71 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2157, "bound_mf": 2732, "bound_pv": 2689, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 4) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 581, "estimate": 596, "bound_mf": 2469, "bound_pv": 2446, "certified": true, "rule": "R6"}
+{"predicate": "id = 2840", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 169, "estimate": 16, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 17", "family": "uniform equality", "form": "equality", "true": 413, "estimate": 413, "bound_mf": 443, "bound_pv": 413, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2140, "estimate": 2136, "bound_mf": 13342, "bound_pv": 2152, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2138, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 17) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 573, "estimate": 586, "bound_mf": 2469, "bound_pv": 2403, "certified": true, "rule": "R6"}
+{"predicate": "id = 16037", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 32", "family": "correlated conjunction", "form": "conjunction", "true": 675, "estimate": 67, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 32 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 158, "estimate": 17, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 7", "family": "uniform equality", "form": "equality", "true": 377, "estimate": 377, "bound_mf": 443, "bound_pv": 377, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2362, "estimate": 2362, "bound_mf": 13342, "bound_pv": 2403, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 32 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2141, "bound_mf": 2732, "bound_pv": 2663, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 7) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 568, "estimate": 585, "bound_mf": 2469, "bound_pv": 2365, "certified": true, "rule": "R6"}
+{"predicate": "id = 2104", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 41", "family": "correlated conjunction", "form": "conjunction", "true": 682, "estimate": 68, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 41 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 164, "estimate": 17, "bound_mf": 706, "bound_pv": 682, "certified": true, "rule": "R6"}
+{"predicate": "tier = 4", "family": "skewed equality", "form": "equality", "true": 853, "estimate": 853, "bound_mf": 11316, "bound_pv": 853, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 46", "family": "uniform equality", "form": "equality", "true": 384, "estimate": 384, "bound_mf": 443, "bound_pv": 384, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 4", "family": "disjunction", "form": "disjunction", "true": 2745, "estimate": 2763, "bound_mf": 13342, "bound_pv": 2848, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 41 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2147, "bound_mf": 2732, "bound_pv": 2677, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 46) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 560, "estimate": 581, "bound_mf": 2469, "bound_pv": 2379, "certified": true, "rule": "R6"}
+{"predicate": "id = 6773", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (4, 5, 6)", "family": "IN list", "form": "in-list", "true": 1830, "estimate": 1830, "bound_mf": 20000, "bound_pv": 1830, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 32", "family": "correlated conjunction", "form": "conjunction", "true": 675, "estimate": 67, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 32 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 188, "estimate": 17, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "tier = 10", "family": "skewed equality", "form": "equality", "true": 128, "estimate": 128, "bound_mf": 11316, "bound_pv": 128, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 26", "family": "uniform equality", "form": "equality", "true": 431, "estimate": 431, "bound_mf": 443, "bound_pv": 431, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 10", "family": "disjunction", "form": "disjunction", "true": 2103, "estimate": 2103, "bound_mf": 13342, "bound_pv": 2116, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 32 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2139, "bound_mf": 2732, "bound_pv": 2663, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 26) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 608, "estimate": 589, "bound_mf": 2469, "bound_pv": 2419, "certified": true, "rule": "R6"}
+{"predicate": "id = 8476", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (10, 11, 12)", "family": "IN list", "form": "in-list", "true": 335, "estimate": 335, "bound_mf": 20000, "bound_pv": 335, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 31", "family": "correlated conjunction", "form": "conjunction", "true": 658, "estimate": 65, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 31 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 16, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 35", "family": "uniform equality", "form": "equality", "true": 390, "estimate": 390, "bound_mf": 443, "bound_pv": 390, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2185, "estimate": 2192, "bound_mf": 13342, "bound_pv": 2214, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 31 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2137, "bound_mf": 2732, "bound_pv": 2646, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 35) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 577, "estimate": 588, "bound_mf": 2469, "bound_pv": 2378, "certified": true, "rule": "R6"}
+{"predicate": "id = 11561", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 11", "family": "correlated conjunction", "form": "conjunction", "true": 671, "estimate": 67, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 11 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 17, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 41", "family": "uniform equality", "form": "equality", "true": 420, "estimate": 420, "bound_mf": 443, "bound_pv": 420, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2506, "estimate": 2502, "bound_mf": 13342, "bound_pv": 2558, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 11 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2146, "bound_mf": 2732, "bound_pv": 2667, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 41) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 574, "estimate": 591, "bound_mf": 2469, "bound_pv": 2416, "certified": true, "rule": "R6"}
+{"predicate": "id = 6329", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 70", "family": "correlated conjunction", "form": "conjunction", "true": 649, "estimate": 65, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 70 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 167, "estimate": 16, "bound_mf": 706, "bound_pv": 649, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 8", "family": "uniform equality", "form": "equality", "true": 409, "estimate": 409, "bound_mf": 443, "bound_pv": 409, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2202, "estimate": 2207, "bound_mf": 13342, "bound_pv": 2230, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 70 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2151, "bound_mf": 2732, "bound_pv": 2653, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 8) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 570, "estimate": 596, "bound_mf": 2469, "bound_pv": 2413, "certified": true, "rule": "R6"}
+{"predicate": "id = 13039", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 32", "family": "correlated conjunction", "form": "conjunction", "true": 675, "estimate": 67, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 32 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 188, "estimate": 17, "bound_mf": 706, "bound_pv": 675, "certified": true, "rule": "R6"}
+{"predicate": "tier = 8", "family": "skewed equality", "form": "equality", "true": 226, "estimate": 226, "bound_mf": 11316, "bound_pv": 226, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 34", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 8", "family": "disjunction", "form": "disjunction", "true": 2185, "estimate": 2192, "bound_mf": 13342, "bound_pv": 2214, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 32 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2139, "bound_mf": 2732, "bound_pv": 2663, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 34) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 597, "estimate": 578, "bound_mf": 2469, "bound_pv": 2370, "certified": true, "rule": "R6"}
+{"predicate": "id = 9879", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (8, 9, 10)", "family": "IN list", "form": "in-list", "true": 516, "estimate": 516, "bound_mf": 20000, "bound_pv": 516, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 92", "family": "correlated conjunction", "form": "conjunction", "true": 669, "estimate": 68, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 92 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 165, "estimate": 17, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 31", "family": "uniform equality", "form": "equality", "true": 407, "estimate": 407, "bound_mf": 443, "bound_pv": 407, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2533, "estimate": 2531, "bound_mf": 13342, "bound_pv": 2588, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 92 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2177, "bound_mf": 2732, "bound_pv": 2695, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 31) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 614, "estimate": 602, "bound_mf": 2469, "bound_pv": 2433, "certified": true, "rule": "R6"}
+{"predicate": "id = 12587", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 8 AND city = 80", "family": "correlated conjunction", "form": "conjunction", "true": 705, "estimate": 70, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "region = 8 AND city = 80 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 18, "bound_mf": 706, "bound_pv": 705, "certified": true, "rule": "R6"}
+{"predicate": "tier = 4", "family": "skewed equality", "form": "equality", "true": 853, "estimate": 853, "bound_mf": 11316, "bound_pv": 853, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 6", "family": "uniform equality", "form": "equality", "true": 398, "estimate": 398, "bound_mf": 443, "bound_pv": 398, "certified": true, "rule": "R3"}
+{"predicate": "region = 8 OR tier = 4", "family": "disjunction", "form": "disjunction", "true": 2741, "estimate": 2754, "bound_mf": 13342, "bound_pv": 2839, "certified": true, "rule": "R7"}
+{"predicate": "region = 8 OR city = 80 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1986, "estimate": 2146, "bound_mf": 2732, "bound_pv": 2691, "certified": true, "rule": "R7"}
+{"predicate": "(region = 8 OR bucket = 6) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 558, "estimate": 590, "bound_mf": 2469, "bound_pv": 2384, "certified": true, "rule": "R6"}
+{"predicate": "id = 8089", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (4, 5, 6)", "family": "IN list", "form": "in-list", "true": 1830, "estimate": 1830, "bound_mf": 20000, "bound_pv": 1830, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 21", "family": "correlated conjunction", "form": "conjunction", "true": 672, "estimate": 67, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 21 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 163, "estimate": 17, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 12", "family": "uniform equality", "form": "equality", "true": 399, "estimate": 399, "bound_mf": 443, "bound_pv": 399, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3429, "estimate": 3398, "bound_mf": 13342, "bound_pv": 3554, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 21 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2141, "bound_mf": 2732, "bound_pv": 2662, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 12) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 575, "estimate": 584, "bound_mf": 2469, "bound_pv": 2389, "certified": true, "rule": "R6"}
+{"predicate": "id = 2302", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 11", "family": "correlated conjunction", "form": "conjunction", "true": 671, "estimate": 67, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 11 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 160, "estimate": 17, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 39", "family": "uniform equality", "form": "equality", "true": 408, "estimate": 408, "bound_mf": 443, "bound_pv": 408, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12220, "estimate": 12183, "bound_mf": 13342, "bound_pv": 13312, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 11 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2146, "bound_mf": 2732, "bound_pv": 2667, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 39) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 599, "estimate": 586, "bound_mf": 2469, "bound_pv": 2404, "certified": true, "rule": "R6"}
+{"predicate": "id = 9230", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 31", "family": "correlated conjunction", "form": "conjunction", "true": 658, "estimate": 65, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 31 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 16, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 44", "family": "uniform equality", "form": "equality", "true": 443, "estimate": 443, "bound_mf": 443, "bound_pv": 443, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12182, "estimate": 12179, "bound_mf": 13342, "bound_pv": 13304, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 31 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2137, "bound_mf": 2732, "bound_pv": 2646, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 44) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 596, "estimate": 601, "bound_mf": 2469, "bound_pv": 2431, "certified": true, "rule": "R6"}
+{"predicate": "id = 14050", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 91", "family": "correlated conjunction", "form": "conjunction", "true": 695, "estimate": 70, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 91 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 168, "estimate": 18, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 9", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2399, "estimate": 2399, "bound_mf": 13342, "bound_pv": 2441, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 91 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2181, "bound_mf": 2732, "bound_pv": 2721, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 9) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 598, "estimate": 589, "bound_mf": 2469, "bound_pv": 2408, "certified": true, "rule": "R6"}
+{"predicate": "id = 14392", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 11", "family": "correlated conjunction", "form": "conjunction", "true": 671, "estimate": 67, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 11 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 181, "estimate": 17, "bound_mf": 706, "bound_pv": 671, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 23", "family": "uniform equality", "form": "equality", "true": 387, "estimate": 387, "bound_mf": 443, "bound_pv": 387, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2371, "estimate": 2370, "bound_mf": 13342, "bound_pv": 2411, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 11 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2148, "bound_mf": 2732, "bound_pv": 2667, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 23) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 589, "estimate": 590, "bound_mf": 2469, "bound_pv": 2383, "certified": true, "rule": "R6"}
+{"predicate": "id = 11634", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 12", "family": "correlated conjunction", "form": "conjunction", "true": 647, "estimate": 65, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 12 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 164, "estimate": 16, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 28", "family": "uniform equality", "form": "equality", "true": 414, "estimate": 414, "bound_mf": 443, "bound_pv": 414, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2267, "estimate": 2268, "bound_mf": 13342, "bound_pv": 2298, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 12 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 28) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 585, "estimate": 588, "bound_mf": 2469, "bound_pv": 2410, "certified": true, "rule": "R6"}
+{"predicate": "id = 3041", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 60", "family": "correlated conjunction", "form": "conjunction", "true": 660, "estimate": 67, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 60 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 155, "estimate": 17, "bound_mf": 706, "bound_pv": 660, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 20", "family": "uniform equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 443, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2161, "estimate": 2164, "bound_mf": 13342, "bound_pv": 2180, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 60 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2167, "bound_mf": 2732, "bound_pv": 2678, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 20) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 597, "estimate": 602, "bound_mf": 2469, "bound_pv": 2433, "certified": true, "rule": "R6"}
+{"predicate": "id = 17396", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 72", "family": "correlated conjunction", "form": "conjunction", "true": 670, "estimate": 67, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 72 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 193, "estimate": 17, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 35", "family": "uniform equality", "form": "equality", "true": 390, "estimate": 390, "bound_mf": 443, "bound_pv": 390, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 4998, "estimate": 5001, "bound_mf": 13342, "bound_pv": 5335, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 72 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2154, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 35) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 610, "estimate": 586, "bound_mf": 2469, "bound_pv": 2394, "certified": true, "rule": "R6"}
+{"predicate": "id = 1218", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 21", "family": "correlated conjunction", "form": "conjunction", "true": 672, "estimate": 67, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 21 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 161, "estimate": 17, "bound_mf": 706, "bound_pv": 672, "certified": true, "rule": "R6"}
+{"predicate": "tier = 1", "family": "skewed equality", "form": "equality", "true": 11316, "estimate": 11316, "bound_mf": 11316, "bound_pv": 11316, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 40", "family": "uniform equality", "form": "equality", "true": 426, "estimate": 426, "bound_mf": 443, "bound_pv": 426, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 1", "family": "disjunction", "form": "disjunction", "true": 12150, "estimate": 12180, "bound_mf": 13342, "bound_pv": 13306, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 21 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2662, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 40) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 550, "estimate": 589, "bound_mf": 2469, "bound_pv": 2416, "certified": true, "rule": "R6"}
+{"predicate": "id = 12392", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (1, 2, 3)", "family": "IN list", "form": "in-list", "true": 16211, "estimate": 16211, "bound_mf": 20000, "bound_pv": 16211, "certified": true, "rule": "R5"}
+{"predicate": "region = 3 AND city = 31", "family": "correlated conjunction", "form": "conjunction", "true": 658, "estimate": 65, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "region = 3 AND city = 31 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 16, "bound_mf": 706, "bound_pv": 658, "certified": true, "rule": "R6"}
+{"predicate": "tier = 2", "family": "skewed equality", "form": "equality", "true": 3331, "estimate": 3331, "bound_mf": 11316, "bound_pv": 3331, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 31", "family": "uniform equality", "form": "equality", "true": 407, "estimate": 407, "bound_mf": 443, "bound_pv": 407, "certified": true, "rule": "R3"}
+{"predicate": "region = 3 OR tier = 2", "family": "disjunction", "form": "disjunction", "true": 5003, "estimate": 4988, "bound_mf": 13342, "bound_pv": 5319, "certified": true, "rule": "R7"}
+{"predicate": "region = 3 OR city = 31 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 1988, "estimate": 2135, "bound_mf": 2732, "bound_pv": 2646, "certified": true, "rule": "R7"}
+{"predicate": "(region = 3 OR bucket = 31) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 602, "estimate": 584, "bound_mf": 2469, "bound_pv": 2395, "certified": true, "rule": "R6"}
+{"predicate": "id = 5389", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (2, 3, 4)", "family": "IN list", "form": "in-list", "true": 5748, "estimate": 5748, "bound_mf": 20000, "bound_pv": 5748, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 92", "family": "correlated conjunction", "form": "conjunction", "true": 669, "estimate": 68, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 92 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 17, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "tier = 5", "family": "skewed equality", "form": "equality", "true": 562, "estimate": 562, "bound_mf": 11316, "bound_pv": 562, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 33", "family": "uniform equality", "form": "equality", "true": 432, "estimate": 432, "bound_mf": 443, "bound_pv": 432, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 5", "family": "disjunction", "form": "disjunction", "true": 2533, "estimate": 2531, "bound_mf": 13342, "bound_pv": 2588, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 92 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2175, "bound_mf": 2732, "bound_pv": 2695, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 33) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 587, "estimate": 599, "bound_mf": 2469, "bound_pv": 2458, "certified": true, "rule": "R6"}
+{"predicate": "id = 4960", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (5, 6, 7)", "family": "IN list", "form": "in-list", "true": 1279, "estimate": 1279, "bound_mf": 20000, "bound_pv": 1279, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 72", "family": "correlated conjunction", "form": "conjunction", "true": 670, "estimate": 67, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 72 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 153, "estimate": 17, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 3", "family": "uniform equality", "form": "equality", "true": 368, "estimate": 368, "bound_mf": 443, "bound_pv": 368, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2379, "estimate": 2377, "bound_mf": 13342, "bound_pv": 2419, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 72 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2156, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 3) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 574, "estimate": 588, "bound_mf": 2469, "bound_pv": 2372, "certified": true, "rule": "R6"}
+{"predicate": "id = 13682", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 4 AND city = 42", "family": "correlated conjunction", "form": "conjunction", "true": 654, "estimate": 65, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "region = 4 AND city = 42 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 171, "estimate": 16, "bound_mf": 706, "bound_pv": 654, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 33", "family": "uniform equality", "form": "equality", "true": 432, "estimate": 432, "bound_mf": 443, "bound_pv": 432, "certified": true, "rule": "R3"}
+{"predicate": "region = 4 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2272, "estimate": 2267, "bound_mf": 13342, "bound_pv": 2297, "certified": true, "rule": "R7"}
+{"predicate": "region = 4 OR city = 42 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1995, "estimate": 2143, "bound_mf": 2732, "bound_pv": 2649, "certified": true, "rule": "R7"}
+{"predicate": "(region = 4 OR bucket = 33) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 582, "estimate": 599, "bound_mf": 2469, "bound_pv": 2427, "certified": true, "rule": "R6"}
+{"predicate": "id = 8151", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}
+{"predicate": "region = 6 AND city = 61", "family": "correlated conjunction", "form": "conjunction", "true": 706, "estimate": 71, "bound_mf": 706, "bound_pv": 706, "certified": true, "rule": "R6"}
+{"predicate": "region = 6 AND city = 61 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 186, "estimate": 18, "bound_mf": 706, "bound_pv": 706, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 22", "family": "uniform equality", "form": "equality", "true": 418, "estimate": 418, "bound_mf": 443, "bound_pv": 418, "certified": true, "rule": "R3"}
+{"predicate": "region = 6 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2396, "estimate": 2391, "bound_mf": 13342, "bound_pv": 2433, "certified": true, "rule": "R7"}
+{"predicate": "region = 6 OR city = 61 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2018, "estimate": 2176, "bound_mf": 2732, "bound_pv": 2724, "certified": true, "rule": "R7"}
+{"predicate": "(region = 6 OR bucket = 22) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 604, "estimate": 595, "bound_mf": 2469, "bound_pv": 2436, "certified": true, "rule": "R6"}
+{"predicate": "id = 1900", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 51", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 51 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 172, "estimate": 17, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 5", "family": "uniform equality", "form": "equality", "true": 408, "estimate": 408, "bound_mf": 443, "bound_pv": 408, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2075, "estimate": 2078, "bound_mf": 13342, "bound_pv": 2089, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 51 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2127, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 5) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 608, "estimate": 590, "bound_mf": 2469, "bound_pv": 2384, "certified": true, "rule": "R6"}
+{"predicate": "id = 14849", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 2 AND city = 22", "family": "correlated conjunction", "form": "conjunction", "true": 661, "estimate": 66, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "region = 2 AND city = 22 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 175, "estimate": 17, "bound_mf": 706, "bound_pv": 661, "certified": true, "rule": "R6"}
+{"predicate": "tier = 6", "family": "skewed equality", "form": "equality", "true": 415, "estimate": 415, "bound_mf": 11316, "bound_pv": 415, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 23", "family": "uniform equality", "form": "equality", "true": 387, "estimate": 387, "bound_mf": 443, "bound_pv": 387, "certified": true, "rule": "R3"}
+{"predicate": "region = 2 OR tier = 6", "family": "disjunction", "form": "disjunction", "true": 2361, "estimate": 2364, "bound_mf": 13342, "bound_pv": 2405, "certified": true, "rule": "R7"}
+{"predicate": "region = 2 OR city = 22 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1990, "estimate": 2140, "bound_mf": 2732, "bound_pv": 2651, "certified": true, "rule": "R7"}
+{"predicate": "(region = 2 OR bucket = 23) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 613, "estimate": 589, "bound_mf": 2469, "bound_pv": 2377, "certified": true, "rule": "R6"}
+{"predicate": "id = 2126", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (6, 7, 8)", "family": "IN list", "form": "in-list", "true": 943, "estimate": 943, "bound_mf": 20000, "bound_pv": 943, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 92", "family": "correlated conjunction", "form": "conjunction", "true": 669, "estimate": 68, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 92 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 179, "estimate": 17, "bound_mf": 706, "bound_pv": 669, "certified": true, "rule": "R6"}
+{"predicate": "tier = 10", "family": "skewed equality", "form": "equality", "true": 128, "estimate": 128, "bound_mf": 11316, "bound_pv": 128, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 16", "family": "uniform equality", "form": "equality", "true": 398, "estimate": 398, "bound_mf": 443, "bound_pv": 398, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 10", "family": "disjunction", "form": "disjunction", "true": 2146, "estimate": 2141, "bound_mf": 13342, "bound_pv": 2154, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 92 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2176, "bound_mf": 2732, "bound_pv": 2695, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 16) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 603, "estimate": 593, "bound_mf": 2469, "bound_pv": 2424, "certified": true, "rule": "R6"}
+{"predicate": "id = 7657", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (10, 11, 12)", "family": "IN list", "form": "in-list", "true": 335, "estimate": 335, "bound_mf": 20000, "bound_pv": 335, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 72", "family": "correlated conjunction", "form": "conjunction", "true": 670, "estimate": 67, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 72 AND status = 1", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 193, "estimate": 17, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "tier = 9", "family": "skewed equality", "form": "equality", "true": 162, "estimate": 162, "bound_mf": 11316, "bound_pv": 162, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 1", "family": "skewed conjunction", "form": "conjunction", "true": 2811, "estimate": 2815, "bound_mf": 5037, "bound_pv": 4975, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 39", "family": "uniform equality", "form": "equality", "true": 408, "estimate": 408, "bound_mf": 443, "bound_pv": 408, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 9", "family": "disjunction", "form": "disjunction", "true": 2153, "estimate": 2150, "bound_mf": 13342, "bound_pv": 2166, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 72 AND status = 1", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2154, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 39) AND status = 1", "family": "parenthesized mix", "form": "conjunction", "true": 615, "estimate": 590, "bound_mf": 2469, "bound_pv": 2412, "certified": true, "rule": "R6"}
+{"predicate": "id = 13202", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (9, 10, 11)", "family": "IN list", "form": "in-list", "true": 403, "estimate": 403, "bound_mf": 20000, "bound_pv": 403, "certified": true, "rule": "R5"}
+{"predicate": "region = 1 AND city = 12", "family": "correlated conjunction", "form": "conjunction", "true": 647, "estimate": 65, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "region = 1 AND city = 12 AND status = 2", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 16, "bound_mf": 706, "bound_pv": 647, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 2", "family": "skewed conjunction", "form": "conjunction", "true": 2886, "estimate": 2844, "bound_mf": 5037, "bound_pv": 5027, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 44", "family": "uniform equality", "form": "equality", "true": 443, "estimate": 443, "bound_mf": 443, "bound_pv": 443, "certified": true, "rule": "R3"}
+{"predicate": "region = 1 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2098, "estimate": 2098, "bound_mf": 13342, "bound_pv": 2109, "certified": true, "rule": "R7"}
+{"predicate": "region = 1 OR city = 12 AND status = 2", "family": "precedence mix", "form": "disjunction", "true": 1996, "estimate": 2142, "bound_mf": 2732, "bound_pv": 2643, "certified": true, "rule": "R7"}
+{"predicate": "(region = 1 OR bucket = 44) AND status = 2", "family": "parenthesized mix", "form": "conjunction", "true": 641, "estimate": 602, "bound_mf": 2469, "bound_pv": 2439, "certified": true, "rule": "R6"}
+{"predicate": "id = 11620", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 5 AND city = 51", "family": "correlated conjunction", "form": "conjunction", "true": 664, "estimate": 66, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "region = 5 AND city = 51 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 172, "estimate": 17, "bound_mf": 706, "bound_pv": 664, "certified": true, "rule": "R6"}
+{"predicate": "tier = 3", "family": "skewed equality", "form": "equality", "true": 1564, "estimate": 1564, "bound_mf": 11316, "bound_pv": 1564, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 12", "family": "uniform equality", "form": "equality", "true": 399, "estimate": 399, "bound_mf": 443, "bound_pv": 399, "certified": true, "rule": "R3"}
+{"predicate": "region = 5 OR tier = 3", "family": "disjunction", "form": "disjunction", "true": 3377, "estimate": 3385, "bound_mf": 13342, "bound_pv": 3540, "certified": true, "rule": "R7"}
+{"predicate": "region = 5 OR city = 51 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 1976, "estimate": 2127, "bound_mf": 2732, "bound_pv": 2640, "certified": true, "rule": "R7"}
+{"predicate": "(region = 5 OR bucket = 12) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 610, "estimate": 588, "bound_mf": 2469, "bound_pv": 2375, "certified": true, "rule": "R6"}
+{"predicate": "id = 14973", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (3, 4, 5)", "family": "IN list", "form": "in-list", "true": 2979, "estimate": 2979, "bound_mf": 20000, "bound_pv": 2979, "certified": true, "rule": "R5"}
+{"predicate": "region = 9 AND city = 91", "family": "correlated conjunction", "form": "conjunction", "true": 695, "estimate": 70, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "region = 9 AND city = 91 AND status = 0", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 186, "estimate": 18, "bound_mf": 706, "bound_pv": 695, "certified": true, "rule": "R6"}
+{"predicate": "tier = 11", "family": "skewed equality", "form": "equality", "true": 113, "estimate": 113, "bound_mf": 11316, "bound_pv": 113, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 0", "family": "skewed conjunction", "form": "conjunction", "true": 2796, "estimate": 2850, "bound_mf": 5037, "bound_pv": 5037, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 26", "family": "uniform equality", "form": "equality", "true": 431, "estimate": 431, "bound_mf": 443, "bound_pv": 431, "certified": true, "rule": "R3"}
+{"predicate": "region = 9 OR tier = 11", "family": "disjunction", "form": "disjunction", "true": 2127, "estimate": 2128, "bound_mf": 13342, "bound_pv": 2139, "certified": true, "rule": "R7"}
+{"predicate": "region = 9 OR city = 91 AND status = 0", "family": "precedence mix", "form": "disjunction", "true": 2026, "estimate": 2183, "bound_mf": 2732, "bound_pv": 2721, "certified": true, "rule": "R7"}
+{"predicate": "(region = 9 OR bucket = 26) AND status = 0", "family": "parenthesized mix", "form": "conjunction", "true": 619, "estimate": 608, "bound_mf": 2469, "bound_pv": 2457, "certified": true, "rule": "R6"}
+{"predicate": "id = 16515", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (11, 12, 13)", "family": "IN list", "form": "in-list", "true": 285, "estimate": 285, "bound_mf": 20000, "bound_pv": 285, "certified": true, "rule": "R5"}
+{"predicate": "region = 7 AND city = 72", "family": "correlated conjunction", "form": "conjunction", "true": 670, "estimate": 67, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "region = 7 AND city = 72 AND status = 3", "family": "correlated 3-way conjunction", "form": "conjunction", "true": 170, "estimate": 17, "bound_mf": 706, "bound_pv": 670, "certified": true, "rule": "R6"}
+{"predicate": "tier = 7", "family": "skewed equality", "form": "equality", "true": 302, "estimate": 302, "bound_mf": 11316, "bound_pv": 302, "certified": true, "rule": "R3"}
+{"predicate": "tier = 1 AND status = 3", "family": "skewed conjunction", "form": "conjunction", "true": 2823, "estimate": 2807, "bound_mf": 5037, "bound_pv": 4961, "certified": true, "rule": "R6"}
+{"predicate": "bucket = 19", "family": "uniform equality", "form": "equality", "true": 382, "estimate": 382, "bound_mf": 443, "bound_pv": 382, "certified": true, "rule": "R3"}
+{"predicate": "region = 7 OR tier = 7", "family": "disjunction", "form": "disjunction", "true": 2278, "estimate": 2276, "bound_mf": 13342, "bound_pv": 2306, "certified": true, "rule": "R7"}
+{"predicate": "region = 7 OR city = 72 AND status = 3", "family": "precedence mix", "form": "disjunction", "true": 2004, "estimate": 2154, "bound_mf": 2732, "bound_pv": 2674, "certified": true, "rule": "R7"}
+{"predicate": "(region = 7 OR bucket = 19) AND status = 3", "family": "parenthesized mix", "form": "conjunction", "true": 569, "estimate": 582, "bound_mf": 2469, "bound_pv": 2386, "certified": true, "rule": "R6"}
+{"predicate": "id = 9606", "family": "unique key", "form": "equality", "true": 1, "estimate": 1, "bound_mf": 1, "bound_pv": 1, "certified": true, "rule": "R2"}
+{"predicate": "tier IN (7, 8, 9)", "family": "IN list", "form": "in-list", "true": 690, "estimate": 690, "bound_mf": 20000, "bound_pv": 690, "certified": true, "rule": "R5"}

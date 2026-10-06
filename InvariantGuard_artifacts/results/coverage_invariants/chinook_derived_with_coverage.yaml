@@ -1,0 +1,141 @@
+version: 1
+invariants:
+- id: customers.delete.delta
+  description: A single action may remove at most one customer.
+  scope:
+    tables:
+    - customers
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM customers
+  post_query: SELECT COUNT(*) FROM customers
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+    max_increase: 0
+    static_metric: table_row_count
+  severity: 8
+- id: customers.credit.nonnegative
+  description: Every customer credit balance must remain nonnegative.
+  scope:
+    tables:
+    - customers
+    columns:
+    - credit_cents
+    operations:
+    - insert
+    - update
+  post_query: SELECT COALESCE(bool_and(credit_cents >= 0), TRUE) FROM customers
+  relation: point
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: customers.table.exists
+  description: The customers table must continue to exist.
+  scope:
+    tables:
+    - customers
+    columns:
+    - '*'
+    operations:
+    - drop_table
+    - alter_table
+  post_query: "SELECT EXISTS (\n  SELECT 1 FROM information_schema.tables\n  WHERE\
+    \ table_schema = 'public' AND table_name = 'customers'\n)"
+  relation: structural
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: customers.invoice.integrity
+  description: Every invoice must continue to reference an existing customer.
+  scope:
+    tables:
+    - customers
+    - invoices
+    columns:
+    - customer_id
+    operations:
+    - delete
+    - drop_table
+    - alter_table
+  post_query: "SELECT NOT EXISTS (\n  SELECT 1\n  FROM invoices AS invoice\n  LEFT\
+    \ JOIN customers AS customer ON customer.customer_id = invoice.customer_id\n \
+    \ WHERE customer.customer_id IS NULL\n)"
+  relation: structural
+  params:
+    operator: eq
+    expected: true
+  severity: 10
+- id: invoices.delete.sequence_delta
+  description: A proposed sequence may remove at most two invoices cumulatively.
+  scope:
+    tables:
+    - invoices
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM invoices
+  post_query: SELECT COUNT(*) FROM invoices
+  relation: bounded-delta
+  params:
+    max_decrease: 2
+    max_increase: 0
+    static_metric: table_row_count
+    sequence_cumulative: true
+  severity: 7
+- id: albums.coverage.delta
+  description: 'Suggested: at most 1 albums rows removed per action'
+  scope:
+    tables:
+    - albums
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM albums
+  post_query: SELECT COUNT(*) FROM albums
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+  severity: 8.0
+- id: artists.coverage.delta
+  description: 'Suggested: at most 1 artists rows removed per action'
+  scope:
+    tables:
+    - artists
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM artists
+  post_query: SELECT COUNT(*) FROM artists
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+  severity: 8.0
+- id: invoice_lines.coverage.delta
+  description: 'Suggested: at most 1 invoice_lines rows removed per action'
+  scope:
+    tables:
+    - invoice_lines
+    - invoices
+    columns:
+    - '*'
+    operations:
+    - delete
+    - truncate
+  pre_query: SELECT COUNT(*) FROM invoice_lines
+  post_query: SELECT COUNT(*) FROM invoice_lines
+  relation: bounded-delta
+  params:
+    max_decrease: 1
+  severity: 8.0

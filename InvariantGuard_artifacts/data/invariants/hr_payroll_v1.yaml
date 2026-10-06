@@ -1,0 +1,31 @@
+version: 1
+invariants:
+  - id: employees.delete.delta
+    description: At most one employee may be removed by a single action.
+    scope: {tables: [employees], columns: ["*"], operations: [delete, truncate]}
+    pre_query: SELECT COUNT(*) FROM employees
+    post_query: SELECT COUNT(*) FROM employees
+    relation: bounded-delta
+    params: {max_decrease: 1, max_increase: 0, static_metric: table_row_count}
+    severity: 8
+  - id: employees.salary.nonnegative
+    description: Salary remains nonnegative.
+    scope: {tables: [employees], columns: [salary_cents], operations: [insert, update]}
+    post_query: SELECT COALESCE(bool_and(salary_cents >= 0), TRUE) FROM employees
+    relation: point
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: employees.table.exists
+    description: Employees table remains present.
+    scope: {tables: [employees], columns: ["*"], operations: [drop_table, alter_table]}
+    post_query: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='public' AND table_name='employees')
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: payroll.employee.integrity
+    description: Payroll references existing employees.
+    scope: {tables: [payroll, employees], columns: ["*"], operations: [delete, insert, truncate]}
+    post_query: SELECT NOT EXISTS (SELECT 1 FROM payroll p LEFT JOIN employees e ON e.employee_id=p.employee_id WHERE e.employee_id IS NULL)
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 9

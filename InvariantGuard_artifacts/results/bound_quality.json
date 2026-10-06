@@ -1,0 +1,229 @@
+{
+ "cascade_property": {
+  "cases": 1477,
+  "diamond_schemas": 102,
+  "rejected": 923,
+  "relation_checks": 2568,
+  "violations_max": 42,
+  "violations_sum": 0
+ },
+ "enforcement": {
+  "bound_certified_after_write": false,
+  "missing_reader_valid": false,
+  "missing_watermark_valid": false,
+  "valid_after_write": false,
+  "valid_before_write": true
+ },
+ "property_test": {
+  "forms": {
+   "conjunction": 239,
+   "disjunction": 417,
+   "equality": 421,
+   "in-list": 123
+  },
+  "predicates": 1200,
+  "relations": 24,
+  "violations_mf": 0,
+  "violations_per_value": 0
+ },
+ "summary": {
+  "certified_pervalue_underpredictions": 0,
+  "certified_underpredictions": 0,
+  "estimate_admits_over_100": 160,
+  "estimate_qerror_p50": 1.0,
+  "estimate_rate": 0.35125,
+  "estimate_rate_ci": [
+   0.3189529433589031,
+   0.3849688243127377
+  ],
+  "estimate_underpredictions": 281,
+  "families": {
+   "IN list": {
+    "certified_under": 0,
+    "estimate_under": 0,
+    "n": 80,
+    "tightness_mf_p50": 21.208907741251327,
+    "tightness_pv_p50": 1.0
+   },
+   "correlated 3-way conjunction": {
+    "certified_under": 0,
+    "estimate_under": 80,
+    "n": 80,
+    "tightness_mf_p50": 4.227544910179641,
+    "tightness_pv_p50": 4.035502958579881
+   },
+   "correlated conjunction": {
+    "certified_under": 0,
+    "estimate_under": 80,
+    "n": 80,
+    "tightness_mf_p50": 1.0537313432835822,
+    "tightness_pv_p50": 1.0
+   },
+   "disjunction": {
+    "certified_under": 0,
+    "estimate_under": 42,
+    "n": 80,
+    "tightness_mf_p50": 5.649799109936698,
+    "tightness_pv_p50": 1.016697709979326
+   },
+   "parenthesized mix": {
+    "certified_under": 0,
+    "estimate_under": 38,
+    "n": 80,
+    "tightness_mf_p50": 4.191850594227504,
+    "tightness_pv_p50": 4.077117972412397
+   },
+   "precedence mix": {
+    "certified_under": 0,
+    "estimate_under": 0,
+    "n": 80,
+    "tightness_mf_p50": 1.3690805169235714,
+    "tightness_pv_p50": 1.3360323886639676
+   },
+   "skewed conjunction": {
+    "certified_under": 0,
+    "estimate_under": 41,
+    "n": 80,
+    "tightness_mf_p50": 1.7842720510095642,
+    "tightness_pv_p50": 1.7573503365214311
+   },
+   "skewed equality": {
+    "certified_under": 0,
+    "estimate_under": 0,
+    "n": 80,
+    "tightness_mf_p50": 27.26746987951807,
+    "tightness_pv_p50": 1.0
+   },
+   "uniform equality": {
+    "certified_under": 0,
+    "estimate_under": 0,
+    "n": 80,
+    "tightness_mf_p50": 1.1034051713442021,
+    "tightness_pv_p50": 1.0
+   },
+   "unique key": {
+    "certified_under": 0,
+    "estimate_under": 0,
+    "n": 80,
+    "tightness_mf_p50": 1.0,
+    "tightness_pv_p50": 1.0
+   }
+  },
+  "grammar_coverage": 1.0,
+  "n": 800,
+  "rule_of_three_upper": 0.00375,
+  "tightness_mf_max": 100.14159292035399,
+  "tightness_mf_p50": 1.791889007470651,
+  "tightness_mf_p90": 27.26746987951807,
+  "tightness_pv_max": 4.611111111111111,
+  "tightness_pv_p50": 1.0018639328984156,
+  "tightness_pv_p90": 4.054545454545455
+ },
+ "sweeps": {
+  "correlation": [
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.305,
+    "rho": 0.0,
+    "tightness_mf_p50": 4.177665289256199,
+    "tightness_pv_p50": 1.1587995471568007
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3475,
+    "rho": 0.25,
+    "tightness_mf_p50": 3.399546186175445,
+    "tightness_pv_p50": 1.1662279365459396
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.365,
+    "rho": 0.5,
+    "tightness_mf_p50": 2.0,
+    "tightness_pv_p50": 1.179237541747895
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3175,
+    "rho": 0.75,
+    "tightness_mf_p50": 1.82689556509299,
+    "tightness_pv_p50": 1.1717595513599628
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3475,
+    "rho": 0.9,
+    "tightness_mf_p50": 1.8257439942631768,
+    "tightness_pv_p50": 1.0688524590163935
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3675,
+    "rho": 1.0,
+    "tightness_mf_p50": 1.791889007470651,
+    "tightness_pv_p50": 1.0021489971346704
+   }
+  ],
+  "scale": [
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3675,
+    "rows": 20000,
+    "tightness_mf_p50": 1.791889007470651,
+    "tightness_pv_p50": 1.0021489971346704
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.48,
+    "rows": 100000,
+    "tightness_mf_p50": 1.7755434397790837,
+    "tightness_pv_p50": 1.0023604947597016
+   },
+   {
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.53,
+    "rows": 500000,
+    "tightness_mf_p50": 1.7743214913026233,
+    "tightness_pv_p50": 1.002552569650042
+   }
+  ],
+  "skew": [
+   {
+    "alpha": 0.8,
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.355,
+    "tightness_mf_max": 46.29347826086956,
+    "tightness_mf_p50": 2.3581460674157304,
+    "tightness_pv_max": 4.611111111111111,
+    "tightness_pv_p50": 1.0034642032332564
+   },
+   {
+    "alpha": 1.2,
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3675,
+    "tightness_mf_max": 100.14159292035399,
+    "tightness_mf_p50": 1.791889007470651,
+    "tightness_pv_max": 4.611111111111111,
+    "tightness_pv_p50": 1.0021489971346704
+   },
+   {
+    "alpha": 2.0,
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.3625,
+    "tightness_mf_max": 537.0357142857143,
+    "tightness_mf_p50": 1.3694235588972432,
+    "tightness_pv_max": 4.611111111111111,
+    "tightness_pv_p50": 1.0002478929102627
+   },
+   {
+    "alpha": 3.0,
+    "certified_underpredictions": 0,
+    "estimate_rate": 0.325,
+    "tightness_mf_max": 4365.5,
+    "tightness_mf_p50": 1.3694235588972432,
+    "tightness_pv_max": 4.611111111111111,
+    "tightness_pv_p50": 1.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+version: 1
+invariants:
+  - id: orders.delete.delta
+    description: At most one order may be removed by a single action.
+    scope: {tables: [orders], columns: ["*"], operations: [delete, truncate]}
+    pre_query: SELECT COUNT(*) FROM orders
+    post_query: SELECT COUNT(*) FROM orders
+    relation: bounded-delta
+    params: {max_decrease: 1, max_increase: 0, static_metric: table_row_count}
+    severity: 8
+  - id: orders.freight.nonnegative
+    description: Freight remains nonnegative.
+    scope: {tables: [orders], columns: [freight_cents], operations: [insert, update]}
+    post_query: SELECT COALESCE(bool_and(freight_cents >= 0), TRUE) FROM orders
+    relation: point
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: orders.table.exists
+    description: Orders table remains present.
+    scope: {tables: [orders], columns: ["*"], operations: [drop_table, alter_table]}
+    post_query: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='public' AND table_name='orders')
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 10
+  - id: order_items.join.integrity
+    description: Every order item references an order.
+    scope: {tables: [order_items, orders], columns: ["*"], operations: [delete, insert, truncate]}
+    post_query: SELECT NOT EXISTS (SELECT 1 FROM order_items i LEFT JOIN orders o ON o.order_id=i.order_id WHERE o.order_id IS NULL)
+    relation: structural
+    params: {operator: eq, expected: true}
+    severity: 9
