@@ -19,6 +19,7 @@ from meeko import MoleculePreparation, PDBQTWriterLegacy, PDBQTMolecule, RDKitMo
 RDLogger.DisableLog("rdApp.*")
 MAN, DATA, PB, OUT, WID, NW = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]), int(sys.argv[6])
 BOX, EXH, NPOSES, SEED = 20.0, 8, 5, 2026
+VINA_TYPES = {"C", "A", "N", "NA", "NS", "OA", "OS", "SA", "S", "H", "HD", "HS", "P", "F", "Cl", "Br", "I", "Mg", "Ca", "Mn", "Fe", "Zn"}
 
 
 def paths(row):
@@ -67,6 +68,14 @@ def dock_one(row, outdir):
         r = subprocess.run(["obabel", "-ipdb", prot, "-xr", "-h", "-opdbqt", "-O", rec], capture_output=True, text=True)
         if not os.path.exists(rec) or os.path.getsize(rec) < 100:
             raise RuntimeError("receptor preparation failed: " + r.stderr[-300:])
+        # drop receptor atoms whose AutoDock type Vina cannot score (e.g. Mo, Xe, B, Na, K)
+        keep, dropped = [], 0
+        for line in open(rec):
+            if line.startswith(("ATOM", "HETATM")) and line[77:79].strip() not in VINA_TYPES:
+                dropped += 1; continue
+            keep.append(line)
+        open(rec, "w").writelines(keep)
+        open(f"{outdir}/receptor_dropped_atoms.txt", "w").write(str(dropped))
     v = Vina(sf_name="vina", cpu=1, seed=SEED, verbosity=0)
     v.set_receptor(rec)
     v.set_ligand_from_string(lig_pdbqt)
