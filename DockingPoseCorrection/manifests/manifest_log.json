@@ -1,0 +1,23 @@
+{
+  "pdbbind_pl": 19443,
+  "misato_md": 16972,
+  "three_way_intersection": 16965,
+  "excluded_covalent": 663,
+  "excluded_external_pdb_overlap": 0,
+  "candidate_groups": 10714,
+  "candidate_touching_groups": 1581,
+  "eligibility_status_counts": {
+    "ok": 2008,
+    "ligand_not_located": 357,
+    "structure_failure": 28
+  },
+  "groups_crossing_splits": 0,
+  "split_counts": {
+    "train": 1200,
+    "external": 428,
+    "val": 400,
+    "test": 400
+  },
+  "internal_external_pdb_overlap": 0,
+  "manifest_sha256": "53f11050fe6602460f1421af44ee248857b31e7a64986fe278e3ba700dce0fde"
+}
