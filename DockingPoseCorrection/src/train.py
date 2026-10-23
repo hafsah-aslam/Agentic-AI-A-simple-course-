@@ -25,7 +25,8 @@ def fit_preprocessing(data):
     fm, fs = (float(flex.mean()), float(flex.std() + 1e-6)) if len(flex) else (0.0, 1.0)
     return {"coord_scale": c, "flex_mean": fm, "flex_std": fs,
             "train_fully_imputed_frac": float(np.mean([x == 0 for x in cov])),
-            "train_under_half_coverage_frac": float(np.mean([0 < x < 0.5 for x in cov]))}
+            "train_under_half_coverage_frac": float(np.mean([0 < x < 0.5 for x in cov])),
+            "train_misato_qc_counts": {k: int(sum(d.get("misato_qc") == k for d in tr)) for k in ("ok", "failed_registration", "absent")}}
 
 
 def prepare(d, pp):

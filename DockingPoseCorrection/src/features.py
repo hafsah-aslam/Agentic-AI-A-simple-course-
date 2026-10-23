@@ -23,6 +23,7 @@ ALIAS = {"MSE": "MET", "SEP": "SER", "TPO": "THR", "PTR": "TYR", "HYP": "PRO", "
 ELEM = ["C", "N", "O", "S", "P", "F", "Cl", "Br", "I"]
 HYB = [Chem.HybridizationType.SP, Chem.HybridizationType.SP2, Chem.HybridizationType.SP3]
 POCKET_CUTOFF, EDGE_CUTOFF, MAP_TOL = 8.0, 10.0, 1.5
+MISATO_LIG_RMSD, MISATO_MEDIAN_NN = 2.0, 2.5   # registration acceptance (A)
 
 
 def atom_features(a):
@@ -79,8 +80,12 @@ def featurize(row, data, pb, dockdir):
         return None
     ca = np.array([r["ca"] for r in pocket])
     flex = np.full(len(pocket), np.nan)
+    misato_qc = "absent"
     if split != "external" and os.path.exists(f"{data}/misato/{pdb}.npz"):
         mz = np.load(f"{data}/misato/{pdb}.npz")
+        # registration quality gate: ligand fit and protein agreement after the rigid transform
+        misato_qc = "ok" if float(mz["lig_rmsd"]) <= MISATO_LIG_RMSD and float(mz["median_nn"]) <= MISATO_MEDIAN_NN else "failed_registration"
+    if misato_qc == "ok":
         mt = cKDTree(mz["xyz"])
         for i, r in enumerate(pocket):
             hits = sorted({j for lst in mt.query_ball_point(r["heavy"], MAP_TOL) for j in lst})
@@ -101,7 +106,7 @@ def featurize(row, data, pb, dockdir):
             "res_aa": onehot.astype(np.float32), "res_xyz": (ca - centre).astype(np.float32),
             "res_sc": np.array([r["sc"] - r["ca"] for r in pocket], np.float32), "res_deg": deg.astype(np.float32),
             "res_flex_raw": flex.astype(np.float32), "edges": edges.astype(np.int64), "segments": np.array(seg, np.int64),
-            "baseline_rmsd": info["baseline_rmsd"], "vina": info["vina_energy"], "centre": centre}
+            "misato_qc": misato_qc, "baseline_rmsd": info["baseline_rmsd"], "vina": info["vina_energy"], "centre": centre}
 
 
 def main():
