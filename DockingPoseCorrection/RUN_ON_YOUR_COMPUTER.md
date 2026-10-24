@@ -43,6 +43,30 @@ Using your local PDBbind makes the run **closer to the original study** than the
 - peptide and multi-residue ligands are kept (the reported run had to drop 357 of them);
 - the internal docking baseline should come out closer to the original 55.6%.
 
+
+## Settings for an i9-13900 + RTX 4080 (12 GB)
+
+```bash
+python3 run_all.py ... --workers 28 --gpu-jobs 4
+```
+
+| Stage | Uses | Expected time on this machine |
+|---|---|---|
+| Docking (2,428 complexes) | CPU, 28 parallel Vina processes | ~1.5–2 h |
+| MISATO flexibility (local `MD.hdf5`) | CPU, 28 processes | ~15–30 min (disk-bound; faster on an SSD) |
+| Training (20 models + 15 for the splits) | **GPU**, 4 models at once | ~10–20 min |
+| PoseBusters audit and analyses | CPU | ~30–45 min |
+
+- **The docking stays on the CPU on purpose.** AutoDock Vina has no GPU mode. GPU docking programs such as Vina-GPU and Uni-Dock are different engines, so they would change the protocol compared with the original study.
+- **Memory:** each Vina or audit process needs about 0.3–0.5 GB. If you have 32 GB of RAM, use `--workers 24`. With 64 GB or more, `--workers 30` is fine.
+- **GPU on Windows:** run everything inside WSL2 (Ubuntu). Install the current NVIDIA driver on Windows (it provides CUDA to WSL). In WSL, install the CUDA build of PyTorch:
+  ```bash
+  pip install torch --index-url https://download.pytorch.org/whl/cu124
+  python3 -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+  ```
+  The run log prints `GPU for training: NVIDIA GeForce RTX 4080 ...` when it is used. Use `--cpu-only` to train on the CPU instead.
+- **GPU and CPU results:** they agree to within floating-point noise. The hyperparameters are identical on both devices; only the speed differs.
+
 ## 4. Run
 
 ```bash

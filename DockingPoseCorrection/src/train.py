@@ -13,6 +13,12 @@ import torch
 from model import PoseCorrector, nll
 
 torch.set_num_threads(int(os.environ.get("TORCH_THREADS", "1")))
+# GPU if available (set DPC_DEVICE=cpu to force CPU). Hyperparameters are identical on both devices.
+DEVICE = torch.device("cuda" if torch.cuda.is_available() and os.environ.get("DPC_DEVICE", "auto") != "cpu" else "cpu")
+
+
+def to_device(b):
+    return {k: v.to(DEVICE, non_blocking=True) for k, v in b.items()}
 EPOCHS, PATIENCE, LR, BATCH = 15, 5, 1e-3, 16
 
 
@@ -76,7 +82,7 @@ def run_epoch(model, items, opt, rng, train):
     for s in range(0, len(items), BATCH):
         batch = [items[i] for i in order[s:s + BATCH]]
         rots = [random_rotation(rng) for _ in batch] if train else None
-        b = collate(batch, rots)
+        b = to_device(collate(batch, rots))
         with torch.set_grad_enabled(train):
             pred, lv = model(b)
             loss = nll(pred, lv, b["target"], b["lig_mask"].float())
@@ -92,8 +98,9 @@ def predict(model, items, pp, rots=None):
     out = []
     for s in range(0, len(items), BATCH):
         batch = items[s:s + BATCH]
-        b = collate(batch, rots[s:s + BATCH] if rots is not None else None)
+        b = to_device(collate(batch, rots[s:s + BATCH] if rots is not None else None))
         pred, lv = model(b)
+        pred, lv = pred.cpu(), lv.cpu()
         for i, x in enumerate(batch):
             n = len(x["lig"])
             out.append({"pred": (pred[i, :n].numpy() * pp["coord_scale"]).astype(np.float32),
@@ -109,7 +116,8 @@ def main():
     items = [prepare(d, pp) for d in data]
     idx = {s: [i for i, d in enumerate(data) if d["split"] == s] for s in ("train", "val", "test", "external")}
     torch.manual_seed(seed); rng = np.random.default_rng(seed)
-    model = PoseCorrector(arch)
+    torch.cuda.manual_seed_all(seed)
+    model = PoseCorrector(arch).to(DEVICE)
     opt = torch.optim.Adam(model.parameters(), lr=LR)
     tr, va = [items[i] for i in idx["train"]], [items[i] for i in idx["val"]]
     best, best_state, wait, hist = 1e18, None, 0, []
@@ -119,7 +127,7 @@ def main():
         vl = run_epoch(model, va, None, rng, False)
         hist.append({"epoch": ep + 1, "train_nll": tl, "val_nll": vl})
         if vl < best:
-            best, best_state, wait = vl, {k: v.clone() for k, v in model.state_dict().items()}, 0
+            best, best_state, wait = vl, {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}, 0
         else:
             wait += 1
             if wait >= PATIENCE:
@@ -130,9 +138,9 @@ def main():
         p = predict(model, [items[i] for i in ids], pp)
         for i, o in zip(ids, p):
             preds[data[i]["pdb"]] = o
-    torch.save(model.state_dict(), f"{outdir}/{arch}_s{seed}.pt")
+    torch.save({k: v.cpu() for k, v in model.state_dict().items()}, f"{outdir}/{arch}_s{seed}.pt")
     pickle.dump({"arch": arch, "seed": seed, "preprocessing": pp, "history": hist, "best_val_nll": best,
-                 "seconds": time.time() - t0, "predictions": preds}, open(f"{outdir}/{arch}_s{seed}.pkl", "wb"))
+                 "seconds": time.time() - t0, "device": str(DEVICE), "predictions": preds}, open(f"{outdir}/{arch}_s{seed}.pkl", "wb"))
     print(arch, seed, "best val nll", round(best, 4), "epochs", len(hist), "time", round(time.time() - t0, 1))
 
 

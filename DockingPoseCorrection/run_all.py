@@ -11,7 +11,7 @@ Example (Linux / macOS / WSL):
         --pdbbind-dir /data/PDBbind_v2020 \     # optional: local PDBbind (otherwise structures come from the RCSB PDB)
         --posebusters /data/posebusters_paper_data \   # folder that contains posebusters_benchmark_set/
         --work        /data/dpc_work \
-        --workers 8
+        --workers 30            # i9-13900: 32 threads; training uses the GPU automatically
 """
 import argparse, os, sys, subprocess, json, glob, shutil, time
 from concurrent.futures import ThreadPoolExecutor
@@ -48,7 +48,10 @@ def main():
     ap.add_argument("--work", required=True, help="working folder for structures, docking output and models (~30 GB)")
     ap.add_argument("--misato-h5", help="local MISATO MD.hdf5 (recommended if you have it)")
     ap.add_argument("--pdbbind-dir", help="local PDBbind folder (recommended if you have it)")
-    ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 1))
+    ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 2),
+                    help="CPU processes for docking, MISATO and PoseBusters (default: all threads minus 2)")
+    ap.add_argument("--gpu-jobs", type=int, default=4, help="models trained at the same time on the GPU (default 4)")
+    ap.add_argument("--cpu-only", action="store_true", help="do not use the GPU for training")
     ap.add_argument("--skip-splits", action="store_true", help="skip the three alternative splits (G7, ~2 h)")
     ap.add_argument("--no-latex", action="store_true", help="do not compile the paper")
     a = ap.parse_args()
@@ -67,6 +70,16 @@ def main():
     for p in (a.lp_csv, misato_dir, f"{pb}/posebusters_benchmark_set"):
         if not os.path.exists(p):
             sys.exit(f"not found: {p}")
+    try:
+        import torch
+        gpu = torch.cuda.is_available() and not a.cpu_only
+        gpu_name = torch.cuda.get_device_name(0) if gpu else "none"
+    except Exception:
+        gpu, gpu_name = False, "none"
+    if a.cpu_only:
+        env["DPC_DEVICE"] = "cpu"
+    n_train = a.gpu_jobs if gpu else a.workers
+    log(f"GPU for training: {gpu_name}; {n_train} models in parallel")
     log(f"work folder {W}; {a.workers} workers; PDBbind {'local' if a.pdbbind_dir else 'RCSB'}; MISATO {'local' if a.misato_h5 else 'remote'}")
 
     # 1 manifest + structures
@@ -105,7 +118,7 @@ def main():
     jobs = [["train.py", feats, runs, ar, s] for ar in ARCHS for s in SEEDS if not os.path.exists(f"{runs}/{ar}_s{s}.pkl")]
     if jobs:
         log(f"   training {len(jobs)} models")
-        parallel(jobs, a.workers, env)
+        parallel(jobs, n_train, env)
 
     # 5 evaluation and chemical-validity audit
     if not os.path.exists(f"{res}/eval.json"):
@@ -131,7 +144,7 @@ def main():
             log(f"7/8 alternative split {salt}")
             D = f"{W}/split_{salt}"; os.makedirs(f"{D}/runs", exist_ok=True); os.makedirs(f"{D}/res", exist_ok=True)
             run(["resplit.py", feats, man, salt, f"{D}/feats.pkl"], env=env)
-            parallel([["train.py", f"{D}/feats.pkl", f"{D}/runs", arch, s] for s in SEEDS if not os.path.exists(f"{D}/runs/{arch}_s{s}.pkl")], a.workers, env)
+            parallel([["train.py", f"{D}/feats.pkl", f"{D}/runs", arch, s] for s in SEEDS if not os.path.exists(f"{D}/runs/{arch}_s{s}.pkl")], n_train, env)
             run(["evaluate.py", f"{D}/feats.pkl", f"{D}/runs", f"{D}/res"], env=dict(env, ONLY_ARCH=arch), quiet=True)
             e2 = dict(env, ONLY_TEST="1")
             parallel([["audit.py", f"{D}/feats.pkl", f"{D}/runs", arch, docked, data, pb, f"{D}/audit_{w}.csv", w, a.workers] for w in range(a.workers)], a.workers, e2)

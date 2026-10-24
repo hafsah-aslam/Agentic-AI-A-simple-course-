@@ -130,7 +130,7 @@ def rotation_audit(feats_path, runs_dir, arch):
     rng = np.random.default_rng(5)
     disc = []
     for seed in SEEDS:
-        m = PoseCorrector(arch); m.load_state_dict(torch.load(f"{runs_dir}/{arch}_s{seed}.pt")); m.eval()
+        m = PoseCorrector(arch); m.load_state_dict(torch.load(f"{runs_dir}/{arch}_s{seed}.pt", map_location="cpu")); m.to(T.DEVICE).eval()
         base = T.predict(m, items, pp)
         rots = [T.random_rotation(rng) for _ in items]
         rot = T.predict(m, items, pp, rots=rots)
