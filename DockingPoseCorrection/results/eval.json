@@ -249,11 +249,28 @@
     }
   },
   "permutation_test": {
-    "r": 0.06251672190984454,
-    "p_two_sided": 1.0,
-    "permutations": 10000,
-    "complexes": 1200,
-    "atoms": 31706
+    "nearest_pocket_ca": {
+      "r": 0.06251672190984454,
+      "null_mean_r": 0.09504772616498183,
+      "null_sd_r": 0.0033528869935219594,
+      "p_two_sided_centred": 9.999000099990002e-05,
+      "p_upper": 1.0,
+      "p_two_sided_naive_abs": 1.0,
+      "permutations": 10000,
+      "complexes": 1200,
+      "atoms": 31706
+    },
+    "pocket_centroid": {
+      "r": 0.2665575880671928,
+      "null_mean_r": 0.0894737497871043,
+      "null_sd_r": 0.0031978586671809256,
+      "p_two_sided_centred": 9.999000099990002e-05,
+      "p_upper": 9.999000099990002e-05,
+      "p_two_sided_naive_abs": 9.999000099990002e-05,
+      "permutations": 10000,
+      "complexes": 1200,
+      "atoms": 31706
+    }
   },
   "rotation_audit": {
     "n": 50,
