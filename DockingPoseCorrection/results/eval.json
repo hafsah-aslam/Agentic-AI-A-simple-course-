@@ -1,0 +1,266 @@
+{
+  "cohort_sizes": {
+    "train": 1200,
+    "val": 400,
+    "test": 400,
+    "external": 428
+  },
+  "selection": {
+    "per_seed_val_mse_reduction": {
+      "MLP": [
+        16.173106401624874,
+        16.006485503744198,
+        16.627077484704564,
+        15.992435927181168,
+        16.443317359044283
+      ],
+      "GNN": [
+        16.324201052081158,
+        16.03205665297662,
+        16.541692972935454,
+        15.996106110149825,
+        16.182254301741335
+      ],
+      "Hypergraph": [
+        16.280293550450576,
+        15.914280377595478,
+        16.50520770787552,
+        15.977088251712521,
+        16.195884454122876
+      ],
+      "Transformer": [
+        16.494037379061616,
+        16.399958826173997,
+        17.204704434386002,
+        16.288152717638972,
+        16.823674813592966
+      ]
+    },
+    "mean": {
+      "MLP": 16.248484535259816,
+      "GNN": 16.21526221797688,
+      "Hypergraph": 16.174550868351396,
+      "Transformer": 16.642105634170708
+    },
+    "selected": "Transformer",
+    "anova": {
+      "F": 2.9027790097435546,
+      "p": 0.06706465302809192
+    },
+    "paired_t_vs_selected": {
+      "MLP": {
+        "t": 7.960213185445822,
+        "p": 0.0013492352194954564
+      },
+      "GNN": {
+        "t": 4.384914582090717,
+        "p": 0.011829441078281306
+      },
+      "Hypergraph": {
+        "t": 5.090692045518698,
+        "p": 0.007028062010243168
+      }
+    }
+  },
+  "gate": {
+    "stage_a_pearson": 0.37640573081832973,
+    "stage_a_pass": true,
+    "tau": 1.5729705095291138,
+    "val_net_success_pp": 0.1,
+    "admit_rate": {
+      "val": 2.9000000000000004,
+      "test": 2.7,
+      "external": 1.2616822429906542
+    },
+    "mean_sigma": {
+      "val": 2.4708531323075293,
+      "test": 2.371797964096069,
+      "external": 2.498490630967595
+    },
+    "mean_baseline_rmsd": {
+      "val": 3.7762528409685645,
+      "test": 3.779789131142736,
+      "external": 3.15057626109332
+    }
+  },
+  "baseline_rmsd_control_gate": {
+    "apply_if_rmsd_le_t": {
+      "best_val_net_success_pp": 0.0,
+      "threshold": null
+    },
+    "apply_if_rmsd_ge_t": {
+      "best_val_net_success_pp": 0.15,
+      "threshold": 2.0550402204378355
+    }
+  },
+  "heldout": {
+    "val": {
+      "n_complexes": 400,
+      "n_rows": 2000,
+      "mse_reduction_ungated": 16.64210563417071,
+      "mse_reduction_gated": 0.003690237035942381,
+      "mse_reduction_ungated_per_seed": [
+        16.494037379061616,
+        16.399958826173997,
+        17.204704434386002,
+        16.288152717638972,
+        16.823674813592966
+      ],
+      "ungated": {
+        "baseline_success": 44.0,
+        "success": 25.650000000000002,
+        "net_change_pp": -18.35,
+        "seed_t_ci_pp": [
+          -26.7616435686675,
+          -9.938356431332508
+        ],
+        "bootstrap_ci_pp": [
+          -21.55,
+          -15.15
+        ]
+      },
+      "gated": {
+        "baseline_success": 44.0,
+        "success": 44.1,
+        "net_change_pp": 0.1,
+        "seed_t_ci_pp": [
+          -0.07002184516456392,
+          0.2700218451645639
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.30000000000000004
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 510,
+        "harm": 370,
+        "rescue": 3,
+        "persistent_failure": 1117
+      },
+      "transitions_gated": {
+        "preservation": 880,
+        "harm": 0,
+        "rescue": 2,
+        "persistent_failure": 1118
+      }
+    },
+    "test": {
+      "n_complexes": 400,
+      "n_rows": 2000,
+      "mse_reduction_ungated": 18.159052167656977,
+      "mse_reduction_gated": 0.03777879229552338,
+      "mse_reduction_ungated_per_seed": [
+        17.85470524429291,
+        18.870293537066512,
+        18.014855460638703,
+        18.00687378023135,
+        18.048532816055424
+      ],
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 25.15,
+        "net_change_pp": -16.35,
+        "seed_t_ci_pp": [
+          -23.27234638963599,
+          -9.42765361036401
+        ],
+        "bootstrap_ci_pp": [
+          -19.450000000000003,
+          -13.200000000000001
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.5,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 501,
+        "harm": 329,
+        "rescue": 2,
+        "persistent_failure": 1168
+      },
+      "transitions_gated": {
+        "preservation": 830,
+        "harm": 0,
+        "rescue": 0,
+        "persistent_failure": 1170
+      }
+    },
+    "external": {
+      "n_complexes": 428,
+      "n_rows": 2140,
+      "mse_reduction_ungated": 11.25761847272496,
+      "mse_reduction_gated": 0.0006050098558847698,
+      "mse_reduction_ungated_per_seed": [
+        11.652020319676284,
+        11.314440619256212,
+        12.19225484901463,
+        8.02474593768385,
+        13.104630637993827
+      ],
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 35.280373831775705,
+        "net_change_pp": -19.158878504672895,
+        "seed_t_ci_pp": [
+          -27.546975789029844,
+          -10.770781220315957
+        ],
+        "bootstrap_ci_pp": [
+          -22.38317757009346,
+          -16.02803738317757
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 750,
+        "harm": 415,
+        "rescue": 5,
+        "persistent_failure": 970
+      },
+      "transitions_gated": {
+        "preservation": 1165,
+        "harm": 0,
+        "rescue": 0,
+        "persistent_failure": 975
+      }
+    }
+  },
+  "permutation_test": {
+    "r": 0.06251672190984454,
+    "p_two_sided": 1.0,
+    "permutations": 10000,
+    "complexes": 1200,
+    "atoms": 31706
+  },
+  "rotation_audit": {
+    "n": 50,
+    "mean": 0.6769484496116638,
+    "median": 0.6728840172290802,
+    "p95": 1.152918070554733,
+    "max": 1.3354377746582031
+  },
+  "metric_identity_abs_error": 2.220446049250313e-16
+}
