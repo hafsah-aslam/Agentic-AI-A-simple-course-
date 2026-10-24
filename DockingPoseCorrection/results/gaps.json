@@ -35,11 +35,11 @@
         ]
       },
       "validity": {
-        "pass_baseline": 97.75,
+        "pass_baseline": 98.5,
         "pass_ungated": 0.6,
-        "pass_gated": 95.39999999999999,
-        "newly_invalid_ungated": 99.38618925831202,
-        "newly_invalid_gated": 2.4040920716112533
+        "pass_gated": 96.15,
+        "newly_invalid_ungated": 99.39086294416244,
+        "newly_invalid_gated": 2.3857868020304567
       }
     },
     "external": {
@@ -115,11 +115,11 @@
         ]
       },
       "validity": {
-        "pass_baseline": 97.75,
+        "pass_baseline": 98.5,
         "pass_ungated": 0.6,
-        "pass_gated": 95.55,
-        "newly_invalid_ungated": 99.38618925831202,
-        "newly_invalid_gated": 2.2506393861892584
+        "pass_gated": 96.3,
+        "newly_invalid_ungated": 99.39086294416244,
+        "newly_invalid_gated": 2.233502538071066
       }
     },
     "external": {
@@ -181,10 +181,10 @@
         },
         "mse_reduction_gated": 0.0033851515934973275,
         "validity": {
-          "pass_baseline": 97.75,
+          "pass_baseline": 98.5,
           "pass_ungated": 0.6,
-          "pass_gated": 97.75,
-          "newly_invalid_ungated": 99.38618925831202,
+          "pass_gated": 98.5,
+          "newly_invalid_ungated": 99.39086294416244,
           "newly_invalid_gated": 0.0
         }
       },
@@ -205,10 +205,10 @@
         },
         "mse_reduction_gated": 0.005184673149096419,
         "validity": {
-          "pass_baseline": 97.75,
+          "pass_baseline": 98.5,
           "pass_ungated": 0.6,
-          "pass_gated": 97.75,
-          "newly_invalid_ungated": 99.38618925831202,
+          "pass_gated": 98.5,
+          "newly_invalid_ungated": 99.39086294416244,
           "newly_invalid_gated": 0.0
         }
       }
@@ -300,10 +300,10 @@
         ]
       },
       "validity": {
-        "pass_baseline": 97.75,
-        "pass_ungated": 88.75,
-        "pass_gated": 97.75,
-        "newly_invalid_ungated": 9.207161125319693,
+        "pass_baseline": 98.5,
+        "pass_ungated": 89.45,
+        "pass_gated": 98.5,
+        "newly_invalid_ungated": 9.18781725888325,
         "newly_invalid_gated": 0.0
       }
     },
@@ -376,9 +376,9 @@
         ]
       },
       "validity": {
-        "pass_baseline": 97.75,
+        "pass_baseline": 98.5,
         "pass_ungated": 0.0,
-        "pass_gated": 97.75,
+        "pass_gated": 98.5,
         "newly_invalid_ungated": 100.0,
         "newly_invalid_gated": 0.0
       }
@@ -444,9 +444,9 @@
         ]
       },
       "validity": {
-        "pass_baseline": 97.75,
-        "pass_ungated": 97.75,
-        "pass_gated": 97.75,
+        "pass_baseline": 98.5,
+        "pass_ungated": 98.5,
+        "pass_gated": 98.5,
         "newly_invalid_ungated": 0.0,
         "newly_invalid_gated": 0.0
       }

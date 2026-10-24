@@ -1,0 +1,137 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\emailauthor{ghsun@mail.dhu.edu.cn}{S.~Guohao\corref {cor1}}
+\Newlabel{cor1}{1}
+\Newlabel{dhu}{a}
+\citation{trott2010vina,eberhardt2021vina,pagadala2017review}
+\citation{buttenschoen2024posebusters}
+\citation{mwamughunda2026original}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\citation{meng1992dock,morris2009autodock4,trott2010vina}
+\citation{eberhardt2021vina}
+\citation{wang2004pdbbind,wang2005pdbbind_update}
+\citation{li2023lppdbbind}
+\citation{siebenmorgen2024misato}
+\citation{stark2022equibind,corso2023diffdock,pei2023fabind}
+\citation{jumper2021alphafold,abramson2024af3}
+\citation{buttenschoen2024posebusters}
+\citation{morehead2026posebench,errington2025interaction,li2025limits,gu2025vs}
+\citation{kendall2017uncertainty}
+\citation{lakshminarayanan2017ensembles}
+\citation{guo2017calibration,kuleshov2018calibrated}
+\citation{ovadia2019shift,quinonero2009shift}
+\citation{rayka2025uq}
+\citation{vovk2005alrw}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{3}{section.2}\protected@file@percent }
+\citation{berman2000pdb}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Materials and methods}{4}{section.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Methodology. Column 1 builds the leakage-controlled cohorts, column 2 docks each complex and builds its representation, column 3 trains the dual-head correction model, applies the frozen confidence gate and evaluates every pose on three axes. The band lists the new analyses G1--G7 (G8, the deformation analysis, is in Section~\ref {sec:results}).}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:method}{{1}{4}{Methodology. Column 1 builds the leakage-controlled cohorts, column 2 docks each complex and builds its representation, column 3 trains the dual-head correction model, applies the frozen confidence gate and evaluates every pose on three axes. The band lists the new analyses G1--G7 (G8, the deformation analysis, is in Section~\ref {sec:results})}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Datasets and eligibility}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Internal pool.}{4}{section*.1}\protected@file@percent }
+\citation{buttenschoen2024posebusters}
+\citation{riniker2015etkdg,halgren1996mmff}
+\citation{oboyle2011openbabel}
+\@writefile{toc}{\contentsline {paragraph}{External cohort.}{5}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Leakage-controlled manifest.}{5}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Docking and atom matching}{5}{subsection.3.2}\protected@file@percent }
+\citation{kabsch1976}
+\citation{gilmer2017mpnn}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Pocket representation and MISATO flexibility}{6}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Correction model and uncertainty}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Confidence gate}{7}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Evaluation}{7}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Statistical validation.}{7}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}New analyses (G1--G7)}{8}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:gaps}{{3.7}{8}{New analyses (G1--G7)}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Deviations from the original protocol}{8}{subsection.3.8}\protected@file@percent }
+\newlabel{sec:deviations}{{3.8}{8}{Deviations from the original protocol}{subsection.3.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{9}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{9}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Cohorts and docking baseline}{9}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Architecture selection}{9}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Validation-only architecture selection: mean pooled MSE reduction over five seeds (dots: seeds).}}{10}{figure.2}\protected@file@percent }
+\newlabel{fig:selection}{{2}{10}{Validation-only architecture selection: mean pooled MSE reduction over five seeds (dots: seeds)}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Statistical validation}{10}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}RMSD-threshold outcomes}{10}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Left: RMSD\,$<$\,2\,\r A{} success of the Vina baseline, ungated and gated correction, with net change and bootstrap 95\% CI. Right: transition classes (share of seed--complex rows).}}{11}{figure.3}\protected@file@percent }
+\newlabel{fig:rmsd}{{3}{11}{Left: RMSD\,$<$\,2\Ang {} success of the Vina baseline, ungated and gated correction, with net change and bootstrap 95\% CI. Right: transition classes (share of seed--complex rows)}{figure.3}{}}
+\newlabel{fig:transitions}{{3}{11}{Left: RMSD\,$<$\,2\Ang {} success of the Vina baseline, ungated and gated correction, with net change and bootstrap 95\% CI. Right: transition classes (share of seed--complex rows)}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Confidence gate}{11}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Chemical validity}{11}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Left: PoseBusters pass rate (bootstrap 95\% CI). Right: rate at which correction invalidates a valid baseline.}}{12}{figure.4}\protected@file@percent }
+\newlabel{fig:validity}{{4}{12}{Left: PoseBusters pass rate (bootstrap 95\% CI). Right: rate at which correction invalidates a valid baseline}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Left: invalidity of corrected poses within each RMSD transition class. Right: failure rate of each PoseBusters check after ungated correction (bars) against the baseline (ticks); checks below 1\% are omitted.}}{12}{figure.5}\protected@file@percent }
+\newlabel{fig:cross}{{5}{12}{Left: invalidity of corrected poses within each RMSD transition class. Right: failure rate of each PoseBusters check after ungated correction (bars) against the baseline (ticks); checks below 1\% are omitted}{figure.5}{}}
+\newlabel{fig:checks}{{5}{12}{Left: invalidity of corrected poses within each RMSD transition class. Right: failure rate of each PoseBusters check after ungated correction (bars) against the baseline (ticks); checks below 1\% are omitted}{figure.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{The conversion artifact.}{13}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Why correction destroys chemistry (G3, G8)}{13}{subsection.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (a) Radius-of-gyration ratio of corrected to docked ligands (lines) and of crystal to docked ligands (shaded). (b) RMSD change after correction against baseline RMSD (seed 0); dashed line: 2\,\r A.}}{14}{figure.6}\protected@file@percent }
+\newlabel{fig:shrink}{{6}{14}{(a) Radius-of-gyration ratio of corrected to docked ligands (lines) and of crystal to docked ligands (shaded). (b) RMSD change after correction against baseline RMSD (seed 0); dashed line: 2\Ang }{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Alternative decision rules (G1, G2, G4)}{14}{subsection.4.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Held-out success change against PoseBusters pass rate for the original gate and the new decision rules.}}{15}{figure.7}\protected@file@percent }
+\newlabel{fig:gates}{{7}{15}{Held-out success change against PoseBusters pass rate for the original gate and the new decision rules}{figure.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Sequence-level leakage (G5)}{15}{subsection.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.10}Uncertainty shift (G6)}{15}{subsection.4.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Distribution of mean predicted $\sigma $ per complex by cohort; dashed line: frozen threshold $\tau $.}}{16}{figure.8}\protected@file@percent }
+\newlabel{fig:sigma}{{8}{16}{Distribution of mean predicted $\sigma $ per complex by cohort; dashed line: frozen threshold $\tau $}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11}Split-to-split variance (G7)}{16}{subsection.4.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Original split and three alternative group-aware splits.}}{16}{figure.9}\protected@file@percent }
+\newlabel{fig:splits}{{9}{16}{Original split and three alternative group-aware splits}{figure.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12}Comparison with the original study}{17}{subsection.4.12}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Headline results of the original study and of this reproduction (internal\,/\,external where two values are given).}}{17}{table.1}\protected@file@percent }
+\newlabel{tab:compare}{{1}{17}{Headline results of the original study and of this reproduction (internal\,/\,external where two values are given)}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{17}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{17}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Interpretation of findings.}{17}{section*.6}\protected@file@percent }
+\citation{buttenschoen2024posebusters}
+\citation{mwamughunda2026original}
+\citation{corso2023diffdock}
+\@writefile{toc}{\contentsline {paragraph}{Relation to the research questions.}{18}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Relation to prior work.}{18}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Explanation of unexpected results.}{18}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Theoretical implications.}{18}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Practical implications.}{19}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{19}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Future research.}{19}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{19}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{19}{Conclusion}{section.6}{}}
+\bibstyle{elsarticle-harv}
+\bibdata{refs}
+\bibcite{abramson2024af3}{{1}{2024}{{Abramson et~al.}}{{Abramson, Adler, Dunger et~al.}}}
+\bibcite{berman2000pdb}{{2}{2000}{{Berman et~al.}}{{Berman, Westbrook, Feng, Gilliland, Bhat, Weissig, Shindyalov and Bourne}}}
+\bibcite{buttenschoen2024posebusters}{{3}{2024}{{Buttenschoen et~al.}}{{Buttenschoen, Morris and Deane}}}
+\bibcite{corso2023diffdock}{{4}{2023}{{Corso et~al.}}{{Corso, St{\"a}rk, Jing, Barzilay and Jaakkola}}}
+\bibcite{eberhardt2021vina}{{5}{2021}{{Eberhardt et~al.}}{{Eberhardt, Santos-Martins, Tillack and Forli}}}
+\bibcite{errington2025interaction}{{6}{2025}{{Errington et~al.}}{{Errington, Schneider, Bouysset and Dreyer}}}
+\bibcite{gilmer2017mpnn}{{7}{2017}{{Gilmer et~al.}}{{Gilmer, Schoenholz, Riley, Vinyals and Dahl}}}
+\bibcite{gu2025vs}{{8}{2025}{{Gu et~al.}}{{Gu, Shen, Zhang et~al.}}}
+\bibcite{guo2017calibration}{{9}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun and Weinberger}}}
+\bibcite{halgren1996mmff}{{10}{1996}{{Halgren}}{{}}}
+\bibcite{jumper2021alphafold}{{11}{2021}{{Jumper et~al.}}{{Jumper, Evans, Pritzel et~al.}}}
+\bibcite{kabsch1976}{{12}{1976}{{Kabsch}}{{}}}
+\bibcite{kendall2017uncertainty}{{13}{2017}{{Kendall and Gal}}{{}}}
+\bibcite{kuleshov2018calibrated}{{14}{2018}{{Kuleshov et~al.}}{{Kuleshov, Fenner and Ermon}}}
+\bibcite{lakshminarayanan2017ensembles}{{15}{2017}{{Lakshminarayanan et~al.}}{{Lakshminarayanan, Pritzel and Blundell}}}
+\bibcite{li2023lppdbbind}{{16}{2023}{{Li et~al.}}{{Li, Guan, Zhang, Sun, Wang, Bagni and Head-Gordon}}}
+\bibcite{li2025limits}{{17}{2025}{{Li et~al.}}{{Li, Yi, Li et~al.}}}
+\bibcite{meng1992dock}{{18}{1992}{{Meng et~al.}}{{Meng, Shoichet and Kuntz}}}
+\bibcite{morehead2026posebench}{{19}{2026}{{Morehead et~al.}}{{Morehead, Giri, Liu, Neupane and Cheng}}}
+\bibcite{morris2009autodock4}{{20}{2009}{{Morris et~al.}}{{Morris, Huey, Lindstrom, Sanner, Belew, Goodsell and Olson}}}
+\bibcite{mwamughunda2026original}{{21}{2026}{{Mwamughunda et~al.}}{{Mwamughunda, Guohao and Aslam}}}
+\bibcite{oboyle2011openbabel}{{22}{2011}{{O'Boyle et~al.}}{{O'Boyle, Banck, James, Morley, Vandermeersch and Hutchison}}}
+\bibcite{ovadia2019shift}{{23}{2019}{{Ovadia et~al.}}{{Ovadia, Fertig, Ren et~al.}}}
+\bibcite{pagadala2017review}{{24}{2017}{{Pagadala et~al.}}{{Pagadala, Syed and Tuszynski}}}
+\bibcite{pei2023fabind}{{25}{2023}{{Pei et~al.}}{{Pei, Gao, Wu et~al.}}}
+\bibcite{quinonero2009shift}{{26}{2009}{{Qui{\~n}onero-Candela et~al.}}{{Qui{\~n}onero-Candela, Sugiyama, Schwaighofer and Lawrence}}}
+\bibcite{rayka2025uq}{{27}{2025}{{Rayka and Naghavi}}{{}}}
+\bibcite{riniker2015etkdg}{{28}{2015}{{Riniker and Landrum}}{{}}}
+\bibcite{siebenmorgen2024misato}{{29}{2024}{{Siebenmorgen et~al.}}{{Siebenmorgen, Menezes, Benassou et~al.}}}
+\bibcite{stark2022equibind}{{30}{2022}{{St{\"a}rk et~al.}}{{St{\"a}rk, Ganea, Pattanaik, Barzilay and Jaakkola}}}
+\bibcite{trott2010vina}{{31}{2010}{{Trott and Olson}}{{}}}
+\bibcite{vovk2005alrw}{{32}{2005}{{Vovk et~al.}}{{Vovk, Gammerman and Shafer}}}
+\bibcite{wang2004pdbbind}{{33}{2004}{{Wang et~al.}}{{Wang, Fang, Lu and Wang}}}
+\bibcite{wang2005pdbbind_update}{{34}{2005}{{Wang et~al.}}{{Wang, Fang, Lu, Yang and Wang}}}
+\gdef \@abspage@last{23}

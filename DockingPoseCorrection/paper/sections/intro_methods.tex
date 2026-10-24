@@ -57,6 +57,14 @@ fraction of cases admitted rather than an absolute score.
 The pipeline (Fig.~\ref{fig:method}) follows the original protocol stage by stage. All stages are deterministic given
 the released manifest and fixed seeds.
 
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{fig01_methodology.pdf}
+\caption{Methodology. Column 1 builds the leakage-controlled cohorts, column 2 docks each complex and builds its
+representation, column 3 trains the dual-head correction model, applies the frozen confidence gate and evaluates every
+pose on three axes. The band lists the new analyses G1--G7 (G8, the deformation analysis, is in Section~\ref{sec:results}).}
+\label{fig:method}
+\end{figure}
+
 \subsection{Datasets and eligibility}
 \paragraph{Internal pool.} The PDBbind\,v2020 P-L set (19{,}443 complexes, as distributed in LP-PDBBind) was intersected
 with the MISATO MD identifier lists (train, validation and test files; 16{,}972 identifiers), giving \IntersectN{} shared

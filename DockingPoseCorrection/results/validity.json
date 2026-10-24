@@ -3,14 +3,14 @@
     "n_complexes": 400,
     "n_rows": 2000,
     "pass_baseline": {
-      "mean": 97.75,
+      "mean": 98.5,
       "seed_t_ci": [
-        97.75,
-        97.75
+        98.5,
+        98.5
       ],
       "bootstrap_ci": [
-        96.25,
-        99.0
+        97.25,
+        99.5
       ]
     },
     "pass_ungated": {
@@ -25,40 +25,40 @@
       ]
     },
     "pass_gated": {
-      "mean": 95.55,
+      "mean": 96.3,
       "seed_t_ci": [
-        93.80227246372968,
-        97.29772753627033
+        94.55227246372966,
+        98.04772753627032
       ],
       "bootstrap_ci": [
-        93.7,
-        97.19999999999999
+        94.65,
+        97.75
       ]
     },
-    "valid_baseline_rows": 1955,
+    "valid_baseline_rows": 1970,
     "newly_invalid_ungated": {
-      "mean": 99.38618925831202,
+      "mean": 99.39086294416244,
       "seed_t_ci": [
-        98.41775798423544,
-        100.3546205323886
+        98.42980551227424,
+        100.35192037605063
       ],
       "bootstrap_ci": [
-        98.9769820971867,
-        99.74424552429667
+        98.98477157360406,
+        99.74619289340102
       ]
     },
     "newly_invalid_gated": {
-      "mean": 2.2506393861892584,
+      "mean": 2.233502538071066,
       "seed_t_ci": [
-        0.4626828273449329,
-        4.038595945033584
+        0.4591598616544894,
+        4.007845214487642
       ],
       "bootstrap_ci": [
-        1.278772378516624,
-        3.324808184143223
+        1.3197969543147205,
+        3.3502538071065984
       ]
     },
-    "relative_reduction_pct": 97.73546062789501,
+    "relative_reduction_pct": 97.75280898876404,
     "invalid_rate_by_transition_ungated": {
       "preservation": {
         "n": 501,
@@ -80,7 +80,7 @@
     "check_failure_rate_pct": {
       "baseline": {
         "mol_pred_loaded": 0.0,
-        "mol_cond_loaded": 0.75,
+        "mol_cond_loaded": 0.0,
         "sanitization": 0.0,
         "inchi_convertible": 0.0,
         "all_atoms_connected": 0.0,
@@ -92,19 +92,19 @@
         "non-aromatic_ring_non-flatness": 0.5,
         "double_bond_flatness": 0.0,
         "internal_energy": 0.0,
-        "protein-ligand_maximum_distance": 0.75,
-        "minimum_distance_to_protein": 0.75,
-        "minimum_distance_to_organic_cofactors": 0.75,
-        "minimum_distance_to_inorganic_cofactors": 0.75,
-        "minimum_distance_to_waters": 0.75,
-        "volume_overlap_with_protein": 0.75,
-        "volume_overlap_with_organic_cofactors": 0.75,
-        "volume_overlap_with_inorganic_cofactors": 0.75,
-        "volume_overlap_with_waters": 0.75
+        "protein-ligand_maximum_distance": 0.0,
+        "minimum_distance_to_protein": 0.0,
+        "minimum_distance_to_organic_cofactors": 0.0,
+        "minimum_distance_to_inorganic_cofactors": 0.0,
+        "minimum_distance_to_waters": 0.0,
+        "volume_overlap_with_protein": 0.0,
+        "volume_overlap_with_organic_cofactors": 0.0,
+        "volume_overlap_with_inorganic_cofactors": 0.0,
+        "volume_overlap_with_waters": 0.0
       },
       "corrected": {
         "mol_pred_loaded": 0.0,
-        "mol_cond_loaded": 0.75,
+        "mol_cond_loaded": 0.0,
         "sanitization": 0.0,
         "inchi_convertible": 0.0,
         "all_atoms_connected": 0.0,
@@ -116,19 +116,19 @@
         "non-aromatic_ring_non-flatness": 0.8500000000000001,
         "double_bond_flatness": 0.0,
         "internal_energy": 89.4,
-        "protein-ligand_maximum_distance": 0.75,
-        "minimum_distance_to_protein": 23.45,
-        "minimum_distance_to_organic_cofactors": 1.35,
-        "minimum_distance_to_inorganic_cofactors": 0.75,
-        "minimum_distance_to_waters": 0.75,
-        "volume_overlap_with_protein": 3.5999999999999996,
-        "volume_overlap_with_organic_cofactors": 1.0,
-        "volume_overlap_with_inorganic_cofactors": 0.75,
-        "volume_overlap_with_waters": 0.75
+        "protein-ligand_maximum_distance": 0.0,
+        "minimum_distance_to_protein": 22.900000000000002,
+        "minimum_distance_to_organic_cofactors": 0.6,
+        "minimum_distance_to_inorganic_cofactors": 0.0,
+        "minimum_distance_to_waters": 0.0,
+        "volume_overlap_with_protein": 2.85,
+        "volume_overlap_with_organic_cofactors": 0.25,
+        "volume_overlap_with_inorganic_cofactors": 0.0,
+        "volume_overlap_with_waters": 0.0
       },
       "rigid": {
         "mol_pred_loaded": 0.0,
-        "mol_cond_loaded": 0.75,
+        "mol_cond_loaded": 0.0,
         "sanitization": 0.0,
         "inchi_convertible": 0.0,
         "all_atoms_connected": 0.0,
@@ -140,19 +140,19 @@
         "non-aromatic_ring_non-flatness": 0.5,
         "double_bond_flatness": 0.0,
         "internal_energy": 0.0,
-        "protein-ligand_maximum_distance": 0.75,
-        "minimum_distance_to_protein": 10.0,
-        "minimum_distance_to_organic_cofactors": 0.8999999999999999,
-        "minimum_distance_to_inorganic_cofactors": 0.8,
-        "minimum_distance_to_waters": 0.75,
-        "volume_overlap_with_protein": 0.8500000000000001,
-        "volume_overlap_with_organic_cofactors": 0.75,
-        "volume_overlap_with_inorganic_cofactors": 0.75,
-        "volume_overlap_with_waters": 0.75
+        "protein-ligand_maximum_distance": 0.0,
+        "minimum_distance_to_protein": 9.3,
+        "minimum_distance_to_organic_cofactors": 0.15,
+        "minimum_distance_to_inorganic_cofactors": 0.05,
+        "minimum_distance_to_waters": 0.0,
+        "volume_overlap_with_protein": 0.1,
+        "volume_overlap_with_organic_cofactors": 0.0,
+        "volume_overlap_with_inorganic_cofactors": 0.0,
+        "volume_overlap_with_waters": 0.0
       },
       "ensemble": {
         "mol_pred_loaded": 0.0,
-        "mol_cond_loaded": 0.75,
+        "mol_cond_loaded": 0.0,
         "sanitization": 0.0,
         "inchi_convertible": 0.0,
         "all_atoms_connected": 0.0,
@@ -164,19 +164,19 @@
         "non-aromatic_ring_non-flatness": 0.75,
         "double_bond_flatness": 0.0,
         "internal_energy": 92.0,
-        "protein-ligand_maximum_distance": 0.75,
-        "minimum_distance_to_protein": 21.75,
-        "minimum_distance_to_organic_cofactors": 1.5,
-        "minimum_distance_to_inorganic_cofactors": 0.75,
-        "minimum_distance_to_waters": 0.75,
-        "volume_overlap_with_protein": 3.25,
-        "volume_overlap_with_organic_cofactors": 1.0,
-        "volume_overlap_with_inorganic_cofactors": 0.75,
-        "volume_overlap_with_waters": 0.75
+        "protein-ligand_maximum_distance": 0.0,
+        "minimum_distance_to_protein": 21.25,
+        "minimum_distance_to_organic_cofactors": 0.75,
+        "minimum_distance_to_inorganic_cofactors": 0.0,
+        "minimum_distance_to_waters": 0.0,
+        "volume_overlap_with_protein": 2.5,
+        "volume_overlap_with_organic_cofactors": 0.25,
+        "volume_overlap_with_inorganic_cofactors": 0.0,
+        "volume_overlap_with_waters": 0.0
       },
       "ensemble_rigid": {
         "mol_pred_loaded": 0.0,
-        "mol_cond_loaded": 0.75,
+        "mol_cond_loaded": 0.0,
         "sanitization": 0.0,
         "inchi_convertible": 0.0,
         "all_atoms_connected": 0.0,
@@ -188,23 +188,23 @@
         "non-aromatic_ring_non-flatness": 0.5,
         "double_bond_flatness": 0.0,
         "internal_energy": 0.0,
-        "protein-ligand_maximum_distance": 0.75,
-        "minimum_distance_to_protein": 0.75,
-        "minimum_distance_to_organic_cofactors": 0.75,
-        "minimum_distance_to_inorganic_cofactors": 0.75,
-        "minimum_distance_to_waters": 0.75,
-        "volume_overlap_with_protein": 0.75,
-        "volume_overlap_with_organic_cofactors": 0.75,
-        "volume_overlap_with_inorganic_cofactors": 0.75,
-        "volume_overlap_with_waters": 0.75
+        "protein-ligand_maximum_distance": 0.0,
+        "minimum_distance_to_protein": 0.0,
+        "minimum_distance_to_organic_cofactors": 0.0,
+        "minimum_distance_to_inorganic_cofactors": 0.0,
+        "minimum_distance_to_waters": 0.0,
+        "volume_overlap_with_protein": 0.0,
+        "volume_overlap_with_organic_cofactors": 0.0,
+        "volume_overlap_with_inorganic_cofactors": 0.0,
+        "volume_overlap_with_waters": 0.0
       }
     },
     "pass_rate_variants_pct": {
-      "baseline": 97.75,
+      "baseline": 98.5,
       "corrected": 0.6,
-      "rigid": 88.75,
+      "rigid": 89.45,
       "ensemble": 0.0,
-      "ensemble_rigid": 97.75
+      "ensemble_rigid": 98.5
     },
     "obabel_artifact": {
       "complexes_failing_sanitization": 111,

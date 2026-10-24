@@ -1,0 +1,343 @@
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{siunitx}
+\graphicspath{{../figures/}}
+\input{numbers.tex}
+\newcommand{\Ang}{\,\AA}
+\newcommand{\ok}{\textcolor{green!45!black}{reproduced}}
+\newcommand{\partly}{\textcolor{orange!80!black}{partly}}
+\newcommand{\no}{\textcolor{red!70!black}{not reproduced}}
+
+\journal{a peer-reviewed journal}
+
+\begin{document}
+\begin{frontmatter}
+
+\title{Confidence-gated correction of docking poses revisited: an independent reproduction shows that learned error reduction comes from ligand collapse}
+
+\author[dhu]{G.~Mwamughunda}
+\author[dhu]{S.~Guohao\corref{cor1}}
+\ead{ghsun@mail.dhu.edu.cn}
+\author[dhu]{H.~Aslam}
+\cortext[cor1]{Corresponding author.}
+\affiliation[dhu]{organization={School of Computer Science and Technology, Donghua University},
+            city={Shanghai}, postcode={201620}, country={China}}
+
+\begin{abstract}
+Learned post-docking correction can lower coordinate error, but an earlier study showed that it can also push acceptable poses
+out of tolerance and destroy chemical validity, and that a confidence gate only partly prevents this. We rebuilt that study
+end to end from public sources: \IntersectN{} PDBbind/LP-PDBBind/MISATO complexes in a leakage-controlled manifest, the
+428-complex PoseBusters set as an external cohort, Vina docking, the original model and gate, and a full
+PoseBusters audit. The central claims reproduce, more strongly: ungated correction reduced pooled
+squared error by \MSEInt\% (internal) and \MSEExt\% (external), yet lowered 2\Ang{} success by \NetUngInt{} and \NetUngExt{}
+percentage points and left only \PassUngInt\% and \PassUngExt\% of poses chemically valid. New analyses explain why.
+Corrected ligands contract to a median \RgCorrInt{} of their docked radius of gyration, and \InternalShareInt\% of each
+correction is internal deformation; restricting the correction to a rigid motion preserves validity but removes all error
+reduction. Pooled error falls only because a few badly docked complexes dominate it; for the median complex it rises. The gate
+admitted almost nothing, failed its own correlation check on all three alternative splits, and the reported uncertainty
+shrinkage under distribution shift did not reproduce. \SeqNearPct\% of external complexes are near-identical in sequence to
+training proteins. Per-atom regression under a squared-error objective learns to collapse ligands; pose refinement should be
+evaluated per complex and constrained to chemically valid motions.
+\end{abstract}
+
+\begin{keyword}
+Molecular docking \sep pose refinement \sep reproducibility \sep uncertainty estimation \sep confidence gating \sep chemical validity \sep PoseBusters \sep dataset shift
+\end{keyword}
+\end{frontmatter}
+
+\input{sections/intro_methods.tex}
+
+\section{Results}\label{sec:results}
+
+\subsection{Cohorts and docking baseline}
+All \NInt{} internal-test and \NExt{} external complexes docked and matched (no atom-matching exclusions), giving
+\RowsInt{} and \RowsExt{} seed--complex rows. Vina rank-1 success (RMSD\,$<$\,2\Ang) was \BaseInt\% internally and
+\BaseExt\% externally, against 55.6\% and 60.7\% in the original study (Table~\ref{tab:compare}). The internal gap is the
+largest difference in inputs between the two studies and is consistent with the use of RCSB rather than PDBbind-prepared
+structures; mean baseline RMSD was \BaseRMSDVal{}, \BaseRMSDInt{} and \BaseRMSDExt\Ang{} for validation, internal test and
+external.
+
+\subsection{Architecture selection}
+On validation only, the four encoders reached almost identical pooled MSE reductions (Fig.~\ref{fig:selection}):
+MLP \SelMLP\%, GNN \SelGNN\%, hypergraph \SelHypergraph\% and transformer \SelTransformer\%. The transformer had the highest
+mean and was selected; paired seed-level $t$-tests favoured it over each alternative (MLP $p=\PMLP$, GNN $p=\PGNN$,
+hypergraph $p=\PHypergraph$), but the one-way ANOVA across all four was not significant ($F=\AnovaF$, $p=\AnovaP$). The
+original study selected the MLP. In both studies the spread between encoders is under one percentage point, so the choice of
+encoder is not what drives the outcomes below.
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.62\linewidth]{fig02_selection.pdf}
+\caption{Validation-only architecture selection: mean pooled MSE reduction over five seeds (dots: seeds).}
+\label{fig:selection}
+\end{figure}
+
+\subsection{Statistical validation}
+The training-only permutation test (\PermComplexes{} complexes, \PermAtoms{} heavy atoms, 10{,}000 permutations) depends on
+how ``pocket distance'' is defined, which the original study did not specify. Using the distance from each atom to the pocket
+centroid, the correlation with target displacement was $r=\PermRCen$ against a within-complex null mean of \PermNullCen{}
+($p=\PermPCen$, two-sided around the null mean). Using the distance to the nearest pocket C$\alpha$, it was $r=\PermRCa$,
+significantly \emph{below} its null mean of \PermNullCa{} ($p=\PermPCa$). Because within-complex shuffling preserves the
+between-complex association, the null is not centred at zero; a test that compares $|r|$ against $|r_{null}|$ would report
+$p=1$ for the second definition. The rotational audit (50 observations) gave a mean prediction discrepancy of \RotMean\Ang{}
+(median \RotMedian, 95th percentile \RotPct, maximum \RotMax\Ang), confirming that the cross-attention model is not rotation
+equivariant (original: 0.53\Ang{} mean). The metric identity held to \MetricId.
+
+\subsection{RMSD-threshold outcomes}
+Ungated correction reduced pooled MSE by \MSEInt\% internally (seed range \MSEIntMin--\MSEIntMax\%) and \MSEExt\% externally
+(\MSEExtMin--\MSEExtMax\%), but it lowered success from \BaseInt\% to \SuccUngInt\% internally (\NetUngInt{}\,pp; bootstrap
+95\% CI [\BootUngIntLo, \BootUngIntHi]) and from \BaseExt\% to \SuccUngExt\% externally (\NetUngExt{}\,pp; CI
+[\BootUngExtLo, \BootUngExtHi]; Fig.~\ref{fig:rmsd}). Both decreases are significant and much larger than the original
+internal decrease ($-3.6$\,pp), and the original external change was null. Harm dominated rescue among the transitions
+(Fig.~\ref{fig:transitions}): internally \TrUngIntHarm{} harmed versus \TrUngIntRescue{} rescued rows, externally
+\TrUngExtHarm{} versus \TrUngExtRescue.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.48\linewidth]{fig04_rmsd_success.pdf}\hfill
+\includegraphics[width=0.5\linewidth]{fig03_transitions.pdf}
+\caption{Left: RMSD\,$<$\,2\Ang{} success of the Vina baseline, ungated and gated correction, with net change and
+bootstrap 95\% CI. Right: transition classes (share of seed--complex rows).}
+\label{fig:rmsd}\label{fig:transitions}
+\end{figure}
+
+\subsection{Confidence gate}
+Stage~A passed narrowly: the validation correlation between mean $\sigma$ and baseline RMSD was \StageA{} (threshold 0.30).
+Stage~B selected $\tau=\Tau\Ang$, the smallest threshold reaching the maximum validation net success of \ValNet\,pp---the
+same value the original study reported---but this threshold admits only \AdmitVal\% of validation rows, \AdmitInt\% of
+internal-test rows and \AdmitExt\% of external rows (original: 24.15\%, 23.4\% and 55.5\%). The gated system is therefore
+almost identical to the baseline: gated success equalled baseline success in both cohorts (net \NetGatInt{} and
+\NetGatExt\,pp). The baseline-RMSD control gate reproduced the original observation that no ``correct only good poses''
+threshold helps (best net \CtrlLe\,pp), but the opposite rule---correct only poses with baseline RMSD $\ge$\,\CtrlGeT\Ang---
+reached \CtrlGe\,pp on validation, so on this split a baseline-quality signal (if it were available at inference) would
+outperform the learned uncertainty.
+
+\subsection{Chemical validity}
+Baseline poses passed all 22 PoseBusters checks in \PassBaseInt\% (internal) and \PassBaseExt\% (external) of rows. After
+ungated correction only \PassUngInt\% and \PassUngExt\% passed (Fig.~\ref{fig:validity}); among rows with a valid baseline,
+\NewInvUngInt\% and \NewInvUngExt\% became invalid. The gate kept \PassGatInt\% and \PassGatExt\% valid (newly invalid:
+\NewInvGatInt\% and \NewInvGatExt\%; relative reduction \RelRedInt\% and \RelRedExt\%), but only because it rarely fired.
+Validity loss was independent of the RMSD transition class: even among \emph{preserved} rows, \InvIntPreservation\% (internal)
+and \InvExtPreservation\% (external) of corrected poses were invalid (Fig.~\ref{fig:cross}). The failing checks were
+intramolecular (Fig.~\ref{fig:checks}): bond lengths (\ChkIntBondlengths\% of corrected internal poses), bond angles
+(\ChkIntBondangles\%), internal steric clash (\ChkIntInternalstericclash\%) and internal energy (\ChkIntInternalenergy\%);
+protein-distance failures were far less common (\ChkIntMinimumdistancetoprotein\%). Among \SpotN{} preserved-but-invalid
+internal poses (seed 0) the shortest bond shrank to a median \SpotBondMed\% of its docked length (minimum \SpotBondMin\%),
+and bond angles changed by up to \SpotAngleMax$^\circ$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.48\linewidth]{fig05_posebusters_pass.pdf}\hfill
+\includegraphics[width=0.48\linewidth]{fig06_newly_invalid.pdf}
+\caption{Left: PoseBusters pass rate (bootstrap 95\% CI). Right: rate at which correction invalidates a valid baseline.}
+\label{fig:validity}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.52\linewidth]{fig07_invalid_by_transition.pdf}\hfill
+\includegraphics[width=0.46\linewidth]{fig08_check_failures.pdf}
+\caption{Left: invalidity of corrected poses within each RMSD transition class. Right: failure rate of each PoseBusters
+check after ungated correction (bars) against the baseline (ticks); checks below 1\% are omitted.}
+\label{fig:cross}\label{fig:checks}
+\end{figure}
+
+\paragraph{The conversion artifact.} The original study traced many baseline sanitisation failures to nitrogen atoms with
+valence four and no formal charge introduced by PDBQT$\to$SDF conversion. Converting the same rank-1 poses with Open Babel
+reproduced it: \ObabelInt{} internal-test complexes (\ObabelAtomsInt{} such atoms) and \ObabelExt{} external complexes failed
+sanitisation, close to the original 150 and 4. Meeko's export, used for all analyses here, does not produce the artifact, so
+no repair was needed.
+
+\subsection{Why correction destroys chemistry (G3, G8)}
+Every predicted correction was decomposed into the rigid motion that best maps the docked pose onto the corrected pose and a
+residual internal deformation. The internal part made up a median \InternalShareInt\% (internal) and \InternalShareExt\%
+(external) of the correction's squared magnitude. Corrected ligands contracted to a median \RgCorrInt{} (interquartile range
+\RgCorrIntLo--\RgCorrIntHi) and \RgCorrExt{} of their docked radius of gyration, and \ContractedInt\% of internal rows shrank
+below 0.8, whereas crystal poses keep the docked size (median ratio \RgRefInt; Fig.~\ref{fig:shrink}a). When the correction
+was replaced by its rigid part (G3), validity was largely preserved (\PassRigidInt\% and \PassRigidExt\% passed), but the error
+reduction vanished (\GrMSEInt\% and \GrMSEExt\%), and the recalibrated gate admitted nothing. The pooled error reduction is
+therefore produced by contracting the ligand, not by moving it towards the crystal pose.
+
+Pooled MSE also hides who benefits. Contraction reduces the error of badly docked poses, whose atoms are far from the
+reference in all directions, but increases it for good poses (Fig.~\ref{fig:shrink}b). The median per-complex change in squared
+error was \MedianGainInt\% internally and \MedianGainExt\% externally---an \emph{increase}---while the pooled reduction was
+positive because a minority of high-error complexes dominates the pooled sum.
+
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{fig12_shrinkage.pdf}
+\caption{(a) Radius-of-gyration ratio of corrected to docked ligands (lines) and of crystal to docked ligands (shaded).
+(b) RMSD change after correction against baseline RMSD (seed 0); dashed line: 2\Ang.}
+\label{fig:shrink}
+\end{figure}
+
+\subsection{Alternative decision rules (G1, G2, G4)}
+None of the label-free decision rules produced a positive held-out success change (Fig.~\ref{fig:gates}). The quantile-matched
+gate (G1) fixed the admit fraction at the validation value (\GqQ\%) in each cohort, removing the absolute-scale dependence, but
+success did not change (net \GqGNetInt{} and \GqGNetExt\,pp) and external validity fell slightly (\GqPassGatExt\% against \GzPassGatExt\% for the frozen gate). The validity veto (G2) is
+deployable---PoseBusters needs no ground truth---but almost no corrected pose passed it (admit \VetoAdmitInt\% and
+\VetoAdmitExt\%), so it reduces to ``never correct''. The five-seed ensemble (G4) reduced pooled MSE slightly more than single
+models (\GeMSEInt\% and \GeMSEExt\%) and its spread correlated with baseline RMSD ($r=\GeStageA$, below the 0.30 Stage~A
+threshold), but averaging five contracting predictions produced invalid poses throughout (\PassEnsInt\% valid). A rigid
+ensemble kept validity (\PassEnsRigidInt\%) with negligible geometric effect.
+
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{fig09_gate_variants.pdf}
+\caption{Held-out success change against PoseBusters pass rate for the original gate and the new decision rules.}
+\label{fig:gates}
+\end{figure}
+
+\subsection{Sequence-level leakage (G5)}
+Although no PDB identifier is shared, \SeqExact{} external complexes contain a protein chain identical to a training chain and
+\SeqNear{} (\SeqNearPct\%) are near-identical (3-mer Jaccard $\ge$\,0.9). On these \SeqNearN{} complexes ungated correction
+reduced pooled MSE by \SeqNearMSE\%, against \SeqNovelMSE\% on the \SeqNovelN{} novel ones; RMSD-threshold harm was large in
+both groups (\SeqNearNet{} and \SeqNovelNet\,pp). PDB-identifier disjointness therefore overstates how ``external'' the
+PoseBusters cohort is for a PDBbind-trained model, and the external error reduction is concentrated on familiar proteins.
+
+\subsection{Uncertainty shift (G6)}
+The original study attributed weaker external gating to predicted $\sigma$ being about 32\% lower externally. Here the mean
+external $\sigma$ differed from validation by only \SigShiftExt\% (Kolmogorov--Smirnov $D=\KSExtD$, $p=\KSExtP$), while the
+internal test differed by \SigShiftInt\% ($D=\KSIntD$). The $\sigma$--RMSD correlation fell from \SigRVal{} (validation) to
+\SigRInt{} (internal) and \SigRExt{} (external), and $\sigma$ was essentially unrelated to the per-complex benefit of
+correcting (Spearman \SigGainVal, \SigGainInt, \SigGainExt). The gate fails here not because $\sigma$ shifts but because it
+ranks poses by how wrong they are, not by whether correcting them helps (Fig.~\ref{fig:sigma}).
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.6\linewidth]{fig10_sigma_shift.pdf}
+\caption{Distribution of mean predicted $\sigma$ per complex by cohort; dashed line: frozen threshold $\tau$.}
+\label{fig:sigma}
+\end{figure}
+
+\subsection{Split-to-split variance (G7)}
+Re-partitioning the internal pool three times with the same group-aware rule (Fig.~\ref{fig:splits}) left the main pattern
+intact: internal MSE reductions of \SAMSEInt, \SBMSEInt{} and \SCMSEInt\%, success changes of \SANetInt, \SBNetInt{} and
+\SCNetInt\,pp, and ungated validity below 1\%. The gate, however, depends on the split: Stage~A \SAPass{} ($r=\SAStageA$),
+\SBPass{} ($r=\SBStageA$) and \SCPass{} ($r=\SCStageA$) on the three alternatives, so on every alternative split no gate would
+have been deployed at all.
+
+\begin{figure}[H]
+\centering\includegraphics[width=\linewidth]{fig11_split_variance.pdf}
+\caption{Original split and three alternative group-aware splits.}
+\label{fig:splits}
+\end{figure}
+
+\subsection{Comparison with the original study}
+\begin{table}[H]
+\centering\small
+\caption{Headline results of the original study and of this reproduction (internal\,/\,external where two values are given).}
+\label{tab:compare}
+\begin{tabular}{@{}p{5.3cm}p{3.1cm}p{3.6cm}l@{}}
+\toprule
+Quantity & Original & Reproduction & Verdict \\
+\midrule
+ID intersection & 16{,}627 & \IntersectN & \ok \\
+Covalent exclusions & 651 & \CovalentN & \ok \\
+Vina success (\%) & 55.6 / 60.7 & \BaseInt{} / \BaseExt & \partly \\
+Selected encoder & MLP ($p_{\text{ANOVA}}=0.010$) & \SelArch{} ($p_{\text{ANOVA}}=\AnovaP$) & \no \\
+Pooled MSE reduction (\%) & 9.75 / 11.35 & \MSEInt{} / \MSEExt & \ok \\
+Ungated success change (pp) & $-3.6$ / n.s. & \NetUngInt{} / \NetUngExt & \partly \\
+Gate val.\ net success (pp) & +0.10 & +\ValNet & \ok \\
+Gate admit rate val / int / ext (\%) & 24.2 / 23.4 / 55.5 & \AdmitVal{} / \AdmitInt{} / \AdmitExt & \no \\
+External vs.\ validation $\sigma$ & $-32\%$ & \SigShiftExt\% & \no \\
+PoseBusters pass, baseline (\%) & 96.45 / 97.66 & \PassBaseInt{} / \PassBaseExt & \ok \\
+PoseBusters pass, ungated (\%) & 31.22 / 59.02 & \PassUngInt{} / \PassUngExt & \partly \\
+PoseBusters pass, gated (\%) & 89.04 / 83.64 & \PassGatInt{} / \PassGatExt & \partly \\
+Newly invalid, ungated (\%) & 67.6 / 39.9 & \NewInvUngInt{} / \NewInvUngExt & \partly \\
+Invalid within preserved class (\%) & 70.1 / 34.8 & \InvIntPreservation{} / \InvExtPreservation & \partly \\
+Permutation $r$ & 0.51 & \PermRCen{} (centroid) & \partly \\
+Rotation discrepancy, mean (\AA) & 0.53 & \RotMean & \ok \\
+Open Babel artifact (complexes) & 150 / 4 & \ObabelInt{} / \ObabelExt & \ok \\
+\bottomrule
+\end{tabular}
+\end{table}
+\noindent ``Partly'' marks results with the same direction and conclusion but a clearly different magnitude.
+
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Interpretation of findings.} The reproduction confirms the qualitative claims of the original study---continuous
+error falls while RMSD-threshold success and chemical validity fall with it---and shows that the effect is stronger and has a
+simple cause. The learned correction mostly contracts the ligand. Contraction lowers squared error for badly docked poses and
+for the pooled metric, but it breaks bonds and angles in nearly every pose and moves good poses out of tolerance.
+
+\paragraph{Relation to the research questions.} For Q1, the data pipeline, docking baseline, metric behaviour, rotation audit
+and conversion artifact reproduced closely; the selected encoder, the size of the RMSD harm, the gate's operating point and
+the uncertainty-shift explanation did not (Table~\ref{tab:compare}). For Q2, measuring the gaps was more productive than
+closing them: none of the label-free decision rules made correction beneficial, but the analyses located the failure in the
+correction itself rather than in the gate.
+
+\paragraph{Relation to prior work.} PoseBusters showed that learned docking can satisfy RMSD criteria with invalid chemistry
+\citep{buttenschoen2024posebusters}; the original study extended this to post-hoc correction
+\citep{mwamughunda2026original}. Our results add the mechanism: the conditional mean of atom positions under pose uncertainty
+lies inside the molecule, so a model trained with squared error (or a Gaussian likelihood, which shares its mean) learns to
+predict a contracted pose. This mirrors the regression-to-the-mean blurring familiar from deterministic structure predictors
+and is one reason generative docking methods sample poses instead of regressing them \citep{corso2023diffdock}. The external
+sequence overlap agrees with PoseBusters' observation that performance depends on similarity to the training proteins.
+
+\paragraph{Explanation of unexpected results.} Three differences from the original need explanation. First, the harm is larger
+here, plausibly because our docking baseline is worse (larger targets, more contraction) and because our encoder choice was
+not the original MLP; the effect persisted across all four encoders and three alternative splits, so it is not an artefact of
+one model. Second, the gate admitted almost nothing: with stronger harm, the validation net-success curve peaks at a very low
+admit fraction. Third, the uncertainty did not shrink externally, so the original explanation of weaker external gating does
+not transfer; the deeper problem is that $\sigma$ tracks how wrong a pose is, not whether correcting it helps.
+
+\paragraph{Theoretical implications.} Evaluating refinement by pooled MSE rewards contraction. A refinement objective should
+be defined over chemically valid poses---rigid-body motions, torsions, or a learned distribution over conformers---so that the
+optimum cannot leave the space of molecules. The decomposition into rigid and internal parts is a simple diagnostic that any
+coordinate-regression model can report.
+
+\paragraph{Practical implications.} For practitioners, a learned per-atom correction of this kind should not be applied to
+docking output without a validity check, and a validity veto is cheap and deployable. Gating on predicted uncertainty is not
+enough: on every alternative split the gate failed its own correlation check, and on the original split it chose to correct
+almost nothing. Reports of
+external performance should include sequence-level similarity to the training data, not only identifier overlap.
+
+\paragraph{Limitations.} Structures came from the RCSB PDB because PDBbind's curated files require registration; multi-residue
+ligands were therefore excluded and the internal docking baseline is weaker than in the original study. MISATO flexibility was
+mapped through our own registration because the original mapping was not specified. We ran one correction family (the original
+architecture and objective); other objectives may behave differently. Audits were performed on heavy-atom poses. Computing
+resources were a 4-core CPU without GPU, so seeds and splits were limited to those reported.
+
+\paragraph{Future research.} Natural next steps are correction models constrained to rigid and torsional motions, objectives
+that penalise bond-length and angle deviations, generative refinement that samples rather than averages, and gates trained
+directly on the per-complex benefit of correcting rather than on predicted error.
+
+\section{Conclusion}\label{sec:conclusion}
+Learned post-docking correction promises to fix docking errors, but an earlier study warned that it can also break poses and
+chemistry, and that a confidence gate only partly helps. We rebuilt that study independently from public data to test its
+claims and the gaps it left open.
+
+The main warnings hold, and more strongly. Applying the correction to every pose lowered pooled coordinate error but reduced
+docking success by about 16--19 percentage points and left fewer than 1\% of poses chemically valid.
+
+Our new analyses show why. The model learns to shrink each ligand towards its centre: this lowers the average error, because
+a few badly docked poses dominate it, but distorts bonds and harms good poses. Moving the ligand only as a rigid body keeps the
+chemistry valid but removes the benefit.
+
+The confidence gate did not solve this. It rarely corrected anything, failed its own check on all three alternative splits,
+and the reported uncertainty shift under distribution change did not reproduce.
+
+The takeaway is that pose refinement should be judged per complex, on validity as well as geometry, and built so that it can
+only produce real molecules.
+
+\section*{Data and code availability}
+All code, the frozen manifest and its hash, every result file and the scripts that regenerate each number (\texttt{numbers.tex})
+and figure in this paper are in the \texttt{DockingPoseCorrection} folder of the accompanying repository. Source data are public:
+LP-PDBBind, the MISATO identifier lists and trajectories (Zenodo record 7711953), the RCSB PDB, and the PoseBusters benchmark
+(Zenodo record 8278563).
+
+\section*{Declaration of generative AI use}
+The authors used an AI coding assistant (Claude, Anthropic) to implement the reproduction pipeline, run the experiments and draft
+the manuscript. The authors reviewed and are responsible for all content.
+
+\section*{Declaration of competing interest}
+The authors declare no competing interests.
+
+\bibliographystyle{elsarticle-harv}
+\bibliography{refs}
+\end{document}

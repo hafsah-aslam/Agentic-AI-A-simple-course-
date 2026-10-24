@@ -102,58 +102,53 @@ def methodology():
 
 
 def fig_selection(ev):
+    """Dot plot: every seed plus mean +- sd (differences are below 1 pp, so no zero-based bars)."""
     s = ev["selection"]; archs = list(s["mean"])
-    m = [s["mean"][a] for a in archs]; sd = [np.std(s["per_seed_val_mse_reduction"][a], ddof=1) for a in archs]
-    fig, ax = plt.subplots(figsize=(3.6, 2.6))
-    cols = [BLUE if a == s["selected"] else GREY for a in archs]
-    ax.bar(archs, m, 0.6, color=cols, edgecolor="white", zorder=2)
-    ax.errorbar(archs, m, yerr=sd, fmt="none", ecolor=INK, elinewidth=0.8, capsize=2.5, zorder=3)
+    fig, ax = plt.subplots(figsize=(3.9, 2.6))
     for i, a in enumerate(archs):
-        ax.scatter([i] * 5, s["per_seed_val_mse_reduction"][a], s=9, color=INK, zorder=4, alpha=0.6, linewidths=0)
-        lab = f"{m[i]:.2f}%"
-        if a != s["selected"]:
-            p = s["paired_t_vs_selected"][a]["p"]; lab += f"\np={p:.3f}"
-        ax.text(i, max(m[i] + sd[i], max(s["per_seed_val_mse_reduction"][a])) + 0.4, lab, ha="center", va="bottom", fontsize=6.8, color=INK)
+        v = np.array(s["per_seed_val_mse_reduction"][a]); col = BLUE if a == s["selected"] else GREY
+        ax.scatter(np.full(len(v), i) + np.linspace(-0.12, 0.12, len(v)), v, s=16, color=col, alpha=0.75, linewidths=0, zorder=3)
+        ax.errorbar(i + 0.28, v.mean(), yerr=v.std(ddof=1), fmt="o", color=INK, ms=4, capsize=2.5, lw=0.9, zorder=4)
+        lab = f"{v.mean():.2f}%" + ("" if a == s["selected"] else f"\np={s['paired_t_vs_selected'][a]['p']:.3f}")
+        ax.text(i, v.max() + 0.12, lab, ha="center", va="bottom", fontsize=6.6, color=INK)
+    ax.set_xticks(range(len(archs))); ax.set_xticklabels(archs, fontsize=7.5)
+    lo = min(min(v) for v in s["per_seed_val_mse_reduction"].values()); hi = max(max(v) for v in s["per_seed_val_mse_reduction"].values())
+    ax.set_ylim(lo - 0.3, hi + 0.7); ax.set_xlim(-0.5, len(archs) - 0.3)
     ax.set_ylabel("Validation MSE reduction (%)")
-    ax.axhline(0, color=INK2, lw=0.6)
     an = s.get("anova") or {}
-    ax.set_title(f"Validation-only selection (ANOVA F={an.get('F', float('nan')):.2f}, p={an.get('p', float('nan')):.3f})", fontsize=8)
+    ax.set_title(f"Seeds (dots), mean ± sd; ANOVA F={an.get('F', float('nan')):.2f}, p={an.get('p', float('nan')):.3f}", fontsize=7.4)
     ax.grid(axis="x", visible=False)
-    lo = min(0, min(min(v) for v in s["per_seed_val_mse_reduction"].values())) - 1
-    hi = max(max(v) for v in s["per_seed_val_mse_reduction"].values()) + 3
-    ax.set_ylim(lo, hi)
     save(fig, "fig02_selection")
-
 
 def fig_rmsd(ev):
     h = ev["heldout"]
-    fig, ax = plt.subplots(figsize=(3.8, 2.7))
+    fig, ax = plt.subplots(figsize=(3.9, 2.9))
     groups = ["Internal test", "External"]
     vals = [[h[c]["ungated"]["baseline_success"], h[c]["ungated"]["success"], h[c]["gated"]["success"]] for c in ("test", "external")]
     bars(ax, groups, ["Vina baseline", "Ungated", "Gated"], vals, [GREY, BLUE, ORANGE], ylim=(0, 100))
     for g, c in enumerate(("test", "external")):
-        for k, (key, off) in enumerate((("ungated", 0), ("gated", 1))):
-            lo, hi = h[c][key]["bootstrap_ci_pp"]
-            ax.text(g + (k - 0.0) * 0.27, 6, f"Δ {h[c][key]['net_change_pp']:+.1f}\n[{lo:+.1f}, {hi:+.1f}]", ha="center", fontsize=5.8, color=INK, va="bottom")
+        u, q = h[c]["ungated"], h[c]["gated"]
+        txt = (f"ungated Δ {u['net_change_pp']:+.1f} [{u['bootstrap_ci_pp'][0]:+.1f}, {u['bootstrap_ci_pp'][1]:+.1f}]\n"
+               f"gated Δ {q['net_change_pp']:+.1f} [{q['bootstrap_ci_pp'][0]:+.1f}, {q['bootstrap_ci_pp'][1]:+.1f}]")
+        ax.text(g, 82, txt, ha="center", va="bottom", fontsize=6.0, color=INK, linespacing=1.4)
     ax.set_ylabel("RMSD < 2 Å success (%)")
     ax.legend(loc="upper center", ncol=3, fontsize=7, bbox_to_anchor=(0.5, 1.13))
     save(fig, "fig04_rmsd_success")
 
-
 def fig_transitions(ev):
     h = ev["heldout"]
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.4), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.5), sharey=True)
     keys = ["preservation", "harm", "rescue", "persistent_failure"]
     for ax, c, t in zip(axes, ("test", "external"), ("Internal test", "External")):
         u = [h[c]["transitions_ungated"][k] for k in keys]; g = [h[c]["transitions_gated"][k] for k in keys]
         n = sum(u)
         bars(ax, ["Preserved", "Harmed", "Rescued", "Persistent\nfailure"], ["Ungated", "Gated"],
-             [[100 * u[i] / n, 100 * g[i] / n] for i in range(4)], [BLUE, ORANGE], ylim=(0, 70))
+             [[100 * u[i] / n, 100 * g[i] / n] for i in range(4)], [BLUE, ORANGE], fmt="{:.0f}", ylim=(0, 72))
+        ax.tick_params(axis="x", labelsize=7)
         ax.set_title(t, fontsize=8)
     axes[0].set_ylabel("Seed-complex rows (%)")
     axes[1].legend(loc="upper right", fontsize=7)
     save(fig, "fig03_transitions")
-
 
 def fig_validity(va):
     fig, ax = plt.subplots(figsize=(3.8, 2.7))
@@ -181,18 +176,19 @@ def fig_newly_invalid(va):
 
 
 def fig_cross(va):
-    fig, ax = plt.subplots(figsize=(4.4, 2.6))
+    fig, ax = plt.subplots(figsize=(4.6, 2.7))
     keys = ["preservation", "harm", "rescue", "persistent_failure"]
     labels = ["Preserved", "Harmed", "Rescued", "Persistent\nfailure"]
     vals = [[va[c]["invalid_rate_by_transition_ungated"][k]["invalid_pct"] or 0 for c in ("test", "external")] for k in keys]
-    bars(ax, labels, ["Internal test", "External"], vals, [BLUE, ORANGE], ylim=(0, 110))
+    bars(ax, labels, ["Internal test", "External"], vals, [BLUE, ORANGE], fmt="{:.0f}", ylim=(0, 112))
     for i, k in enumerate(keys):
         for j, c in enumerate(("test", "external")):
-            ax.text(i - 0.2 + 0.4 * j, 101, f"n={va[c]['invalid_rate_by_transition_ungated'][k]['n']}", ha="center", fontsize=5.8, color=INK2)
+            ax.text(i - 0.2 + 0.4 * j, 4, f"n={va[c]['invalid_rate_by_transition_ungated'][k]['n']}", ha="center", va="bottom",
+                    fontsize=5.6, color="white", rotation=90)
     ax.set_ylabel("Chemically invalid after ungated\ncorrection (%)")
-    ax.legend(loc="upper center", ncol=2, fontsize=7, bbox_to_anchor=(0.5, 1.15))
+    ax.tick_params(axis="x", labelsize=7)
+    ax.legend(loc="upper center", ncol=2, fontsize=7, bbox_to_anchor=(0.5, 1.16))
     save(fig, "fig07_invalid_by_transition")
-
 
 def fig_checks(va):
     """NEW: which PoseBusters checks fail after correction."""
@@ -213,34 +209,32 @@ def fig_checks(va):
 
 
 def fig_gates(ev, va, gp):
-    """NEW: success change vs validity for every gate variant."""
-    variants = [("Frozen σ gate (paper)", "G0_frozen_gate_reference", ORANGE),
-                ("Quantile-matched gate", "G1_quantile_gate", AQUA),
-                ("Rigid projection + gate", "G3_rigid_projection", MAGENTA),
-                ("Ensemble spread gate", "G4_ensemble", GREEN),
-                ("Ensemble + rigid", "G4_ensemble_rigid", VIOLET)]
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9), sharey=True)
-    for ax, c, t in zip(axes, ("test", "external"), ("Internal test", "External")):
-        base_valid = gp["G0_frozen_gate_reference"][c]["validity"]["pass_baseline"]
-        ax.axvline(0, color=INK2, lw=0.6); ax.axhline(base_valid, color=GREY, lw=0.8, ls="--")
-        ax.text(ax.get_xlim()[0] if False else 0.02, base_valid + 0.8, "baseline validity", transform=ax.get_yaxis_transform(), fontsize=6.3, color=INK2)
-        # ungated reference
-        u = gp["G0_frozen_gate_reference"][c]
-        ax.scatter(u["ungated"]["net_change_pp"], u["validity"]["pass_ungated"], s=40, color=BLUE, zorder=3, label="Ungated (paper)",
-                   edgecolors="white", linewidths=1.5)
-        for name, key, col in variants:
-            g = gp[key][c]
-            ax.scatter(g["gated"]["net_change_pp"], g["validity"]["pass_gated"], s=40, color=col, zorder=3, label=name, edgecolors="white", linewidths=1.5)
-        for name, key in (("Validity veto", "veto_only"), ("σ gate + veto", "sigma_and_veto")):
-            g = gp["G2_validity_veto"][c][key]
-            ax.scatter(g["gated"]["net_change_pp"], g["validity"]["pass_gated"], s=40, color=YELLOW if key == "veto_only" else "#b07a00",
-                       marker="D", zorder=3, label=name, edgecolors="white", linewidths=1.5)
-        ax.set_title(t, fontsize=8); ax.set_xlabel("Net change in RMSD < 2 Å success (pp)")
-    axes[0].set_ylabel("PoseBusters pass rate (%)")
-    h, l = axes[0].get_legend_handles_labels()
-    fig.legend(h, l, loc="lower center", ncol=4, fontsize=6.6, bbox_to_anchor=(0.5, -0.12))
+    """NEW: every decision rule as one row; (a) success change, (b) validity, internal and external markers."""
+    rows = [("Ungated (original)", lambda c: (gp["G0_frozen_gate_reference"][c]["ungated"]["net_change_pp"], gp["G0_frozen_gate_reference"][c]["validity"]["pass_ungated"])),
+            ("Frozen σ gate (original)", lambda c: (gp["G0_frozen_gate_reference"][c]["gated"]["net_change_pp"], gp["G0_frozen_gate_reference"][c]["validity"]["pass_gated"])),
+            ("G1 quantile-matched gate", lambda c: (gp["G1_quantile_gate"][c]["gated"]["net_change_pp"], gp["G1_quantile_gate"][c]["validity"]["pass_gated"])),
+            ("G2 validity veto", lambda c: (gp["G2_validity_veto"][c]["veto_only"]["gated"]["net_change_pp"], gp["G2_validity_veto"][c]["veto_only"]["validity"]["pass_gated"])),
+            ("G2 σ gate + veto", lambda c: (gp["G2_validity_veto"][c]["sigma_and_veto"]["gated"]["net_change_pp"], gp["G2_validity_veto"][c]["sigma_and_veto"]["validity"]["pass_gated"])),
+            ("G3 rigid projection (ungated)", lambda c: (gp["G3_rigid_projection"][c]["ungated"]["net_change_pp"], gp["G3_rigid_projection"][c]["validity"]["pass_ungated"])),
+            ("G4 ensemble (ungated)", lambda c: (gp["G4_ensemble"][c]["ungated"]["net_change_pp"], gp["G4_ensemble"][c]["validity"]["pass_ungated"])),
+            ("G4 ensemble + rigid, gated", lambda c: (gp["G4_ensemble_rigid"][c]["gated"]["net_change_pp"], gp["G4_ensemble_rigid"][c]["validity"]["pass_gated"]))]
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.9), sharey=True)
+    y = np.arange(len(rows))
+    for j, (c, col, mk, lab) in enumerate((("test", BLUE, "o", "Internal test"), ("external", ORANGE, "s", "External"))):
+        pts = [f(c) for _, f in rows]
+        off = (j - 0.5) * 0.22
+        axes[0].scatter([p[0] for p in pts], y + off, color=col, marker=mk, s=26, zorder=3, label=lab, edgecolors="white", linewidths=0.8)
+        axes[1].scatter([p[1] for p in pts], y + off, color=col, marker=mk, s=26, zorder=3, label=lab, edgecolors="white", linewidths=0.8)
+    axes[0].axvline(0, color=INK2, lw=0.7)
+    axes[0].set_xlabel("Change in RMSD < 2 Å success (pp)"); axes[0].set_title("(a) Geometric outcome", fontsize=8)
+    base = gp["G0_frozen_gate_reference"]["test"]["validity"]["pass_baseline"]
+    axes[1].axvline(base, color=GREY, lw=0.8, ls="--"); axes[1].text(base - 1, len(rows) - 0.4, "baseline", fontsize=6.2, color=INK2, ha="right")
+    axes[1].set_xlabel("PoseBusters pass rate (%)"); axes[1].set_title("(b) Chemical validity", fontsize=8)
+    axes[0].set_yticks(y); axes[0].set_yticklabels([r[0] for r in rows], fontsize=7); axes[0].invert_yaxis()
+    for ax in axes:
+        ax.grid(axis="y", visible=False)
+    axes[1].legend(fontsize=6.8, loc="lower left")
     save(fig, "fig09_gate_variants")
-
 
 def fig_sigma(gp, rows_csv):
     import pandas as pd
@@ -255,6 +249,36 @@ def fig_sigma(gp, rows_csv):
     ax.set_xlabel("Mean predicted σ per complex (Å)"); ax.set_ylabel("Density")
     ax.legend(fontsize=7)
     save(fig, "fig10_sigma_shift")
+
+
+def fig_shrinkage():
+    """NEW: corrected ligands contract; reference poses do not."""
+    p = f"{RES}/shrinkage.json"
+    if not os.path.exists(p):
+        return
+    import pandas as pd
+    rows = pd.DataFrame(json.load(open(p))["rows_seed0"])
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.6))
+    ax = axes[0]
+    bins = np.linspace(0.2, 1.3, 45)
+    for c, col, lab in (("test", BLUE, "Corrected / docked, internal test"), ("external", ORANGE, "Corrected / docked, external")):
+        ax.hist(rows[rows.cohort == c].rg_ratio_corrected, bins=bins, histtype="step", lw=1.6, color=col, label=lab, density=True)
+    ax.hist(rows[rows.cohort.isin(["test", "external"])].rg_ratio_reference, bins=bins, histtype="stepfilled", color=GREY, alpha=0.45,
+            label="Crystal / docked (target)", density=True)
+    ax.axvline(1.0, color=INK2, lw=0.7, ls="--")
+    ax.set_xlabel("Radius-of-gyration ratio"); ax.set_ylabel("Density"); ax.legend(fontsize=6.5, loc="upper left")
+    ax.set_title("(a) Ligand size after correction", fontsize=8)
+    ax = axes[1]
+    r = pd.read_csv(f"{RES}/rows_selected.csv")
+    r = r[(r.seed == 0) & r.cohort.isin(["test", "external"])]
+    for c, col in (("test", BLUE), ("external", ORANGE)):
+        d = r[r.cohort == c]
+        ax.scatter(d.base_rmsd, d.corr_rmsd - d.base_rmsd, s=6, color=col, alpha=0.5, linewidths=0,
+                   label="Internal test" if c == "test" else "External")
+    ax.axhline(0, color=INK2, lw=0.7); ax.axvline(2.0, color=INK2, lw=0.7, ls="--")
+    ax.set_xlabel("Baseline RMSD (Å)"); ax.set_ylabel("RMSD change after correction (Å)")
+    ax.set_title("(b) Correction helps bad poses, harms good ones", fontsize=8); ax.legend(fontsize=6.5, loc="upper right")
+    save(fig, "fig12_shrinkage")
 
 
 def fig_splits():
@@ -288,3 +312,4 @@ if __name__ == "__main__":
     if gp and va and ev:
         fig_gates(ev, va, gp); fig_sigma(gp, f"{RES}/rows_selected.csv")
     fig_splits()
+    fig_shrinkage()

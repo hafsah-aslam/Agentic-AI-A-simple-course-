@@ -1,0 +1,243 @@
+{
+  "cohort_sizes": {
+    "train": 1200,
+    "val": 400,
+    "test": 394,
+    "external": 428
+  },
+  "selection": {
+    "per_seed_val_mse_reduction": {
+      "Transformer": [
+        14.086623411350718,
+        13.577960194145563,
+        14.239366798642376,
+        12.64216242856288,
+        13.500510950017986
+      ]
+    },
+    "mean": {
+      "Transformer": 13.609324756543904
+    },
+    "selected": "Transformer",
+    "anova": null,
+    "paired_t_vs_selected": {}
+  },
+  "gate": {
+    "stage_a_pearson": 0.2860130853619654,
+    "stage_a_pass": false,
+    "tau": -Infinity,
+    "val_net_success_pp": 0.0,
+    "admit_rate": {
+      "val": 0.0,
+      "test": 0.0,
+      "external": 0.0
+    },
+    "mean_sigma": {
+      "val": 2.36487203925848,
+      "test": 2.3582099501251568,
+      "external": 2.614466050239367
+    },
+    "mean_baseline_rmsd": {
+      "val": 3.361179927996676,
+      "test": 3.6064534859201642,
+      "external": 3.15057626109332
+    }
+  },
+  "baseline_rmsd_control_gate": {
+    "apply_if_rmsd_le_t": {
+      "best_val_net_success_pp": 0.0,
+      "threshold": null
+    },
+    "apply_if_rmsd_ge_t": {
+      "best_val_net_success_pp": 0.1,
+      "threshold": 2.0032323874383002
+    }
+  },
+  "heldout": {
+    "val": {
+      "n_complexes": 400,
+      "n_rows": 2000,
+      "mse_reduction_ungated": 13.609324756543904,
+      "mse_reduction_gated": 0.0,
+      "mse_reduction_ungated_per_seed": [
+        14.086623411350718,
+        13.577960194145563,
+        14.239366798642376,
+        12.64216242856288,
+        13.500510950017986
+      ],
+      "ungated": {
+        "baseline_success": 47.0,
+        "success": 28.599999999999998,
+        "net_change_pp": -18.4,
+        "seed_t_ci_pp": [
+          -21.102580883620785,
+          -15.697419116379214
+        ],
+        "bootstrap_ci_pp": [
+          -21.950000000000003,
+          -14.950000000000003
+        ]
+      },
+      "gated": {
+        "baseline_success": 47.0,
+        "success": 47.0,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 570,
+        "harm": 370,
+        "rescue": 2,
+        "persistent_failure": 1058
+      },
+      "transitions_gated": {
+        "preservation": 940,
+        "harm": 0,
+        "rescue": 0,
+        "persistent_failure": 1060
+      }
+    },
+    "test": {
+      "n_complexes": 394,
+      "n_rows": 1970,
+      "mse_reduction_ungated": 14.29780130432495,
+      "mse_reduction_gated": 0.0,
+      "mse_reduction_ungated_per_seed": [
+        14.201308376907651,
+        13.819400055133723,
+        14.225310483571787,
+        13.709369648885819,
+        15.533617957125774
+      ],
+      "ungated": {
+        "baseline_success": 42.63959390862944,
+        "success": 27.30964467005076,
+        "net_change_pp": -15.32994923857868,
+        "seed_t_ci_pp": [
+          -18.35762049415015,
+          -12.30227798300721
+        ],
+        "bootstrap_ci_pp": [
+          -18.629441624365484,
+          -12.081218274111675
+        ]
+      },
+      "gated": {
+        "baseline_success": 42.63959390862944,
+        "success": 42.63959390862944,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 530,
+        "harm": 310,
+        "rescue": 8,
+        "persistent_failure": 1122
+      },
+      "transitions_gated": {
+        "preservation": 840,
+        "harm": 0,
+        "rescue": 0,
+        "persistent_failure": 1130
+      }
+    },
+    "external": {
+      "n_complexes": 428,
+      "n_rows": 2140,
+      "mse_reduction_ungated": 10.390652738319206,
+      "mse_reduction_gated": 0.0,
+      "mse_reduction_ungated_per_seed": [
+        11.520206654146897,
+        11.707201295119352,
+        10.279034683108335,
+        8.377772286242257,
+        10.069048772979185
+      ],
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 31.44859813084112,
+        "net_change_pp": -22.990654205607477,
+        "seed_t_ci_pp": [
+          -26.815247031577417,
+          -19.16606137963754
+        ],
+        "bootstrap_ci_pp": [
+          -26.635514018691588,
+          -19.439252336448597
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "transitions_ungated": {
+        "preservation": 668,
+        "harm": 497,
+        "rescue": 5,
+        "persistent_failure": 970
+      },
+      "transitions_gated": {
+        "preservation": 1165,
+        "harm": 0,
+        "rescue": 0,
+        "persistent_failure": 975
+      }
+    }
+  },
+  "permutation_test": {
+    "nearest_pocket_ca": {
+      "r": 0.039264197487208566,
+      "null_mean_r": 0.07552220077138179,
+      "null_sd_r": 0.003207330648851466,
+      "p_two_sided_centred": 9.999000099990002e-05,
+      "p_upper": 1.0,
+      "p_two_sided_naive_abs": 1.0,
+      "permutations": 10000,
+      "complexes": 1200,
+      "atoms": 32584
+    },
+    "pocket_centroid": {
+      "r": 0.26884961307353755,
+      "null_mean_r": 0.10307918271001754,
+      "null_sd_r": 0.0031058119904502192,
+      "p_two_sided_centred": 9.999000099990002e-05,
+      "p_upper": 9.999000099990002e-05,
+      "p_two_sided_naive_abs": 9.999000099990002e-05,
+      "permutations": 10000,
+      "complexes": 1200,
+      "atoms": 32584
+    }
+  },
+  "rotation_audit": {
+    "n": 50,
+    "mean": 0.5271666771173478,
+    "median": 0.5042805373668671,
+    "p95": 0.8294567406177518,
+    "max": 1.0511647462844849
+  },
+  "metric_identity_abs_error": 2.220446049250313e-16
+}
