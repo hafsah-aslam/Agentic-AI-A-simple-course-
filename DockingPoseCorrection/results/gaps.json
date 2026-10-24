@@ -1,0 +1,596 @@
+{
+  "selected_arch": "Transformer",
+  "tau": 1.5729705095291138,
+  "G1_quantile_gate": {
+    "q": 0.029000000000000005,
+    "test": {
+      "threshold": 1.5798752309083939,
+      "admit_rate_pct": 2.9000000000000004,
+      "mse_reduction_ungated": 18.159052167656977,
+      "mse_reduction_gated": 0.045402120513265316,
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 25.15,
+        "net_change_pp": -16.35,
+        "seed_t_ci_pp": [
+          -23.27234638963599,
+          -9.42765361036401
+        ],
+        "bootstrap_ci_pp": [
+          -19.450000000000003,
+          -13.200000000000001
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.5,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 97.75,
+        "pass_ungated": 0.6,
+        "pass_gated": 95.39999999999999,
+        "newly_invalid_ungated": 99.38618925831202,
+        "newly_invalid_gated": 2.4040920716112533
+      }
+    },
+    "external": {
+      "threshold": 1.6724671275615697,
+      "admit_rate_pct": 2.9439252336448596,
+      "mse_reduction_ungated": 11.25761847272496,
+      "mse_reduction_gated": 0.052963771606936494,
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 35.280373831775705,
+        "net_change_pp": -19.158878504672895,
+        "seed_t_ci_pp": [
+          -27.546975789029844,
+          -10.770781220315957
+        ],
+        "bootstrap_ci_pp": [
+          -22.38317757009346,
+          -16.02803738317757
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 98.13084112149532,
+        "pass_ungated": 0.2803738317757009,
+        "pass_gated": 95.42056074766356,
+        "newly_invalid_ungated": 99.71428571428571,
+        "newly_invalid_gated": 2.761904761904762
+      }
+    }
+  },
+  "G0_frozen_gate_reference": {
+    "test": {
+      "threshold": 1.5729705095291138,
+      "admit_rate_pct": 2.7,
+      "mse_reduction_ungated": 18.159052167656977,
+      "mse_reduction_gated": 0.03777879229552338,
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 25.15,
+        "net_change_pp": -16.35,
+        "seed_t_ci_pp": [
+          -23.27234638963599,
+          -9.42765361036401
+        ],
+        "bootstrap_ci_pp": [
+          -19.450000000000003,
+          -13.200000000000001
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.5,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 97.75,
+        "pass_ungated": 0.6,
+        "pass_gated": 95.55,
+        "newly_invalid_ungated": 99.38618925831202,
+        "newly_invalid_gated": 2.2506393861892584
+      }
+    },
+    "external": {
+      "threshold": 1.5729705095291138,
+      "admit_rate_pct": 1.2616822429906542,
+      "mse_reduction_ungated": 11.25761847272496,
+      "mse_reduction_gated": 0.0006050098558847698,
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 35.280373831775705,
+        "net_change_pp": -19.158878504672895,
+        "seed_t_ci_pp": [
+          -27.546975789029844,
+          -10.770781220315957
+        ],
+        "bootstrap_ci_pp": [
+          -22.38317757009346,
+          -16.02803738317757
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 98.13084112149532,
+        "pass_ungated": 0.2803738317757009,
+        "pass_gated": 97.10280373831776,
+        "newly_invalid_ungated": 99.71428571428571,
+        "newly_invalid_gated": 1.0476190476190477
+      }
+    }
+  },
+  "G2_validity_veto": {
+    "test": {
+      "veto_only": {
+        "admit_rate_pct": 0.6,
+        "gated": {
+          "baseline_success": 41.5,
+          "success": 41.5,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "mse_reduction_gated": 0.0033851515934973275,
+        "validity": {
+          "pass_baseline": 97.75,
+          "pass_ungated": 0.6,
+          "pass_gated": 97.75,
+          "newly_invalid_ungated": 99.38618925831202,
+          "newly_invalid_gated": 0.0
+        }
+      },
+      "sigma_and_veto": {
+        "admit_rate_pct": 0.5,
+        "gated": {
+          "baseline_success": 41.5,
+          "success": 41.5,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "mse_reduction_gated": 0.005184673149096419,
+        "validity": {
+          "pass_baseline": 97.75,
+          "pass_ungated": 0.6,
+          "pass_gated": 97.75,
+          "newly_invalid_ungated": 99.38618925831202,
+          "newly_invalid_gated": 0.0
+        }
+      }
+    },
+    "external": {
+      "veto_only": {
+        "admit_rate_pct": 0.2803738317757009,
+        "gated": {
+          "baseline_success": 54.4392523364486,
+          "success": 54.4392523364486,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "mse_reduction_gated": -0.004103321419634604,
+        "validity": {
+          "pass_baseline": 98.13084112149532,
+          "pass_ungated": 0.2803738317757009,
+          "pass_gated": 98.13084112149532,
+          "newly_invalid_ungated": 99.71428571428571,
+          "newly_invalid_gated": 0.0
+        }
+      },
+      "sigma_and_veto": {
+        "admit_rate_pct": 0.23364485981308408,
+        "gated": {
+          "baseline_success": 54.4392523364486,
+          "success": 54.4392523364486,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "mse_reduction_gated": -0.0027648275738332635,
+        "validity": {
+          "pass_baseline": 98.13084112149532,
+          "pass_ungated": 0.2803738317757009,
+          "pass_gated": 98.13084112149532,
+          "newly_invalid_ungated": 99.71428571428571,
+          "newly_invalid_gated": 0.0
+        }
+      }
+    }
+  },
+  "G3_rigid_projection": {
+    "tau": -Infinity,
+    "val_net_success_pp": 0.0,
+    "val_mse_reduction": -0.31978708171059944,
+    "test": {
+      "threshold": -Infinity,
+      "admit_rate_pct": 0.0,
+      "mse_reduction_ungated": -0.09465796603429161,
+      "mse_reduction_gated": 0.0,
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 40.65,
+        "net_change_pp": -0.8500000000000001,
+        "seed_t_ci_pp": [
+          -2.0838791942001107,
+          0.383879194200111
+        ],
+        "bootstrap_ci_pp": [
+          -1.7000000000000002,
+          -0.04999999999999993
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.5,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 97.75,
+        "pass_ungated": 88.75,
+        "pass_gated": 97.75,
+        "newly_invalid_ungated": 9.207161125319693,
+        "newly_invalid_gated": 0.0
+      }
+    },
+    "external": {
+      "threshold": -Infinity,
+      "admit_rate_pct": 0.0,
+      "mse_reduction_ungated": -1.1289091559713464,
+      "mse_reduction_gated": 0.0,
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 53.598130841121495,
+        "net_change_pp": -0.8411214953271028,
+        "seed_t_ci_pp": [
+          -1.1006023462801675,
+          -0.5816406443740381
+        ],
+        "bootstrap_ci_pp": [
+          -1.6822429906542056,
+          -0.14018691588785046
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "seed_t_ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 98.13084112149532,
+        "pass_ungated": 84.01869158878505,
+        "pass_gated": 98.13084112149532,
+        "newly_invalid_ungated": 14.428571428571429,
+        "newly_invalid_gated": 0.0
+      }
+    }
+  },
+  "G4_ensemble": {
+    "stage_a_pearson_spread_vs_rmsd": 0.2604142904283089,
+    "tau": -Infinity,
+    "val_net_success_pp": 0.0,
+    "val_mse_reduction": 17.607153175244886,
+    "test": {
+      "threshold": -Infinity,
+      "admit_rate_pct": 0.0,
+      "mse_reduction_ungated": 19.062089671486916,
+      "mse_reduction_gated": 0.0,
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 27.750000000000004,
+        "net_change_pp": -13.750000000000002,
+        "bootstrap_ci_pp": [
+          -17.25,
+          -10.25
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.5,
+        "net_change_pp": 0.0,
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 97.75,
+        "pass_ungated": 0.0,
+        "pass_gated": 97.75,
+        "newly_invalid_ungated": 100.0,
+        "newly_invalid_gated": 0.0
+      }
+    },
+    "external": {
+      "threshold": -Infinity,
+      "admit_rate_pct": 0.0,
+      "mse_reduction_ungated": 12.589593747110742,
+      "mse_reduction_gated": 0.0,
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 37.38317757009346,
+        "net_change_pp": -17.056074766355138,
+        "bootstrap_ci_pp": [
+          -20.794392523364486,
+          -13.551401869158877
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "bootstrap_ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "validity": {
+        "pass_baseline": 98.13084112149532,
+        "pass_ungated": 0.0,
+        "pass_gated": 98.13084112149532,
+        "newly_invalid_ungated": 100.0,
+        "newly_invalid_gated": 0.0
+      }
+    }
+  },
+  "G4_ensemble_rigid": {
+    "stage_a_pearson_spread_vs_rmsd": 0.2604142904283089,
+    "tau": 0.6654129028320312,
+    "val_net_success_pp": 0.25,
+    "val_mse_reduction": 0.16984674193155572,
+    "test": {
+      "threshold": 0.6654129028320312,
+      "admit_rate_pct": 98.75,
+      "mse_reduction_ungated": 0.31330876304096533,
+      "mse_reduction_gated": 0.2908607519400339,
+      "ungated": {
+        "baseline_success": 41.5,
+        "success": 41.25,
+        "net_change_pp": -0.25,
+        "bootstrap_ci_pp": [
+          -1.0,
+          0.5
+        ]
+      },
+      "gated": {
+        "baseline_success": 41.5,
+        "success": 41.25,
+        "net_change_pp": -0.25,
+        "bootstrap_ci_pp": [
+          -1.0,
+          0.5
+        ]
+      },
+      "validity": {
+        "pass_baseline": 97.75,
+        "pass_ungated": 97.75,
+        "pass_gated": 97.75,
+        "newly_invalid_ungated": 0.0,
+        "newly_invalid_gated": 0.0
+      }
+    },
+    "external": {
+      "threshold": 0.6654129028320312,
+      "admit_rate_pct": 97.42990654205607,
+      "mse_reduction_ungated": -0.339719321576173,
+      "mse_reduction_gated": -0.24770280808304623,
+      "ungated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "bootstrap_ci_pp": [
+          -0.7009345794392523,
+          0.7009345794392523
+        ]
+      },
+      "gated": {
+        "baseline_success": 54.4392523364486,
+        "success": 54.4392523364486,
+        "net_change_pp": 0.0,
+        "bootstrap_ci_pp": [
+          -0.7009345794392523,
+          0.7009345794392523
+        ]
+      },
+      "validity": {
+        "pass_baseline": 98.13084112149532,
+        "pass_ungated": 97.66355140186917,
+        "pass_gated": 97.89719626168224,
+        "newly_invalid_ungated": 0.4761904761904762,
+        "newly_invalid_gated": 0.2380952380952381
+      }
+    }
+  },
+  "G5_sequence_overlap": {
+    "external_exact_chain_match_with_train": 8,
+    "external_near_identical_3mer_jaccard_ge_0.9": 76,
+    "n_external": 428,
+    "stratified": {
+      "novel": {
+        "n_complexes": 352,
+        "mse_reduction_ungated": 8.916286859821653,
+        "ungated": {
+          "baseline_success": 53.125,
+          "success": 35.0,
+          "net_change_pp": -18.125,
+          "seed_t_ci_pp": [
+            -25.926976713214223,
+            -10.323023286785778
+          ],
+          "bootstrap_ci_pp": [
+            -21.64772727272727,
+            -14.82812500000002
+          ]
+        },
+        "gated": {
+          "baseline_success": 53.125,
+          "success": 53.125,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "admit_rate_pct": 1.1363636363636365,
+        "mean_sigma": 2.5037096598608928
+      },
+      "near_identical": {
+        "n_complexes": 76,
+        "mse_reduction_ungated": 18.967451897256023,
+        "ungated": {
+          "baseline_success": 60.526315789473685,
+          "success": 36.578947368421055,
+          "net_change_pp": -23.94736842105263,
+          "seed_t_ci_pp": [
+            -35.17172605998981,
+            -12.723010782115457
+          ],
+          "bootstrap_ci_pp": [
+            -32.10526315789474,
+            -16.05263157894737
+          ]
+        },
+        "gated": {
+          "baseline_success": 60.526315789473685,
+          "success": 60.526315789473685,
+          "net_change_pp": 0.0,
+          "seed_t_ci_pp": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_ci_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "admit_rate_pct": 1.8421052631578945,
+        "mean_sigma": 2.4743182866196882
+      }
+    }
+  },
+  "G6_sigma_shift": {
+    "mean_sigma": {
+      "val": 2.4708531323075293,
+      "test": 2.371797964096069,
+      "external": 2.498490630967595
+    },
+    "external_vs_val_mean_sigma_change_pct": 1.1185407298674583,
+    "test_vs_val_mean_sigma_change_pct": -4.008946016105482,
+    "ks_val_vs_external": {
+      "D": 0.04316822429906542,
+      "p": 0.04080017733327989
+    },
+    "ks_val_vs_test": {
+      "D": 0.113,
+      "p": 1.545548880670989e-11
+    },
+    "pearson_sigma_vs_baseline_rmsd": {
+      "val": 0.37640573081832973,
+      "test": 0.309397091800049,
+      "external": 0.2728974705057861
+    },
+    "spearman_sigma_vs_correction_gain": {
+      "val": 0.0904079236019809,
+      "test": 0.06822482385737458,
+      "external": -0.040176299319419864
+    },
+    "mean_ligand_heavy_atoms": {
+      "train": 26.421666666666667,
+      "val": 29.035,
+      "test": 26.52,
+      "external": 25.436915887850468
+    },
+    "mean_pocket_residues": {
+      "train": 47.111666666666665,
+      "val": 49.0675,
+      "test": 44.145,
+      "external": 46.345794392523366
+    }
+  }
+}

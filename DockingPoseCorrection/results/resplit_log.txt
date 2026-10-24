@@ -1,0 +1,1 @@
+alt1 {'train': 1200, 'val': 400, 'test': 393, 'external': 428}
