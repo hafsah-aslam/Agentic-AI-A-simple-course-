@@ -85,31 +85,38 @@ def transitions(df, col):
 
 
 def permutation_test(feats):
-    """Training-only: Pearson r between atom distance to the nearest pocket C-alpha and target displacement
-    magnitude; null shuffles magnitudes within each complex."""
-    rng = np.random.default_rng(11)
-    ds, es = [], []
-    for d in feats.values():
-        if d["split"] != "train":
-            continue
-        dist = np.linalg.norm(d["lig_xyz"][:, None] - d["res_xyz"][None], axis=2).min(1)
-        ds.append(dist); es.append(np.linalg.norm(d["target"], axis=1))
-    x, y = np.concatenate(ds), np.concatenate(es)
-    r_obs = float(np.corrcoef(x, y)[0, 1])
-    # numerator variation only: sum_c sum_i d_i e_pi(i)
-    xm, ym = x - x.mean(), y - y.mean()
-    denom = np.sqrt((xm ** 2).sum() * (ym ** 2).sum())
-    count, done, chunk = 0, 0, 500
-    while done < NPERM:
-        P = min(chunk, NPERM - done)
-        num = np.zeros(P)
-        for dd, ee in zip(ds, es):
-            perm = rng.random((P, len(ee))).argsort(1)
-            num += ((dd - x.mean())[None, :] * (ee[perm] - y.mean())).sum(1)
-        count += int((np.abs(num / denom) >= abs(r_obs) - 1e-15).sum())
-        done += P
-    return {"r": r_obs, "p_two_sided": (count + 1) / (NPERM + 1), "permutations": NPERM,
-            "complexes": len(ds), "atoms": int(len(x))}
+    """Training-only test of the pocket-distance / target-displacement relationship. Null: displacement magnitudes
+    shuffled within each complex (10,000 permutations). Because within-complex shuffling keeps the between-complex
+    association, the null distribution is not centred at zero; the two-sided p-value is computed around the null mean.
+    Two distance definitions are reported: atom to nearest pocket C-alpha, and atom to the pocket centroid."""
+    out = {}
+    for name, dist_fn in (("nearest_pocket_ca", lambda d: np.linalg.norm(d["lig_xyz"][:, None] - d["res_xyz"][None], axis=2).min(1)),
+                          ("pocket_centroid", lambda d: np.linalg.norm(d["lig_xyz"] - d["res_xyz"].mean(0), axis=1))):
+        rng = np.random.default_rng(11)
+        ds, es = [], []
+        for d in feats.values():
+            if d["split"] != "train":
+                continue
+            ds.append(dist_fn(d)); es.append(np.linalg.norm(d["target"], axis=1))
+        x, y = np.concatenate(ds), np.concatenate(es)
+        r_obs = float(np.corrcoef(x, y)[0, 1])
+        denom = np.sqrt(((x - x.mean()) ** 2).sum() * ((y - y.mean()) ** 2).sum())
+        null, done, chunk = [], 0, 500
+        while done < NPERM:
+            P = min(chunk, NPERM - done)
+            num = np.zeros(P)
+            for dd, ee in zip(ds, es):
+                perm = rng.random((P, len(ee))).argsort(1)
+                num += ((dd - x.mean())[None, :] * (ee[perm] - y.mean())).sum(1)
+            null.append(num / denom); done += P
+        null = np.concatenate(null)
+        mu = float(null.mean())
+        p_two = (int((np.abs(null - mu) >= abs(r_obs - mu) - 1e-15).sum()) + 1) / (NPERM + 1)
+        out[name] = {"r": r_obs, "null_mean_r": mu, "null_sd_r": float(null.std()), "p_two_sided_centred": p_two,
+                     "p_upper": (int((null >= r_obs).sum()) + 1) / (NPERM + 1),
+                     "p_two_sided_naive_abs": (int((np.abs(null) >= abs(r_obs) - 1e-15).sum()) + 1) / (NPERM + 1),
+                     "permutations": NPERM, "complexes": len(ds), "atoms": int(len(x))}
+    return out
 
 
 def rotation_audit(feats_path, runs_dir, arch):

@@ -61,7 +61,8 @@ def obabel_artifact(path):
 def main():
     feats_p, runs, arch, dockdir, data, pbdir, out, wid, nw = sys.argv[1:8] + [int(sys.argv[8]), int(sys.argv[9])]
     keep = ("test",) if os.environ.get("ONLY_TEST") else ("test", "external")
-    feats = {d["pdb"]: d for d in pickle.load(open(feats_p, "rb")) if d["split"] in keep}
+    only = set(os.environ["ONLY_PDBS"].split(",")) if os.environ.get("ONLY_PDBS") else None
+    feats = {d["pdb"]: d for d in pickle.load(open(feats_p, "rb")) if d["split"] in keep and (only is None or d["pdb"] in only)}
     preds = {s: pickle.load(open(f"{runs}/{arch}_s{s}.pkl", "rb"))["predictions"] for s in SEEDS}
     bust = PoseBusters(config="dock")
     rows = []
@@ -69,6 +70,8 @@ def main():
         d = feats[pdb]
         prot = (f"{pbdir}/posebusters_benchmark_set/{pdb}/{pdb}_protein.pdb" if d["split"] == "external"
                 else f"{data}/internal/{pdb}/protein.pdb")
+        if os.path.exists(prot.replace("protein.pdb", "protein_pb.pdb")):
+            prot = prot.replace("protein.pdb", "protein_pb.pdb")   # polymer-only copy for receptors RDKit cannot parse
         base = Chem.RemoveHs(Chem.MolFromMolFile(f"{dockdir}/{pdb}/docked.sdf", removeHs=False))
         X = base.GetConformer().GetPositions()
         poses = [("baseline", None, base)]
