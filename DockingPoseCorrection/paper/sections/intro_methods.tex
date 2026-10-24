@@ -66,7 +66,7 @@ pose on three axes. The band lists the new analyses G1--G7 (G8, the deformation 
 \end{figure}
 
 \subsection{Datasets and eligibility}
-\paragraph{Internal pool.} The PDBbind\,v2020 P-L set (19{,}443 complexes, as distributed in LP-PDBBind) was intersected
+\paragraph{Internal pool} The PDBbind\,v2020 P-L set (19{,}443 complexes, as distributed in LP-PDBBind) was intersected
 with the MISATO MD identifier lists (train, validation and test files; 16{,}972 identifiers), giving \IntersectN{} shared
 complexes (original study: 16{,}627). \CovalentN{} covalent complexes were excluded using the LP-PDBBind flag. Structures
 were downloaded from the RCSB PDB \citep{berman2000pdb} as mmCIF. The crystal ligand was located as the single
@@ -77,10 +77,10 @@ several residues (mostly peptides) cannot be located this way and were excluded 
 cofactors, and drops water, common crystallisation additives, hydrogens, the ligand, and any hetero group within
 1\,\AA{} of a ligand atom (alternate ligand copies).
 
-\paragraph{External cohort.} The 428-complex PoseBusters benchmark set \citep{buttenschoen2024posebusters}, with its
+\paragraph{External cohort} The 428-complex PoseBusters benchmark set \citep{buttenschoen2024posebusters}, with its
 supplied receptor and ligand files. Internal--external PDB-identifier overlap is zero.
 
-\paragraph{Leakage-controlled manifest.} Complexes were grouped by identical protein sequence (LP-PDBBind chain
+\paragraph{Leakage-controlled manifest} Complexes were grouped by identical protein sequence (LP-PDBBind chain
 sequence). Groups were ordered by the SHA-256 digest of the group identifier and used to fill the training (1{,}200),
 validation (400) and internal-test (400) splits in that order; only the boundary group is truncated and its unselected
 members retired. Eligibility was checked before a complex took a slot. The manifest (SHA-256 recorded) was frozen before
@@ -151,7 +151,7 @@ failure counts as failed. Gated poses are the corrected pose when the gate fires
 intervals are reported in two ways: a Student-$t$ interval over the five seed-level rates, and a 10{,}000-resample paired
 complex-level percentile bootstrap.
 
-\paragraph{Statistical validation.} A training-only permutation test relates each atom's distance to the nearest pocket
+\paragraph{Statistical validation} A training-only permutation test relates each atom's distance to the nearest pocket
 C$\alpha$ to its target displacement magnitude, shuffling magnitudes within complexes (10{,}000 permutations). A rotational
 audit compares predictions before and after a random rotation (rotated back) for ten validation complexes and five seeds.
 A synthetic identity check verifies $\mathrm{RMSE}_{component} = \mathrm{RMSD}/\sqrt{3}$.

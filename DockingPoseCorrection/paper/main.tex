@@ -149,7 +149,7 @@ check after ungated correction (bars) against the baseline (ticks); checks below
 \label{fig:cross}\label{fig:checks}
 \end{figure}
 
-\paragraph{The conversion artifact.} The original study traced many baseline sanitisation failures to nitrogen atoms with
+\paragraph{The conversion artifact} The original study traced many baseline sanitisation failures to nitrogen atoms with
 valence four and no formal charge introduced by PDBQT$\to$SDF conversion. Converting the same rank-1 poses with Open Babel
 reproduced it: \ObabelInt{} internal-test complexes (\ObabelAtomsInt{} such atoms) and \ObabelExt{} external complexes failed
 sanitisation, close to the original 150 and 4. Meeko's export, used for all analyses here, does not produce the artifact, so
@@ -260,18 +260,18 @@ Open Babel artifact (complexes) & 150 / 4 & \ObabelInt{} / \ObabelExt & \ok \\
 
 \section{Discussion}\label{sec:discussion}
 
-\paragraph{Interpretation of findings.} The reproduction confirms the qualitative claims of the original study---continuous
+\paragraph{Interpretation of findings} The reproduction confirms the qualitative claims of the original study---continuous
 error falls while RMSD-threshold success and chemical validity fall with it---and shows that the effect is stronger and has a
 simple cause. The learned correction mostly contracts the ligand. Contraction lowers squared error for badly docked poses and
 for the pooled metric, but it breaks bonds and angles in nearly every pose and moves good poses out of tolerance.
 
-\paragraph{Relation to the research questions.} For Q1, the data pipeline, docking baseline, metric behaviour, rotation audit
+\paragraph{Relation to the research questions} For Q1, the data pipeline, docking baseline, metric behaviour, rotation audit
 and conversion artifact reproduced closely; the selected encoder, the size of the RMSD harm, the gate's operating point and
 the uncertainty-shift explanation did not (Table~\ref{tab:compare}). For Q2, measuring the gaps was more productive than
 closing them: none of the label-free decision rules made correction beneficial, but the analyses located the failure in the
 correction itself rather than in the gate.
 
-\paragraph{Relation to prior work.} PoseBusters showed that learned docking can satisfy RMSD criteria with invalid chemistry
+\paragraph{Relation to prior work} PoseBusters showed that learned docking can satisfy RMSD criteria with invalid chemistry
 \citep{buttenschoen2024posebusters}; the original study extended this to post-hoc correction
 \citep{mwamughunda2026original}. Our results add the mechanism: the conditional mean of atom positions under pose uncertainty
 lies inside the molecule, so a model trained with squared error (or a Gaussian likelihood, which shares its mean) learns to
@@ -279,31 +279,31 @@ predict a contracted pose. This mirrors the regression-to-the-mean blurring fami
 and is one reason generative docking methods sample poses instead of regressing them \citep{corso2023diffdock}. The external
 sequence overlap agrees with PoseBusters' observation that performance depends on similarity to the training proteins.
 
-\paragraph{Explanation of unexpected results.} Three differences from the original need explanation. First, the harm is larger
+\paragraph{Explanation of unexpected results} Three differences from the original need explanation. First, the harm is larger
 here, plausibly because our docking baseline is worse (larger targets, more contraction) and because our encoder choice was
 not the original MLP; the effect persisted across all four encoders and three alternative splits, so it is not an artefact of
 one model. Second, the gate admitted almost nothing: with stronger harm, the validation net-success curve peaks at a very low
 admit fraction. Third, the uncertainty did not shrink externally, so the original explanation of weaker external gating does
 not transfer; the deeper problem is that $\sigma$ tracks how wrong a pose is, not whether correcting it helps.
 
-\paragraph{Theoretical implications.} Evaluating refinement by pooled MSE rewards contraction. A refinement objective should
+\paragraph{Theoretical implications} Evaluating refinement by pooled MSE rewards contraction. A refinement objective should
 be defined over chemically valid poses---rigid-body motions, torsions, or a learned distribution over conformers---so that the
 optimum cannot leave the space of molecules. The decomposition into rigid and internal parts is a simple diagnostic that any
 coordinate-regression model can report.
 
-\paragraph{Practical implications.} For practitioners, a learned per-atom correction of this kind should not be applied to
+\paragraph{Practical implications} For practitioners, a learned per-atom correction of this kind should not be applied to
 docking output without a validity check, and a validity veto is cheap and deployable. Gating on predicted uncertainty is not
 enough: on every alternative split the gate failed its own correlation check, and on the original split it chose to correct
 almost nothing. Reports of
 external performance should include sequence-level similarity to the training data, not only identifier overlap.
 
-\paragraph{Limitations.} Structures came from the RCSB PDB because PDBbind's curated files require registration; multi-residue
+\paragraph{Limitations} Structures came from the RCSB PDB because PDBbind's curated files require registration; multi-residue
 ligands were therefore excluded and the internal docking baseline is weaker than in the original study. MISATO flexibility was
 mapped through our own registration because the original mapping was not specified. We ran one correction family (the original
 architecture and objective); other objectives may behave differently. Audits were performed on heavy-atom poses. Computing
 resources were a 4-core CPU without GPU, so seeds and splits were limited to those reported.
 
-\paragraph{Future research.} Natural next steps are correction models constrained to rigid and torsional motions, objectives
+\paragraph{Future research} Natural next steps are correction models constrained to rigid and torsional motions, objectives
 that penalise bond-length and angle deviations, generative refinement that samples rather than averages, and gates trained
 directly on the per-complex benefit of correcting rather than on predicted error.
 
