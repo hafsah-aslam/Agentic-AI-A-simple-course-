@@ -18,6 +18,8 @@ from rdkit.Chem import AllChem
 RDLogger.DisableLog("rdApp.*")
 DATA, LP_CSV, MIS_DIR, PB_DIR, MAN = sys.argv[1:6]
 TARGET = {"train": 1200, "val": 400, "test": 400}
+if os.environ.get("DPC_TARGET"):          # e.g. "20,5,5" for a quick smoke test; leave unset for the real study
+    TARGET = dict(zip(("train", "val", "test"), map(int, os.environ["DPC_TARGET"].split(","))))
 IGNORE = set("HOH WAT DOD NA CL K MG CA ZN MN FE CO NI CU CD HG SO4 PO4 GOL EDO PEG ACT FMT DMS BR IOD NO3 SCN".split())
 # crystallisation additives removed from the receptor; metals and organic cofactors are kept (as in the
 # PoseBusters receptor files used for the external cohort)
@@ -100,10 +102,53 @@ def rebuild_receptors(manifest):
         write_receptor(st, key, f"{DATA}/internal/{p}/protein.pdb", lig)
 
 
+_PDBBIND_INDEX = None
+
+
+def pdbbind_files(pdb):
+    """Locate {pdb}_protein.pdb and {pdb}_ligand.sdf/.mol2 anywhere under $PDBBIND_DIR (any PDBbind release layout)."""
+    global _PDBBIND_INDEX
+    root = os.environ.get("PDBBIND_DIR")
+    if not root:
+        return None
+    if _PDBBIND_INDEX is None:
+        _PDBBIND_INDEX = {}
+        for dirpath, _, files in os.walk(root):
+            for f in files:
+                code, _, kind = f.partition("_")
+                if kind in ("protein.pdb", "ligand.sdf", "ligand.mol2"):
+                    _PDBBIND_INDEX.setdefault(code.lower(), {})[kind] = os.path.join(dirpath, f)
+    return _PDBBIND_INDEX.get(pdb.lower())
+
+
+def prepare_from_pdbbind(pdb, files, out):
+    """Use the curated PDBbind protein and ligand files (also covers multi-residue / peptide ligands)."""
+    mol = None
+    if "ligand.sdf" in files:
+        mol = Chem.MolFromMolFile(files["ligand.sdf"], removeHs=True, sanitize=True)
+    if mol is None and "ligand.mol2" in files:
+        mol = Chem.MolFromMol2File(files["ligand.mol2"], removeHs=True, sanitize=True)
+    if mol is None or "protein.pdb" not in files:
+        return "ligand_parse_failure", "PDBbind ligand not sanitizable or protein missing"
+    os.makedirs(out, exist_ok=True)
+    mol.SetProp("_Name", f"{pdb}_pdbbind_ligand")
+    w = Chem.SDWriter(f"{out}/ligand_ref.sdf"); w.write(mol); w.close()
+    st = gemmi.read_structure(files["protein.pdb"]); st.setup_entities(); st.remove_alternative_conformations()
+    write_receptor(st, None, f"{out}/protein.pdb", mol.GetConformer().GetPositions())
+    return "ok", {"ligand_resname": "PDBbind", "ligand_chain": "", "n_heavy": mol.GetNumAtoms()}
+
+
 def prepare_internal(row):
-    """Return (status, info). Writes protein.pdb and ligand_ref.sdf on success."""
+    """Return (status, info). Writes protein.pdb and ligand_ref.sdf on success.
+    With $PDBBIND_DIR set, PDBbind's own files are used; otherwise structures are taken from the RCSB PDB."""
     pdb, smiles = row["pdb"], row["smiles"]
     out = f"{DATA}/internal/{pdb}"
+    files = pdbbind_files(pdb)
+    if files:
+        try:
+            return prepare_from_pdbbind(pdb, files, out)
+        except Exception as e:
+            return "structure_failure", f"PDBbind: {type(e).__name__}: {e}"
     try:
         tmpl = Chem.MolFromSmiles(smiles)
         if tmpl is None:

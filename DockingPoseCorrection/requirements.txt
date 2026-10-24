@@ -1,0 +1,17 @@
+# Versions used for the reported run (Python 3.11). Newer versions should work; Vina and RDKit versions can change docking/validity slightly.
+# torch: the CPU wheel is enough (pip install torch --index-url https://download.pytorch.org/whl/cpu)
+vina==1.2.7
+meeko==0.8.0
+openbabel-wheel==3.1.1.23
+posebusters==0.6.5
+rdkit==2026.9.1
+gemmi==0.7.5
+h5py==3.16.0
+fsspec==2026.9.0
+aiohttp==3.14.5
+torch==2.14.1
+numpy==2.4.6
+pandas==3.0.6
+scipy==1.17.1
+networkx==3.6.1
+matplotlib==3.11.2

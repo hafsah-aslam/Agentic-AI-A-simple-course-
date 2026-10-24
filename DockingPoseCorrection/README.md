@@ -42,7 +42,8 @@ DockingPoseCorrection/
 │   ├── shrinkage.py       G8 deformation / contraction analysis
 │   ├── figures.py         all figures, including the methodology diagram
 │   └── make_numbers.py    every number in the paper → paper/numbers.tex
-├── results/               JSON/CSV output of every stage
+├── results/               output of your run (empty until you run run_all.py)
+├── results_reference/     JSON/CSV output of the reported run
 ├── figures/               PDF + 300 dpi PNG
 └── paper/                 LaTeX source (main.tex, sections/, refs.bib, numbers.tex) and main.pdf
 ```
@@ -59,7 +60,7 @@ networkx matplotlib`.
 2. **Build the manifest and structures:** `python3 src/prepare_data.py DATA LP_CSV MISATO_DIR PB_DIR manifests`, then rerun it with `--rebuild-receptors` as the sixth argument.
 3. **Dock:** `python3 src/dock.py manifests/manifest.csv DATA PB_DIR DOCKED 0 1`. Run several workers in parallel; claim files prevent duplicate work.
 4. **MISATO flexibility:** `python3 src/misato_flex.py <internal manifest> DATA 0 1`.
-5. **Everything else:** `WORK=... SRC=... ./run_pipeline.sh`, then `python3 src/shrinkage.py` and `python3 src/make_numbers.py`.
+5. **Everything else:** `python3 run_all.py ...` runs all stages; see `RUN_ON_YOUR_COMPUTER.md`.
 6. **Paper:** `cd paper && latexmk -pdf main.tex`.
 
 Docking took about 30 CPU-hours (4 cores); everything after docking takes about 6 hours on 4 CPU cores. Seeds are fixed, so

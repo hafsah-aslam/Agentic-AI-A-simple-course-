@@ -20,7 +20,8 @@ from networkx.algorithms import isomorphism
 from rdkit import Chem, RDLogger
 
 RDLogger.DisableLog("rdApp.*")
-URL = "https://zenodo.org/records/7711953/files/MD.hdf5?download=1"
+# local MD.hdf5 if $MISATO_H5 is set (much faster), otherwise remote range reads from Zenodo
+URL = os.environ.get("MISATO_H5", "https://zenodo.org/records/7711953/files/MD.hdf5?download=1")
 
 
 def kabsch(P, Q):
@@ -114,8 +115,11 @@ def main():
         for attempt in range(5):
             try:
                 if h is None:
-                    f = fsspec.open(URL, block_size=4 * 2 ** 20, cache_type="blockcache").open()
-                    h = h5py.File(f, "r")
+                    if os.path.exists(URL):
+                        h = h5py.File(URL, "r")
+                    else:
+                        f = fsspec.open(URL, block_size=4 * 2 ** 20, cache_type="blockcache").open()
+                        h = h5py.File(f, "r")
                 t = time.time()
                 d = process(h, pdb, data)
                 print(pdb, "ok", round(d, 3), round(time.time() - t, 1), flush=True)
