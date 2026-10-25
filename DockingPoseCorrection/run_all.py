@@ -3,7 +3,10 @@
 
 Every stage is skipped when its output already exists, so the script can be stopped and restarted at any time.
 
-Example (Linux / macOS / WSL):
+Simplest use (WSL on Windows, datasets in D:\\data):
+    python3 run_all.py --data /mnt/d/data --work ~/dpc_work --workers 28
+
+Full form (Linux / macOS / WSL):
     python3 run_all.py \
         --lp-csv      /data/LP-PDBBind/dataset/LP_PDBBind.csv \
         --misato-ids  /data/misato \            # folder with train_MD.txt, val_MD.txt, test_MD.txt
@@ -40,14 +43,110 @@ def parallel(jobs, n, env=None):
         list(ex.map(lambda a: run(a, env=env, quiet=True), jobs))
 
 
+LP_URL = "https://raw.githubusercontent.com/THGLab/LP-PDBBind/master/dataset/LP_PDBBind.csv"
+PB_URL = "https://zenodo.org/records/8278563/files/posebusters_paper_data.zip?download=1"
+MISATO_IDS_URL = "https://zenodo.org/records/7711953/files/{}?download=1"
+
+
+def download(url, dest):
+    import urllib.request
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    if not os.path.exists(dest):
+        log(f"   downloading {os.path.basename(dest)}")
+        tmp = dest + ".part"
+        urllib.request.urlretrieve(url, tmp)
+        os.replace(tmp, dest)
+    return dest
+
+
+def find_named(root, names, max_depth=3):
+    """Find a file (any of names; a name without extension also matches name.csv) up to max_depth folders below root."""
+    if not root:
+        return None
+    wanted = {n.lower() for n in names} | {n.lower() + ".csv" for n in names if "." not in n}
+    base = root.rstrip(os.sep).count(os.sep)
+    for dirpath, dirs, files in os.walk(root):
+        if dirpath.count(os.sep) - base >= max_depth:
+            dirs[:] = []
+        dirs[:] = [d for d in dirs if d not in ("P-L", "pdbbind")]        # skip the large structure folders
+        for f in files:
+            if f.lower() in wanted:
+                return os.path.join(dirpath, f)
+    return None
+
+
+def resolve_sources(a, W):
+    """Fill in every input from --data, from explicit options, or by downloading the small public files."""
+    import tarfile, zipfile
+    D = os.path.abspath(a.data) if a.data else None
+    S = os.path.join(W, "sources"); os.makedirs(S, exist_ok=True)
+    find = lambda *names: next((os.path.join(D, n) for n in names if D and os.path.exists(os.path.join(D, n))), None)
+    # MISATO trajectories
+    a.misato_h5 = a.misato_h5 or find("MD.hdf5")
+    # PDBbind: an extracted folder, or P-L.tar / P-L.tar.gz extracted once into the work folder
+    if not a.pdbbind_dir:
+        folder = find("P-L", "PDBbind_v2020_PL", "v2020-other-PL", "refined-set")
+        archive = find("P-L.tar", "P-L.tar.gz", "PDBbind_v2020_PL.tar.gz")
+        if folder:
+            a.pdbbind_dir = folder
+        elif archive:
+            target = os.path.join(S, "pdbbind")
+            if not os.path.exists(os.path.join(target, ".extracted")):
+                log(f"   extracting {os.path.basename(archive)} (once, a few minutes)")
+                with tarfile.open(archive) as t:
+                    t.extractall(target)
+                open(os.path.join(target, ".extracted"), "w").close()
+            a.pdbbind_dir = target
+    # LP-PDBBind table
+    a.lp_csv = a.lp_csv or find_named(D, ("LP_PDBBind.csv", "LP_PDBBind")) or download(LP_URL, os.path.join(S, "LP_PDBBind.csv"))
+    # PoseBusters benchmark
+    if not a.posebusters:
+        a.posebusters = find("posebusters_paper_data")
+        zp = find("posebusters_paper_data.zip")
+        if not a.posebusters and os.path.exists(os.path.join(S, "posebusters_benchmark_set")):
+            a.posebusters = S                                   # extracted earlier (zip without a top folder)
+        if not a.posebusters:
+            target = os.path.join(S, "posebusters_paper_data")
+            if not os.path.exists(os.path.join(target, "posebusters_benchmark_set")):
+                zp = zp or download(PB_URL, os.path.join(S, "posebusters_paper_data.zip"))
+                log("   extracting PoseBusters benchmark")
+                with zipfile.ZipFile(zp) as z:
+                    z.extractall(S)
+                if not os.path.exists(os.path.join(target, "posebusters_benchmark_set")):   # zip without a top folder
+                    target = S
+            a.posebusters = target
+    # MISATO identifier lists (tiny); fall back to the group names inside a local MD.hdf5
+    if not a.misato_ids:
+        if find("train_MD.txt"):
+            a.misato_ids = D
+        else:
+            target = os.path.join(S, "misato_ids")
+            try:
+                for f in ("train_MD.txt", "val_MD.txt", "test_MD.txt"):
+                    download(MISATO_IDS_URL.format(f), os.path.join(target, f))
+            except Exception as e:
+                if not a.misato_h5:
+                    sys.exit(f"cannot get the MISATO ID lists ({e}); pass --misato-ids or --misato-h5")
+                import h5py
+                log("   MISATO ID lists from the groups in MD.hdf5")
+                keys = list(h5py.File(a.misato_h5, "r").keys())
+                os.makedirs(target, exist_ok=True)
+                open(os.path.join(target, "train_MD.txt"), "w").write("\n".join(keys) + "\n")
+                for f in ("val_MD.txt", "test_MD.txt"):
+                    open(os.path.join(target, f), "w").close()
+            a.misato_ids = target
+    return a
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--lp-csv", required=True, help="LP_PDBBind.csv from the LP-PDBBind repository")
-    ap.add_argument("--misato-ids", required=True, help="folder with MISATO train_MD.txt, val_MD.txt, test_MD.txt")
-    ap.add_argument("--posebusters", required=True, help="folder containing posebusters_benchmark_set/")
+    ap.add_argument("--data", help="your dataset folder, e.g. /mnt/d/data (MD.hdf5, P-L.tar, ...); everything else is found or downloaded")
     ap.add_argument("--work", required=True, help="working folder for structures, docking output and models (~30 GB)")
-    ap.add_argument("--misato-h5", help="local MISATO MD.hdf5 (recommended if you have it)")
-    ap.add_argument("--pdbbind-dir", help="local PDBbind folder (recommended if you have it)")
+    ap.add_argument("--lp-csv", help="LP_PDBBind.csv (downloaded from the LP-PDBBind repository if not given)")
+    ap.add_argument("--misato-ids", help="folder with MISATO train_MD.txt, val_MD.txt, test_MD.txt (downloaded if not given)")
+    ap.add_argument("--posebusters", help="folder containing posebusters_benchmark_set/ (downloaded if not given)")
+    ap.add_argument("--misato-h5", help="local MISATO MD.hdf5 (found in --data if present)")
+    ap.add_argument("--pdbbind-dir", help="local PDBbind folder (or P-L.tar in --data, extracted automatically)")
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 2),
                     help="CPU processes for docking, MISATO and PoseBusters (default: all threads minus 2)")
     ap.add_argument("--gpu-jobs", type=int, default=4, help="models trained at the same time on the GPU (default 4)")
@@ -57,6 +156,7 @@ def main():
     a = ap.parse_args()
 
     W = os.path.abspath(a.work); os.makedirs(W, exist_ok=True)
+    a = resolve_sources(a, W)
     data, docked, runs, res = f"{W}/data", f"{W}/docked", f"{W}/runs", os.path.join(HERE, "results")
     man_dir = os.path.join(HERE, "manifests"); man = f"{man_dir}/manifest.csv"
     for d in (data, docked, runs, res):
@@ -70,6 +170,7 @@ def main():
     for p in (a.lp_csv, misato_dir, f"{pb}/posebusters_benchmark_set"):
         if not os.path.exists(p):
             sys.exit(f"not found: {p}")
+    log(f"inputs: LP={a.lp_csv} | MISATO ids={misato_dir} | MD.hdf5={a.misato_h5 or 'remote'} | PDBbind={a.pdbbind_dir or 'RCSB'} | PoseBusters={pb}")
     try:
         import torch
         gpu = torch.cuda.is_available() and not a.cpu_only

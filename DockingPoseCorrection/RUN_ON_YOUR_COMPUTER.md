@@ -1,5 +1,38 @@
 # Running the reproduction on your own computer
 
+## Your setup in three commands (Windows + WSL2, datasets in `D:\data`)
+
+Your `D:\data` folder contains:
+
+| File | Used? | What happens to it |
+|---|---|---|
+| `MD.hdf5` | yes | MISATO trajectories, read directly (nothing is copied) |
+| `P-L.tar` | yes | PDBbind v2020 complexes, extracted once into the work folder (needs about 15 GB) |
+| `LP_PDBBind/` (with `LP_PDBBind.csv`) | yes | splits, SMILES and covalent flags; found automatically in any subfolder |
+| `mpro.tgz`, `EGFR.tgz`, `BDB2020+.tgz` | no | LP-PDBBind's extra test sets; not part of this study |
+
+The PoseBusters benchmark (54 MB) and the MISATO ID lists (a few KB) are downloaded automatically.
+
+In the Ubuntu (WSL2) terminal, Windows `D:\data` is `/mnt/d/data`. Keep the **work folder inside WSL** (e.g. `~/dpc_work`):
+it is much faster than `/mnt/d` for the ~100,000 small files docking writes.
+
+```bash
+# 1. install (once)
+cd ~ && unzip /mnt/c/Users/<you>/Downloads/DockingPoseCorrection_code.zip && cd DockingPoseCorrection
+python3 -m venv ~/dpc && source ~/dpc/bin/activate
+pip install torch --index-url https://download.pytorch.org/whl/cu124 && pip install -r requirements.txt
+
+# 2. check the GPU and the tools
+python3 -c "import torch, vina, rdkit, posebusters; print(torch.cuda.get_device_name(0))" && obabel -V
+
+# 3. run everything (about 3-4 h on an i9-13900 + RTX 4080)
+python3 run_all.py --data /mnt/d/data --work ~/dpc_work --workers 28 --gpu-jobs 4
+```
+
+If the run stops for any reason, run the same command again; finished stages are skipped.
+
+---
+
 One command runs everything, from the raw datasets to the paper PDF. If it stops (power cut, Ctrl+C), run the same
 command again and it continues where it left off.
 
