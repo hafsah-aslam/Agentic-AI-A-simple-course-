@@ -48,15 +48,42 @@ PB_URL = "https://zenodo.org/records/8278563/files/posebusters_paper_data.zip?do
 MISATO_IDS_URL = "https://zenodo.org/records/7711953/files/{}?download=1"
 
 
-def download(url, dest):
+def download(url, dest, tries=20):
+    """Download with progress, resuming a partial .part file after a dropped connection."""
     import urllib.request
     os.makedirs(os.path.dirname(dest), exist_ok=True)
-    if not os.path.exists(dest):
-        log(f"   downloading {os.path.basename(dest)}")
-        tmp = dest + ".part"
-        urllib.request.urlretrieve(url, tmp)
-        os.replace(tmp, dest)
-    return dest
+    if os.path.exists(dest):
+        return dest
+    tmp = dest + ".part"
+    log(f"   downloading {os.path.basename(dest)}")
+    for attempt in range(1, tries + 1):
+        have = os.path.getsize(tmp) if os.path.exists(tmp) else 0
+        req = urllib.request.Request(url, headers={"Range": f"bytes={have}-"} if have else {})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                if have and r.status != 206:                        # server ignored the range: start again
+                    have = 0
+                total = have + int(r.headers.get("Content-Length") or 0)
+                shown = -1
+                with open(tmp, "ab" if have else "wb") as f:
+                    while True:
+                        chunk = r.read(1 << 20)
+                        if not chunk:
+                            break
+                        f.write(chunk); have += len(chunk)
+                        pct = int(100 * have / total) if total else -1
+                        if pct >= 0 and pct // 10 != shown:
+                            shown = pct // 10
+                            log(f"      {have / 1e6:.0f} / {total / 1e6:.0f} MB ({pct}%)")
+            if total and have < total:
+                raise OSError(f"connection closed at {have} of {total} bytes")
+            os.replace(tmp, dest)
+            return dest
+        except Exception as e:
+            if attempt == tries:
+                raise
+            log(f"      download interrupted ({e}); resuming in 10 s (attempt {attempt + 1}/{tries})")
+            time.sleep(10)
 
 
 def find_named(root, names, max_depth=3):
@@ -135,6 +162,11 @@ def resolve_sources(a, W):
                 for f in ("val_MD.txt", "test_MD.txt"):
                     open(os.path.join(target, f), "w").close()
             a.misato_ids = target
+    log("   inputs:")
+    for name, val in (("LP-PDBBind table", a.lp_csv), ("MISATO ID lists", a.misato_ids), ("PoseBusters set", a.posebusters),
+                      ("MISATO MD.hdf5", a.misato_h5 or "NOT FOUND - trajectories will be streamed from Zenodo (slow)"),
+                      ("PDBbind structures", a.pdbbind_dir or "NOT FOUND - structures will be downloaded from the RCSB PDB")):
+        log(f"      {name:20s} {val}")
     return a
 
 
