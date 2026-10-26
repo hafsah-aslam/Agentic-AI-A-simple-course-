@@ -18,16 +18,31 @@ it is much faster than `/mnt/d` for the ~100,000 small files docking writes.
 
 ```bash
 # 1. install (once)
-cd ~ && unzip /mnt/c/Users/<you>/Downloads/DockingPoseCorrection_code.zip && cd DockingPoseCorrection
+cd ~ && unzip /mnt/c/Users/<you>/Downloads/DockingPoseCorrection_code.zip
+cd ~/DockingPoseCorrection                       # every command below runs from this folder
 python3 -m venv ~/dpc && source ~/dpc/bin/activate
-pip install torch --index-url https://download.pytorch.org/whl/cu124 && pip install -r requirements.txt
+pip install --timeout 120 --retries 20 torch --index-url https://download.pytorch.org/whl/cpu   # ~200 MB
+pip install --timeout 120 --retries 20 -r requirements.txt
 
-# 2. check the GPU and the tools
-python3 -c "import torch, vina, rdkit, posebusters; print(torch.cuda.get_device_name(0))" && obabel -V
+# 2. check the tools
+python3 -c "import torch, vina, rdkit, posebusters; print('ok')" && obabel -V
 
-# 3. run everything (about 3-4 h on an i9-13900 + RTX 4080)
+# 3. run everything
+python3 run_all.py --data /mnt/d/data --work ~/dpc_work --workers 28 --cpu-only
+```
+
+**Slow internet: use the CPU build of PyTorch (above).** The GPU build of PyTorch is a download of about 2.5 GB
+(one file, cuDNN, is 665 MB on its own), and pip cannot resume a broken download. The model is small and docking takes most of
+the time, so training on the 28 CPU threads adds only a modest amount compared with the GPU.
+
+**To use the RTX 4080 later** (when you have a fast connection), install the GPU build and drop `--cpu-only`:
+```bash
+pip install --timeout 300 --retries 20 torch --index-url https://download.pytorch.org/whl/cu124
+python3 -c "import torch; print(torch.cuda.get_device_name(0))"
 python3 run_all.py --data /mnt/d/data --work ~/dpc_work --workers 28 --gpu-jobs 4
 ```
+If the download breaks, run the same `pip install` again: packages that finished are taken from pip's cache.
+Results agree between the CPU and GPU builds, apart from floating-point noise.
 
 If the run stops for any reason, run the same command again; finished stages are skipped.
 

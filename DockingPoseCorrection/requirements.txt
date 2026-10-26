@@ -9,7 +9,7 @@ gemmi==0.7.5
 h5py==3.16.0
 fsspec==2026.9.0
 aiohttp==3.14.5
-torch==2.14.1
+torch>=2.4       # any recent build; an already-installed CPU or CUDA torch is kept
 numpy==2.4.6
 pandas==3.0.6
 scipy==1.17.1
