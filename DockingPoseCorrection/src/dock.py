@@ -104,7 +104,10 @@ def dock_one(row, outdir):
 
 def main():
     man = pd.read_csv(MAN)
-    rows = man.to_dict("records")[WID::NW]
+    rows = man.to_dict("records")
+    start = WID * len(rows) // NW
+    rows = rows[start:] + rows[:start]   # every worker walks the whole list from its own offset: claims prevent
+                                         # duplicates, and no complex is stranded if another worker dies
     for row in rows:
         outdir = f"{OUT}/{row['pdb']}"
         os.makedirs(outdir, exist_ok=True)

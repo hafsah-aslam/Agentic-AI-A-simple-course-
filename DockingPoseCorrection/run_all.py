@@ -216,7 +216,8 @@ def main():
     log(f"work folder {W}; {a.workers} workers; PDBbind {'local' if a.pdbbind_dir else 'RCSB'}; MISATO {'local' if a.misato_h5 else 'remote'}")
 
     # 1 manifest + structures
-    if not os.path.exists(f"{man_dir}/manifest_log.json") or not os.path.exists(f"{data}/internal"):
+    mlog = f"{man_dir}/manifest_log.json"
+    if not os.path.exists(mlog) or not os.path.exists(f"{data}/internal") or "max_rotatable_bonds" not in json.load(open(mlog)):
         log("1/8 eligibility, frozen manifest and structures")
         run(["prepare_data.py", data, a.lp_csv, misato_dir, pb, man_dir], env=env)
         if not a.pdbbind_dir:
@@ -237,7 +238,8 @@ def main():
         parallel([["dock.py", man, data, pb, docked, 0, 1] for _ in range(a.workers)], a.workers, env)
 
     # 3 MISATO flexibility
-    if len(glob.glob(f"{data}/misato/*.npz")) + len(glob.glob(f"{data}/misato/*.fail")) < (m.split != "external").sum():
+    if any(not os.path.exists(f"{data}/misato/{p}.npz") and not os.path.exists(f"{data}/misato/{p}.npz.fail")
+           for p in m[m.split != "external"].pdb):
         n = a.workers if a.misato_h5 else min(2, a.workers)   # remote reads are rate limited
         log(f"3/8 MISATO flexibility ({n} workers)")
         parallel([["misato_flex.py", internal_csv, data, w, n] for w in range(n)], n, env)

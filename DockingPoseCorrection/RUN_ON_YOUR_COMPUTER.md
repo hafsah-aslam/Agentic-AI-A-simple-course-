@@ -46,6 +46,14 @@ Results agree between the CPU and GPU builds, apart from floating-point noise.
 
 If the run stops for any reason, run the same command again; finished stages are skipped.
 
+**Very flexible ligands are excluded.** With local PDBbind, long peptide ligands are kept, and Vina can take more than
+15 hours on one of them. Ligands with more than 30 rotatable bonds are therefore excluded at the eligibility step
+(status `too_flexible`; their slots are filled by the next eligible complexes, so the split sizes do not change).
+The PoseBusters set is not affected (at most 20 rotatable bonds). The reported run in `results_reference/` was made
+before this rule and contains 10 such complexes out of 2,000. Use `DPC_MAX_ROTB=<n>` to change the limit.
+
+**Workers:** use about the number of threads `nproc` shows, minus 2 (for example `--workers 18` when it shows 20).
+
 ---
 
 One command runs everything, from the raw datasets to the paper PDF. If it stops (power cut, Ctrl+C), run the same

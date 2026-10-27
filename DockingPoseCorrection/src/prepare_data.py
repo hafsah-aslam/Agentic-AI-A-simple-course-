@@ -20,6 +20,9 @@ DATA, LP_CSV, MIS_DIR, PB_DIR, MAN = sys.argv[1:6]
 TARGET = {"train": 1200, "val": 400, "test": 400}
 if os.environ.get("DPC_TARGET"):          # e.g. "20,5,5" for a quick smoke test; leave unset for the real study
     TARGET = dict(zip(("train", "val", "test"), map(int, os.environ["DPC_TARGET"].split(","))))
+# Docking applicability limit: ligands with more rotatable bonds (long peptides, mostly) take Vina hours to days
+# at exhaustiveness 8 and are outside its reliable range. The PoseBusters set has at most 20.
+MAX_ROTB = int(os.environ.get("DPC_MAX_ROTB", 30))
 IGNORE = set("HOH WAT DOD NA CL K MG CA ZN MN FE CO NI CU CD HG SO4 PO4 GOL EDO PEG ACT FMT DMS BR IOD NO3 SCN".split())
 # crystallisation additives removed from the receptor; metals and organic cofactors are kept (as in the
 # PoseBusters receptor files used for the external cohort)
@@ -191,6 +194,17 @@ def prepare_internal(row):
         return "structure_failure", f"{type(e).__name__}: {e}"
 
 
+def prepare_eligible(row):
+    st, info = prepare_internal(row)
+    if st == "ok":
+        from rdkit.Chem import rdMolDescriptors
+        mol = Chem.MolFromMolFile(f"{DATA}/internal/{row['pdb']}/ligand_ref.sdf")
+        nrot = rdMolDescriptors.CalcNumRotatableBonds(mol)
+        if nrot > MAX_ROTB:
+            return "too_flexible", f"{nrot} rotatable bonds > {MAX_ROTB}"
+    return st, info
+
+
 def main():
     os.makedirs(f"{DATA}/raw", exist_ok=True)
     lp = pd.read_csv(LP_CSV).rename(columns={"Unnamed: 0": "pdb"})
@@ -199,7 +213,7 @@ def main():
         misato |= {x.strip().lower() for x in open(f"{MIS_DIR}/{f}") if x.strip()}
     pb_ids = sorted(os.listdir(f"{PB_DIR}/posebusters_benchmark_set"))
     pb_pdb = {x.split("_")[0].lower() for x in pb_ids}
-    log = {"pdbbind_pl": int(len(lp)), "misato_md": len(misato)}
+    log = {"pdbbind_pl": int(len(lp)), "misato_md": len(misato), "max_rotatable_bonds": MAX_ROTB}
     pool = lp[lp.pdb.isin(misato)].copy()
     log["three_way_intersection"] = int(len(pool))
     log["excluded_covalent"] = int(pool.covalent.sum())
@@ -225,7 +239,7 @@ def main():
             batch = ordered[gi:gi + 40]
             gi += len(batch)
             members = [r for _, g in batch for r in g.to_dict("records")]
-            results = dict(zip([m["pdb"] for m in members], ex.map(prepare_internal, members)))
+            results = dict(zip([m["pdb"] for m in members], ex.map(prepare_eligible, members)))
             for gid, g in batch:
                 if split is None:
                     break
