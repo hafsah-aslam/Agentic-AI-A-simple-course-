@@ -235,7 +235,19 @@ def main():
             if os.path.exists(c):
                 os.remove(c)
         log(f"2/8 docking {len(todo)} complexes with {a.workers} workers (about 1 CPU-minute each)")
+        import threading
+        stop = threading.Event()
+
+        def progress():                                  # docking is otherwise silent for hours
+            t0 = time.time()
+            while not stop.wait(300):
+                done = sum(os.path.exists(f"{docked}/{p}/dock.json") for p in todo)
+                rate = done / ((time.time() - t0) / 60)
+                eta = f", about {(len(todo) - done) / rate / 60:.1f} h left at this rate" if rate > 0 else ""
+                log(f"   docked {done}/{len(todo)} ({rate:.1f} per min{eta}); running normally, do not restart")
+        threading.Thread(target=progress, daemon=True).start()
         parallel([["dock.py", man, data, pb, docked, 0, 1] for _ in range(a.workers)], a.workers, env)
+        stop.set()
 
     # 3 MISATO flexibility
     if any(not os.path.exists(f"{data}/misato/{p}.npz") and not os.path.exists(f"{data}/misato/{p}.npz.fail")
