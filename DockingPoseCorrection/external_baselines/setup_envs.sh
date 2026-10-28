@@ -3,7 +3,7 @@
 #   EquiBind runs on the CPU: its pinned PyTorch 1.10 / CUDA 10.2 build has no kernels for RTX 40-series GPUs,
 #   and EquiBind needs only seconds per complex anyway.
 #   DiffDock runs on the GPU (PyTorch 1.13.1 + CUDA 11.7 runs on the RTX 4080).
-# Downloads: about 6-8 GB in total (environments, DiffDock models, ESM2 language model). Run it once; rerunning
+# Downloads: about 5 GB in total (environments, DiffDock models, ESM2 language model). Run it once; rerunning
 # skips what is already installed.
 set -euo pipefail
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -11,14 +11,19 @@ conda_cmd="$(command -v mamba || command -v conda || true)"
 [[ -n "$conda_cmd" ]] || { echo "conda or mamba not found; install Miniconda first" >&2; exit 1; }
 base="$("$conda_cmd" info --base 2>/dev/null || conda info --base)"
 
+declare -A check=([dpc-equibind]="import torch, dgl, rdkit, ot, biopandas, torch.utils.tensorboard"
+                   [dpc-diffdock]="import torch, esm, torch_geometric, torch_scatter, prody, e3nn, rdkit")
+declare -A file=([dpc-equibind]="$here/envs/equibind_cpu.yml" [dpc-diffdock]="$here/envs/diffdock.yml")
 for env in dpc-equibind dpc-diffdock; do
-  if [[ -x "$base/envs/$env/bin/python" ]]; then
+  if "$base/envs/$env/bin/python" -c "${check[$env]}" 2>/dev/null; then
     echo "$env already installed"
-  else
-    file="$here/envs/${env#dpc-}.yml"; [[ "$env" == dpc-equibind ]] && file="$here/envs/equibind_cpu.yml"
-    echo "creating $env from $file (this takes a while)"
-    PIP_DEFAULT_TIMEOUT=120 "$conda_cmd" env create -y -n "$env" -f "$file"
+    continue
   fi
+  # a missing or half-installed environment (e.g. an interrupted download) is rebuilt
+  [[ -d "$base/envs/$env" ]] && { echo "$env is incomplete; removing it"; "$conda_cmd" env remove -y -n "$env" >/dev/null 2>&1 || rm -rf "$base/envs/$env"; }
+  echo "creating $env from ${file[$env]} (this takes a while)"
+  PIP_DEFAULT_TIMEOUT=120 PIP_RETRIES=20 "$conda_cmd" env create -n "$env" -f "${file[$env]}"
+  "$base/envs/$env/bin/python" -c "${check[$env]}" || { echo "$env was created but its imports fail" >&2; exit 1; }
 done
 
 echo "checking the GPU from the DiffDock environment"

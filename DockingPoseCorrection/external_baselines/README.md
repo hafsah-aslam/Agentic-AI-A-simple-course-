@@ -16,7 +16,7 @@ bundle's own scripts, the same pinned tool versions and the same seeds and setti
 
 ```bash
 cd ~/DockingPoseCorrection && source ~/dpc/bin/activate
-bash external_baselines/setup_envs.sh                       # once: two conda environments, about 6-8 GB of downloads
+bash external_baselines/setup_envs.sh                       # once: two conda environments, about 5 GB of downloads
 bash external_baselines/run_baselines.sh --work ~/dpc_work  # restart-safe: rerun the same command after any stop
 ```
 

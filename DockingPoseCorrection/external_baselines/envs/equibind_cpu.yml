@@ -1,28 +1,30 @@
+# EquiBind (commit 4cb1b4c) for CPU inference. Same major versions as EquiBind's environment.yml (Python 3.7,
+# PyTorch 1.10), pinned so the solver cannot pull CUDA builds or a DGL release EquiBind was not written for.
+# The RTX 40-series is not supported by EquiBind's CUDA 10.2 build; on the CPU it needs seconds per complex.
 name: dpc-equibind
 channels:
   - conda-forge
-  - defaults
-  - dglteam
-  - pytorch
 dependencies:
   - python=3.7
-  - pytorch 1.10
-  - torchvision
-  - cpuonly
-  - torchaudio
-  - dgl
-  - rdkit
-  - openbabel
-  - biopython
-  - rdkit
-  - biopandas
-  - pot
-  - dgllife
-  - joblib
-  - pyaml
-  - icecream
-  - matplotlib
-  - tensorboard
-
-
-
+  - pip
+  - rdkit=2022.09.1
+  - openbabel=3.1.1
+  - pip:
+    - --extra-index-url https://download.pytorch.org/whl/cpu
+    - torch==1.10.0+cpu
+    - dgl==0.9.1
+    - dgllife==0.3.2
+    - numpy==1.21.6
+    - scipy==1.7.3
+    - pandas==1.3.5
+    - scikit-learn==1.0.2
+    - biopython==1.79
+    - biopandas==0.4.1
+    - POT==0.8.2
+    - joblib==1.3.2
+    - pyaml==21.10.1
+    - pyyaml==6.0.1
+    - icecream==2.1.3
+    - matplotlib==3.5.3
+    - tensorboard==2.11.2
+    - tqdm==4.66.4
