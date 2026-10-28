@@ -1,0 +1,13 @@
+diff --git a/inference.py b/inference.py
+index 392d9b4..dc81b62 100644
+--- a/inference.py
++++ b/inference.py
+@@ -327,7 +327,7 @@ def inference_from_files(args):
+     dp = args.dataset_params
+     use_rdkit_coords = args.use_rdkit_coords if args.use_rdkit_coords != None else args.dataset_params[
+         'use_rdkit_coords']
+-    names = os.listdir(args.inference_path) if args.inference_path != None else tqdm(read_strings_from_txt('data/timesplit_test'))
++    names = sorted(os.listdir(args.inference_path)) if args.inference_path != None else tqdm(read_strings_from_txt('data/timesplit_test'))
+     for idx, name in enumerate(names):
+         print(f'\nProcessing {name}: complex {idx + 1} of {len(names)}')
+         file_names = os.listdir(os.path.join(args.inference_path, name))
