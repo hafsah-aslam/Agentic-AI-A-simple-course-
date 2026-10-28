@@ -30,17 +30,19 @@ def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def run(args, env=None, quiet=False):
-    """Run one python script from src/ and stop everything if it fails."""
+def run(args, env=None, quiet=False, fatal=True):
+    """Run one python script from src/ and stop everything if it fails (unless fatal=False)."""
     cmd = [PY, os.path.join(SRC, args[0])] + [str(a) for a in args[1:]]
     r = subprocess.run(cmd, cwd=SRC, env=env, stdout=subprocess.DEVNULL if quiet else None)
     if r.returncode != 0:
-        sys.exit(f"FAILED: {' '.join(cmd)}")
+        if fatal:
+            sys.exit(f"FAILED: {' '.join(cmd)}")
+        log(f"   a worker exited with code {r.returncode}; its unfinished complex is retried")
 
 
-def parallel(jobs, n, env=None):
+def parallel(jobs, n, env=None, fatal=True):
     with ThreadPoolExecutor(n) as ex:
-        list(ex.map(lambda a: run(a, env=env, quiet=True), jobs))
+        list(ex.map(lambda a: run(a, env=env, quiet=True, fatal=fatal), jobs))
 
 
 LP_URL = "https://raw.githubusercontent.com/THGLab/LP-PDBBind/master/dataset/LP_PDBBind.csv"
@@ -246,8 +248,27 @@ def main():
                 eta = f", about {(len(todo) - done) / rate / 60:.1f} h left at this rate" if rate > 0 else ""
                 log(f"   docked {done}/{len(todo)} ({rate:.1f} per min{eta}); running normally, do not restart")
         threading.Thread(target=progress, daemon=True).start()
-        parallel([["dock.py", man, data, pb, docked, 0, 1] for _ in range(a.workers)], a.workers, env)
+        # A worker can die without writing a result (Vina crash, out of memory): retry those complexes with fewer
+        # workers, then record what still fails as a docking failure (excluded downstream like any other failure).
+        for attempt, nw in enumerate((a.workers, min(4, a.workers)), 1):
+            left = [p for p in todo if not os.path.exists(f"{docked}/{p}/dock.json")]
+            if not left:
+                break
+            for p in left:
+                c = f"{docked}/{p}/claim"
+                if os.path.exists(c):
+                    os.remove(c)
+            if attempt > 1:
+                log(f"   retrying {len(left)} complexes whose worker crashed ({nw} workers)")
+            parallel([["dock.py", man, data, pb, docked, 0, 1] for _ in range(nw)], nw, env, fatal=False)
         stop.set()
+        rows = m.set_index("pdb").split
+        for p in todo:
+            if not os.path.exists(f"{docked}/{p}/dock.json"):
+                os.makedirs(f"{docked}/{p}", exist_ok=True)
+                json.dump({"pdb": p, "split": rows[p], "status": "failed", "error": "docking process crashed twice"},
+                          open(f"{docked}/{p}/dock.json", "w"))
+                log(f"   {p}: docking process crashed twice, recorded as a docking failure")
 
     # 3 MISATO flexibility
     if any(not os.path.exists(f"{data}/misato/{p}.npz") and not os.path.exists(f"{data}/misato/{p}.npz.fail")
