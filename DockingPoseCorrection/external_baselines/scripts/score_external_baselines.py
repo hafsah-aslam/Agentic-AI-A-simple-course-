@@ -317,11 +317,17 @@ def main() -> int:
     for ordinal, record in enumerate(cohorts.itertuples(index=False), start=1):
         for tool in TOOLS:
             prediction_path = predictions / tool / record.split / record.complex_id / "rank1.sdf"
-            require(prediction_path.is_file() and prediction_path.stat().st_size > 0, f"missing collected prediction: {prediction_path}")
             complex_dir = m2_output / "complexes" / record.split / record.complex_id
             cache = output / "score_cache" / tool / record.split / f"{record.complex_id}.json"
             repaired_dir = output / "repaired_sdf" / tool / record.split
-            scored = score_one(tool, record.split, record.complex_id, complex_dir, prediction_path, checks, buster, repaired_dir, cache, args.force)
+            if prediction_path.is_file() and prediction_path.stat().st_size > 0:
+                scored = score_one(tool, record.split, record.complex_id, complex_dir, prediction_path, checks, buster, repaired_dir, cache, args.force)
+            else:   # reproduction adapter: the tool produced no pose for this complex (a docking failure)
+                scored = {"scorer_version": SCORER_VERSION, "tool": tool, "split": record.split, "complex_id": record.complex_id,
+                          "prediction_path": "", "status": "excluded", "scoring_exclusion_reason": "no prediction: the tool failed on this complex",
+                          "mapping_bijective": False, "posebusters_check_count": len(checks), "posebusters_checks_reported": 0,
+                          "posebusters_valid": False, "posebusters_error": "no prediction",
+                          **{f"pb_{check}": False for check in checks}, **{f"pb_{check}_reported": False for check in checks}}
             scored.update({"source": record.source, "pdb_id": record.pdb_id, "group_id": record.group_id})
             rows.append(scored)
         if ordinal % 10 == 0 or ordinal == len(cohorts):

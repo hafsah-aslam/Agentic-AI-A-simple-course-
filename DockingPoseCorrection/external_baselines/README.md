@@ -56,6 +56,14 @@ finishes, so the scripts could not have run to the end as supplied:
 | `sanity_check_external_baselines.py` | same 3-value unpack | fallback matching always reported as failed | unpack 4 values |
 | `validate_external_baselines.py` | two `check()` calls without their name argument | the validator crashes with `TypeError` | add the names |
 
+One more defect is in the design rather than a single line: EquiBind and DiffDock dock a whole shard in one call,
+so one complex that crashes the tool (on the PoseBusters set, EquiBind fails on 7BA0_T5H with `Bad Conformer Id`
+because RDKit cannot embed the ligand) leaves every later complex of the shard undone, and the runner then stops
+the stage. The driver now continues, retries each missing complex on its own (`scripts/retry_missing.py`), and
+records a complex that fails again as a docking failure (`<id>.failed`); `inference_shard_status.py` treats that
+record as final and `score_external_baselines.py` scores the complex as excluded with the reason, instead of
+stopping. The summary reports these complexes in `n_excluded`; success rates are over the docked complexes.
+
 Two files referenced by the runner were not in the bundle and are reconstructed:
 
 - `patches/equibind_deterministic_listing.patch`: the one-line change the runner checks for

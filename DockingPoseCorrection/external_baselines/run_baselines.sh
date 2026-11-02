@@ -39,12 +39,57 @@ export DPC_BRIDGE="$bridge/bridge.json" PYTHONPATH="$here/scripts${PYTHONPATH:+:
 export DPC_GATE_TAU="$(python3 -c "import json; print(json.load(open('$DPC_BRIDGE'))['gate_tau'])")"
 common=(--manifest "$bridge/manifest.csv" --m2-output-dir "$bridge/m2" --workspace "$ws")
 
-has equibind && { log "EquiBind (CPU)"; bash "$here/bin/run_external_baselines.sh" --stage equibind "${common[@]}" --equibind-python "$equibind_python"; }
-has diffdock && { log "DiffDock (GPU, 40 samples x 20 steps per complex)"; bash "$here/bin/run_external_baselines.sh" --stage diffdock "${common[@]}" --diffdock-python "$diffdock_python"; }
+# One complex that crashes a tool stops its whole shard, and the original runner then stops the stage. Here a
+# stage with failures continues; afterwards every complex left without a prediction is retried on its own, and a
+# complex that fails again is recorded as a docking failure (a .failed marker; it is scored as a failure).
+retry_missing() {
+  local tool="$1" n=0 failed=0
+  while IFS=$'\t' read -r split shard cid input raw; do
+    n=$((n + 1))
+    mkdir -p "$raw" "$ws/logs/$tool/retry"
+    if [[ "$tool" == equibind ]]; then
+      (cd "$ws/vendor/EquiBind" && "$equibind_python" inference.py --config configs_clean/inference.yml \
+          --inference_path "$input" --output_directory "$raw" --use_rdkit_coords --seed 20260827) \
+          > "$ws/logs/$tool/retry/$cid.log" 2>&1 || true
+      out="$raw/$cid/lig_equibind_corrected.sdf"
+    else
+      local dd="$ws/vendor/DiffDock"
+      (cd "$dd" && "$diffdock_python" "$here/scripts/run_diffdock_seeded.py" --diffdock-root "$dd" --seed 20260827 \
+          --config "$here/diffdock_external_inference.yaml" --protein_ligand_csv "$input" --out_dir "$raw" \
+          --model_dir "$dd/workdir/v1.1/score_model" --confidence_model_dir "$dd/workdir/v1.1/confidence_model" \
+          --inference_steps 20 --samples_per_complex 40 --batch_size 10 --loglevel INFO) \
+          > "$ws/logs/$tool/retry/$cid.log" 2>&1 || true
+      out="$raw/$cid/rank1.sdf"
+    fi
+    if [[ -s "$out" ]]; then
+      log "   $tool $split/$cid: done on retry"
+    else
+      touch "$raw/$cid.failed"; failed=$((failed + 1))
+      log "   $tool $split/$cid: $tool cannot dock this complex (log: logs/$tool/retry/$cid.log); recorded as a failure"
+    fi
+  done < <(python3 "$here/scripts/retry_missing.py" --tool "$tool" --workspace "$ws")
+  [[ $n -gt 0 ]] && log "   $tool retries: $((n - failed)) of $n complexes docked on their own, $failed recorded as failures"
+  return 0
+}
+
+if has equibind; then
+  log "EquiBind (CPU)"
+  bash "$here/bin/run_external_baselines.sh" --stage equibind "${common[@]}" --equibind-python "$equibind_python" \
+    || log "   some EquiBind shards are incomplete; retrying their missing complexes one at a time"
+  retry_missing equibind
+fi
+if has diffdock; then
+  log "DiffDock (GPU, 40 samples x 20 steps per complex)"
+  bash "$here/bin/run_external_baselines.sh" --stage diffdock "${common[@]}" --diffdock-python "$diffdock_python" \
+    || log "   some DiffDock shards are incomplete; retrying their missing complexes one at a time"
+  retry_missing diffdock
+fi
 
 if has score; then
   log "collect, score (22 PoseBusters checks), aggregate, validate"
-  bash "$here/bin/run_external_baselines.sh" --stage collect "${common[@]}"
+  # complexes a tool could not dock have no prediction; they are scored as failures, not dropped silently
+  python3 "$here/scripts/collect_predictions.py" --inputs-dir "$ws/inputs" --raw-output-dir "$ws/raw_inference" \
+      --output-dir "$ws/predictions" --allow-incomplete
   python3 "$here/scripts/score_external_baselines.py" --manifest "$bridge/manifest.csv" --m2-output-dir "$bridge/m2" \
       --predictions-dir "$ws/predictions" --output-dir "$ws/scores" ${DPC_SCORE_LIMIT:+--limit-per-split $DPC_SCORE_LIMIT} || log "scoring finished with exclusions (listed in scores/external_baseline_scoring_exclusions.csv)"
   python3 "$here/scripts/aggregate_external_baselines.py" --manifest "$bridge/manifest.csv" \

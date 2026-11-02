@@ -42,7 +42,7 @@ def main() -> int:
         path = raw_output / complex_id / output_name
         if path.is_file() and path.stat().st_size > 0:
             completed.append({"complex_id": complex_id, "path": str(path), "sha256": sha256(path)})
-        else:
+        elif not (raw_output / f"{complex_id}.failed").exists():   # reproduction adapter: a recorded failure is final
             missing.append(complex_id)
     report = {
         "tool": args.tool,
