@@ -61,7 +61,10 @@ Two files referenced by the runner were not in the bundle and are reconstructed:
 - `patches/equibind_deterministic_listing.patch`: the one-line change the runner checks for
   (`names = sorted(os.listdir(args.inference_path))`).
 - `diffdock_external_inference.yaml`: DiffDock's own `default_inference_args.yaml` at the pinned commit, with
-  `samples_per_complex: 40`. The runner also passes steps, samples and batch size on the command line.
+  `samples_per_complex: 40`. This setting matters: DiffDock's `inference.py` (pinned commit) copies every config
+  value over the command-line arguments, so the runner's `--samples_per_complex 40` has no effect, and the
+  default config would give 10 samples per complex. If the original study used the default file, its DiffDock
+  runs drew 10 samples, not the stated 40. (EquiBind lets command-line arguments take precedence over its config.)
 
 ## Checks done without the GPU
 
