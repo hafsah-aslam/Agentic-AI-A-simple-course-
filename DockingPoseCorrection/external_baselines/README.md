@@ -64,6 +64,11 @@ records a complex that fails again as a docking failure (`<id>.failed`); `infere
 record as final and `score_external_baselines.py` scores the complex as excluded with the reason, instead of
 stopping. The summary reports these complexes in `n_excluded`; success rates are over the docked complexes.
 
+The DiffDock stage also could not pass its own model check: the official `diffdock_models.zip` (v1.1) holds
+`score_model/` and `confidence_model/` at its top level, but the runner unpacked it into the repository root and
+then required `workdir/v1.1/score_model`. It is now extracted into `workdir/v1.1` (with Python's `zipfile`, so the
+`unzip` program is not needed).
+
 Two files referenced by the runner were not in the bundle and are reconstructed:
 
 - `patches/equibind_deterministic_listing.patch`: the one-line change the runner checks for

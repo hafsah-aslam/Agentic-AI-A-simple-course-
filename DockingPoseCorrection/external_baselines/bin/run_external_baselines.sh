@@ -111,7 +111,10 @@ ensure_diffdock() {
     mkdir -p "$(dirname "$archive")"
     if [[ -f "$model_zip" ]]; then cp -f "$model_zip" "$archive"; fi
     if [[ ! -s "$archive" ]]; then curl --fail --location --retry 3 --progress-bar --output "$archive" "$model_zip"; fi
-    unzip -q -o "$archive" -d "$dir"
+    # the official v1.1 archive holds score_model/ and confidence_model/ at its top level, so it is extracted into
+    # workdir/v1.1 (extracting into the repository root never creates the paths checked below)
+    mkdir -p "$dir/workdir/v1.1"
+    "$runner_python" -m zipfile -e "$archive" "$dir/workdir/v1.1"
   fi
   [[ -d "$dir/workdir/v1.1/score_model" && -d "$dir/workdir/v1.1/confidence_model" ]] || { echo "DiffDock model extraction did not create expected workdir/v1.1 models" >&2; exit 1; }
 }
