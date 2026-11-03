@@ -43,7 +43,8 @@ common=(--manifest "$bridge/manifest.csv" --m2-output-dir "$bridge/m2" --workspa
 # stage with failures continues; afterwards every complex left without a prediction is retried on its own, and a
 # complex that fails again is recorded as a docking failure (a .failed marker; it is scored as a failure).
 retry_missing() {
-  local tool="$1" n=0 failed=0
+  local tool="$1" n=0 failed=0 ok=0 pending=() cid
+  record_failure() { touch "$1/$2.failed"; log "   $tool $3/$2: $tool cannot dock this complex (log: logs/$tool/retry/$2.log); recorded as a failure"; }
   while IFS=$'\t' read -r split shard cid input raw; do
     n=$((n + 1))
     mkdir -p "$raw" "$ws/logs/$tool/retry"
@@ -62,13 +63,32 @@ retry_missing() {
       out="$raw/$cid/rank1.sdf"
     fi
     if [[ -s "$out" ]]; then
+      ok=$((ok + 1))
       log "   $tool $split/$cid: done on retry"
     else
-      touch "$raw/$cid.failed"; failed=$((failed + 1))
-      log "   $tool $split/$cid: $tool cannot dock this complex (log: logs/$tool/retry/$cid.log); recorded as a failure"
+      failed=$((failed + 1))
+      if [[ $ok -eq 0 && $failed -le 3 ]]; then
+        # the tool has not docked anything yet: hold the verdict until it either docks one complex or fails three
+        pending+=("$raw"$'\t'"$cid"$'\t'"$split")
+        if [[ $failed -eq 3 ]]; then
+          log "   $tool fails on every complex it is given: this is a setup problem, not a docking result. Last lines of its log:"
+          tail -n 25 "$ws/logs/$tool/retry/$cid.log" | sed 's/^/      /'
+          log "   nothing was recorded as a failure; fix the problem above and run the same command again"
+          return 1
+        fi
+      else
+        record_failure "$raw" "$cid" "$split"
+      fi
+    fi
+    if [[ $ok -gt 0 && ${#pending[@]} -gt 0 ]]; then   # the tool works, so the held complexes are real failures
+      for p in "${pending[@]}"; do IFS=$'\t' read -r praw pcid psplit <<< "$p"; record_failure "$praw" "$pcid" "$psplit"; done
+      pending=()
     fi
   done < <(python3 "$here/scripts/retry_missing.py" --tool "$tool" --workspace "$ws")
-  [[ $n -gt 0 ]] && log "   $tool retries: $((n - failed)) of $n complexes docked on their own, $failed recorded as failures"
+  if [[ ${#pending[@]} -gt 0 ]]; then   # fewer than three left and none docked: still record them (the stage itself ran)
+    for p in "${pending[@]}"; do IFS=$'\t' read -r praw pcid psplit <<< "$p"; record_failure "$praw" "$pcid" "$psplit"; done
+  fi
+  [[ $n -gt 0 ]] && log "   $tool retries: $ok of $n complexes docked on their own, $((n - ok)) recorded as failures"
   return 0
 }
 
@@ -76,13 +96,13 @@ if has equibind; then
   log "EquiBind (CPU)"
   bash "$here/bin/run_external_baselines.sh" --stage equibind "${common[@]}" --equibind-python "$equibind_python" \
     || log "   some EquiBind shards are incomplete; retrying their missing complexes one at a time"
-  retry_missing equibind
+  retry_missing equibind || exit 1
 fi
 if has diffdock; then
   log "DiffDock (GPU, 40 samples x 20 steps per complex)"
   bash "$here/bin/run_external_baselines.sh" --stage diffdock "${common[@]}" --diffdock-python "$diffdock_python" \
     || log "   some DiffDock shards are incomplete; retrying their missing complexes one at a time"
-  retry_missing diffdock
+  retry_missing diffdock || exit 1
 fi
 
 if has score; then

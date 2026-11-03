@@ -63,7 +63,9 @@ def main() -> int:
                 check(len(subset) == expected, f"prediction_inventory_count_{tool}_{split}", len(subset), failures)
                 check((subset["status"] == "collected").all(), f"prediction_inventory_complete_{tool}_{split}", subset["status"].value_counts().to_dict(), failures)
                 for path in subset["rank1_prediction"].tolist():
-                    check(Path(path).is_file() and Path(path).stat().st_size > 0, f"prediction_file_{tool}_{split}", path, failures)
+                    # reproduction adapter: a complex the tool could not dock has no path (NaN), reported above
+                    if isinstance(path, str) and path:
+                        check(Path(path).is_file() and Path(path).stat().st_size > 0, f"prediction_file_{tool}_{split}", path, failures)
     scores_path = args.scores_csv.resolve()
     check(scores_path.is_file(), "scores_exists", str(scores_path), failures)
     scores = pd.read_csv(scores_path, dtype={"tool": str, "split": str, "complex_id": str}) if scores_path.is_file() else pd.DataFrame()
