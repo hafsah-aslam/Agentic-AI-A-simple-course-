@@ -44,8 +44,11 @@ correction is internal deformation; restricting the correction to a rigid motion
 reduction. Pooled error falls only because a few badly docked complexes dominate it; for the median complex it rises. The gate
 admitted almost nothing, failed its own correlation check on all three alternative splits, and the reported uncertainty
 shrinkage under distribution shift did not reproduce. \SeqNearPct\% of external complexes are near-identical in sequence to
-training proteins. Per-atom regression under a squared-error objective learns to collapse ligands; pose refinement should be
-evaluated per complex and constrained to chemically valid motions.
+training proteins. Run on the same complexes, the learned docking methods the original study only cited produce chemically
+valid poses at \EqBPassExt\% (EquiBind) and \DDPassExt\% (DiffDock) externally---the same low range as the ungated
+correction---so the validity failure is general to learned coordinate output, not specific to this model. Per-atom regression
+under a squared-error objective learns to collapse ligands; pose refinement should be evaluated per complex and constrained to
+chemically valid motions.
 \end{abstract}
 
 \begin{keyword}
@@ -257,6 +260,43 @@ Open Babel artifact (complexes) & 150 / 4 & \ObabelInt{} / \ObabelExt & \ok \\
 \end{tabular}
 \end{table}
 \noindent ``Partly'' marks results with the same direction and conclusion but a clearly different magnitude.
+
+\subsection{Controlled comparison with learned docking baselines}\label{sec:baselines}
+The original study placed its results beside published success rates for EquiBind and DiffDock but did not run those
+methods on its own cohorts, and listed a matched comparison as future work. We ran both on the identical internal-test and
+PoseBusters complexes, scoring their rank-1 poses with the same atom-matched RMSD and the same \num{22}-check PoseBusters
+audit used throughout this paper (EquiBind at commit \texttt{4cb1b4c}; DiffDock v1.1, \DDSamples{} samples per complex;
+Table~\ref{tab:baselines}). Both learned methods perform blind docking---the pocket is not given---so they address a harder
+task than the pocket-informed Vina baseline, and the table is a reference point, not a claim of superiority of any one method.
+Two findings matter for this paper. First, on the external set DiffDock reaches \DDSuccExt\% top-1 success, close to its own
+reported \num{38.2}\% and well above the \num{17.2}\% of an independent rerun, whereas it reaches \DDSuccInt\% on the internal
+set; the gap is consistent with the known overlap between DiffDock's PDBBind training data and older internal complexes, and
+supports using the 2021-onward PoseBusters set as the fair benchmark. Second, and central here, both learned methods produce
+largely invalid geometries---EquiBind \EqBPassExt\% and DiffDock \DDPassExt\% PoseBusters-valid externally---in the same range
+as the ungated correction (\PassUngExt\%) and far below the Vina baseline and the gated correction (both $\approx\!\num{97}$\%).
+Across four different model families, then, raw or generatively sampled coordinates sacrifice chemical validity for geometric
+fit; only the pocket-informed baseline and the confidence-gated correction keep it.
+
+\begin{table}[H]
+\centering\small
+\caption{EquiBind and DiffDock run on this study's own cohorts (not literature numbers), scored with the same RMSD and
+PoseBusters audit as the rest of the paper. Success is RMSD\,$<$\,2\Ang{}; validity is the 22-check PoseBusters dock
+configuration. EquiBind and DiffDock dock blind; Vina and the correction are pocket-informed. Internal\,/\,external.}
+\label{tab:baselines}
+\begin{tabular}{@{}lllrr@{}}
+\toprule
+Method & Task & Samples & Success\,<2\AA{} (\%) & PoseBusters valid (\%) \\
+\midrule
+EquiBind \citep{stark2022equibind} & blind & 1 & \EqBSuccInt{} / \EqBSuccExt & \EqBPassInt{} / \EqBPassExt \\
+DiffDock \citep{corso2023diffdock} & blind & \DDSamples{} & \DDSuccInt{} / \DDSuccExt & \DDPassInt{} / \DDPassExt \\
+Vina baseline & pocket-informed & -- & \BaseInt{} / \BaseExt & \PassBaseInt{} / \PassBaseExt \\
+Ungated correction & pocket-informed & -- & \SuccUngInt{} / \SuccUngExt & \PassUngInt{} / \PassUngExt \\
+Gated correction & pocket-informed & -- & \SuccGatInt{} / \SuccGatExt & \PassGatInt{} / \PassGatExt \\
+\bottomrule
+\end{tabular}
+\end{table}
+\noindent DiffDock skipped \DDExclExt{} external and \DDExclInt{} internal complexes (receptor above its size limit) and
+EquiBind \EqBExclExt{} external (RDKit could not embed the ligand); these are counted as failures of those methods.
 
 \section{Discussion}\label{sec:discussion}
 
