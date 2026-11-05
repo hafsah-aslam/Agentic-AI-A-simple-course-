@@ -43,8 +43,15 @@ common=(--manifest "$bridge/manifest.csv" --m2-output-dir "$bridge/m2" --workspa
 # stage with failures continues; afterwards every complex left without a prediction is retried on its own, and a
 # complex that fails again is recorded as a docking failure (a .failed marker; it is scored as a failure).
 retry_missing() {
-  local tool="$1" n=0 failed=0 ok=0 pending=() cid
-  record_failure() { touch "$1/$2.failed"; log "   $tool $3/$2: $tool cannot dock this complex (log: logs/$tool/retry/$2.log); recorded as a failure"; }
+  local tool="$1" n=0 recorded=0 ran_ok=0 cid nostart=()
+  record_failure() { touch "$1/$2.failed"; recorded=$((recorded + 1)); log "   $tool $3/$2: $tool cannot dock this complex (log: logs/$tool/retry/$2.log); recorded as a failure"; }
+  # a marker that the tool itself started on this complex: with it, a missing pose is a genuine per-complex
+  # failure (DiffDock "receptor too large", EquiBind "Bad Conformer Id") and is recorded; without it the tool
+  # never started. If the first few complexes all fail to start and none ever runs, it is a setup problem
+  # (download, GPU, environment) and we stop without recording anything; otherwise the tool clearly works and a
+  # no-start complex is recorded as a failure too.
+  local started_marker="DiffDock will run on\|Results saved in\|Skipping"
+  [[ "$tool" == equibind ]] && started_marker="Using Seed\|Processing "
   while IFS=$'\t' read -r split shard cid input raw; do
     n=$((n + 1))
     mkdir -p "$raw" "$ws/logs/$tool/retry"
@@ -63,32 +70,25 @@ retry_missing() {
       out="$raw/$cid/rank1.sdf"
     fi
     if [[ -s "$out" ]]; then
-      ok=$((ok + 1))
+      ran_ok=$((ran_ok + 1))
       log "   $tool $split/$cid: done on retry"
-    else
-      failed=$((failed + 1))
-      if [[ $ok -eq 0 && $failed -le 3 ]]; then
-        # the tool has not docked anything yet: hold the verdict until it either docks one complex or fails three
-        pending+=("$raw"$'\t'"$cid"$'\t'"$split")
-        if [[ $failed -eq 3 ]]; then
-          log "   $tool fails on every complex it is given: this is a setup problem, not a docking result. Last lines of its log:"
-          tail -n 25 "$ws/logs/$tool/retry/$cid.log" | sed 's/^/      /'
-          log "   nothing was recorded as a failure; fix the problem above and run the same command again"
-          return 1
-        fi
-      else
-        record_failure "$raw" "$cid" "$split"
+    elif grep -q "$started_marker" "$ws/logs/$tool/retry/$cid.log"; then
+      record_failure "$raw" "$cid" "$split"   # the tool ran but could not produce a pose for this complex
+    elif [[ $ran_ok -eq 0 && $recorded -eq 0 ]]; then
+      nostart+=("$raw"$'\t'"$cid"$'\t'"$split")   # tool has never started yet: hold the verdict
+      if [[ ${#nostart[@]} -ge 3 ]]; then
+        log "   $tool does not run (no output and no result log for the first ${#nostart[@]} complexes). Last lines of its log:"
+        tail -n 25 "$ws/logs/$tool/retry/$cid.log" | sed 's/^/      /'
+        log "   nothing was recorded as a failure; fix the problem above and run the same command again"
+        return 1
       fi
-    fi
-    if [[ $ok -gt 0 && ${#pending[@]} -gt 0 ]]; then   # the tool works, so the held complexes are real failures
-      for p in "${pending[@]}"; do IFS=$'\t' read -r praw pcid psplit <<< "$p"; record_failure "$praw" "$pcid" "$psplit"; done
-      pending=()
+    else
+      record_failure "$raw" "$cid" "$split"
     fi
   done < <(python3 "$here/scripts/retry_missing.py" --tool "$tool" --workspace "$ws")
-  if [[ ${#pending[@]} -gt 0 ]]; then   # fewer than three left and none docked: still record them (the stage itself ran)
-    for p in "${pending[@]}"; do IFS=$'\t' read -r praw pcid psplit <<< "$p"; record_failure "$praw" "$pcid" "$psplit"; done
-  fi
-  [[ $n -gt 0 ]] && log "   $tool retries: $ok of $n complexes docked on their own, $((n - ok)) recorded as failures"
+  # fewer than three complexes in total, none started: the main stage still ran, so record them as failures
+  for p in "${nostart[@]:-}"; do [[ -n "$p" ]] && { IFS=$'\t' read -r praw pcid psplit <<< "$p"; record_failure "$praw" "$pcid" "$psplit"; }; done
+  [[ $n -gt 0 ]] && log "   $tool retries: $ran_ok of $n complexes docked on their own, $recorded recorded as failures"
   return 0
 }
 
