@@ -22,6 +22,9 @@ STATUS_RANK = {"DOWNLOADED": 0, "ACCESSIBLE_NOT_DOWNLOADED": 1, "PAYWALLED": 2, 
 
 
 def norm_title(t):
+    # ignore a trailing parenthetical such as "(RAPIER)" or "(Extended Version)" so that
+    # the same paper registered with/without it is merged into one record
+    t = re.sub(r"\s*\([^)]*\)\s*$", "", t)
     return re.sub(r"[^a-z0-9]", "", t.lower())
 
 
@@ -35,13 +38,14 @@ def main():
                     bad.append((os.path.basename(path), row.get("paper_id")))
                     continue
                 row = {k: (row.get(k) or "").strip() for k in FIELDS}
+                row["categories"] = ";".join(sorted(set(filter(None, (c.strip() for c in row["categories"].split(";"))))))
                 key = norm_title(row["title"])
                 if key not in merged:
                     merged[key] = row
                     continue
                 cur = merged[key]
-                cats = set(filter(None, cur["categories"].split(";"))) | \
-                       set(filter(None, row["categories"].split(";")))
+                cats = set(filter(None, (c.strip() for c in cur["categories"].split(";")))) | \
+                       set(filter(None, (c.strip() for c in row["categories"].split(";"))))
                 cur["categories"] = ";".join(sorted(cats))
                 if STATUS_RANK.get(row["fulltext_status"], 9) < STATUS_RANK.get(cur["fulltext_status"], 9):
                     for k in ("fulltext_url", "fulltext_status", "local_pdf"):
